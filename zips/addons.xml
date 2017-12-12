@@ -59,7 +59,7 @@ provider-name="Cerebro">
 </addon>
 
 <!--suppress ALL -->
-<addon id="plugin.video.cererbrooneclickbase" version="1.0.16" name="Cerebro HD Movies Core" provider-name="Biglad">
+<addon id="plugin.video.cererbrooneclickbase" version="1.0.17" name="Cerebro HD Movies Core" provider-name="Biglad">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.urlresolver" version="2.2.0"/>
