@@ -38,6 +38,13 @@
 </plugin>
 
 <plugin>
+<title>[COLOR pink]Cerebro TV Heaven[/COLOR]</title>
+<thumbnail>http://mtvb.co.uk/icon.png</thumbnail>
+<fanart>http://mtvb.co.uk/fanart.jpg</fanart>
+<link>plugin://plugin.video.tvheaven</link>
+</plugin>
+
+<plugin>
 <title>[COLOR pink]Vidics New TV Shows[/COLOR]</title>
 <thumbnail>http://mtvb.co.uk/icon.png</thumbnail>
 <fanart>http://mtvb.co.uk/fanart.jpg</fanart>
