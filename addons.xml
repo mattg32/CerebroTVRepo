@@ -146,7 +146,7 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="plugin.video.showboxarize2" version="100.0.9" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro ShowBox[/B][/COLOR]" provider-name="biglad">
+<addon id="plugin.video.showboxarize2" version="100.0.10" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro ShowBox[/B][/COLOR]" provider-name="biglad">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.module.showboxarize2" />
@@ -154,6 +154,7 @@ provider-name="Cerebro">
 		<import addon="script.showboxarize2.metadata" version="1.0.0" />
 		<import addon="script.module.urlresolver" version="3.0.0" />
 		<import addon="script.module.metahandler" version="1.0.0" />
+		<import addon="script.module.requests" />
 		<import addon="script.cerebro.backend" />
 		<import addon="script.cerebro.pairwith" />
         <import addon="script.cerebro.pairwith.laucnher" />
