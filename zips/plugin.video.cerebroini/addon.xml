@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="plugin.video.echoini"
-version="1.0.5"
+<addon id="plugin.video.cerebroini"
+version="1.0.6"
 name="Cerebro INI Creator (makes addon ini file for free epg)"
 provider-name="Cerebro">
 <requires>
