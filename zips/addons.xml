@@ -323,37 +323,6 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="script.module.autocompletion" name="AutoCompletion library" version="1.1.2" provider-name="Philipp Temminghoff (phil65)">
-    <requires>
-        <import addon="xbmc.python" version="2.24.0" />
-        <import addon="script.module.simplejson" version="3.3.0"/>
-    </requires>
-    <extension point="xbmc.python.module" library="lib" />
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Module providing some AutoCompletion functions</summary>
-        <description lang="en">Module providing some AutoCompletion functions</description>
-        <platform>all</platform>
-        <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
-        <source>https://github.com/phil65/script.module.autocompletion</source>
-    </extension>
-</addon>
-
-<addon id="script.module.bc.common" name="Bone Crusher Common Libraries" version="1.0.0" provider-name="Bone Crusher">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0" />
-		<import addon="script.module.six" />
-		<import addon="script.module.metahandler" />
-		<import addon="script.module.beautifulsoup" />
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en"></summary>
-		<description lang="en"></description>
-		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-	</extension>
-</addon>
-
 <addon id="script.module.beautifulsoup4"
        name="BeautifulSoup4"
        version="4.5.3"
@@ -560,25 +529,6 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="script.module.m3u8" name="m3u8" version="0.2.10" provider-name="globocom, Timewasted">
-	<requires>
-        <import addon="xbmc.python" version="2.14.0"/>
-        <import addon="script.module.iso8601" version="0.1.11"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib"/>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Python m3u8 Parser for HTTP Live Streaming (HLS) Transmissions</summary>
-		<description lang="en">Packed for XBMC from https://github.com/globocom/m3u8</description>
-		<language>en</language>
-		<platform>all</platform>
-		<license>MIT</license>
-		<forum></forum>
-		<website>https://github.com/globocom/m3u8</website>
-		<source>https://github.com/timewasted/script.module.m3u8</source>
-		<email>ryan@timewasted.me</email>
-	</extension>
-</addon>
-
 <addon id="script.module.requests"
        name="requests"
        version="2.18.4"
@@ -695,33 +645,5 @@ provider-name="Cerebro">
         <summary lang="en">Proxy for f4m</summary>
         <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
     </extension>
-</addon>
-
-<addon id="script.xbmc.unpausejumpback" name="Unpause Jumpback" version="2.3.6" provider-name="Memphiz,Lucleonhart,schumi2004,bossanova808">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.service" library="default.py" start="login"></extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">XBMC jumpback on unpausing videos</summary>
-    <summary lang="bg">Превърта назад след пауза</summary>
-    <description lang="en">
-        This addon will jumpback the given number of seconds whenever a movie is unpaused - for finding back into the story.
-        You can set the amount of seconds to jump back and the minimum seconds the pause must take to jump back.
-        It also allows to jump back or forward after rwd or fwd a specified amount of seconds.
-    </description>
-    <description lang="bg">
-        Добавката прескача назад автоматично след като прекратите пауза, за да си припомните историята.
-        Може да определите колко време назад да ви връща скока както и след колко време в режим "На пауза" да се активира функцията.
-        Има и възможност за скок напред / назад след превъртане напред или назад за дефиниран период от време.
-    </description>
-    <platform>all</platform>
-    <website></website>
-    <source>https://github.com/Memphiz/script.xbmc.unpausejumpback/</source>
-    <forum>http://forum.xbmc.org/showthread.php?tid=134837</forum>
-    <email></email>
-    <language></language>
-    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-  </extension>
 </addon>
 </addons>
