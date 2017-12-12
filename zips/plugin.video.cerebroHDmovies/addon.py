@@ -118,7 +118,7 @@ def DownloaderClass(url,dest, dp = None):
     except Exception, e:
         noconnection()
         exit()
-    xbmc.executebuiltin('RunAddon(plugin.video.link__tester)')
+    xbmc.executebuiltin('RunAddon(plugin.video.cererbrooneclickbase)')
 
 def _pbhook(numblocks, blocksize, filesize, dp, start_time):
         try: 
@@ -151,4 +151,4 @@ def noconnection():
 #dp.close()
 download(LOCATION,file2) 
 xbmc.sleep(1000)
-xbmc.executebuiltin('RunAddon(plugin.video.link__tester)')
+xbmc.executebuiltin('RunAddon(plugin.video.cererbrooneclickbase)')
