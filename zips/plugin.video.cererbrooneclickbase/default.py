@@ -42,7 +42,7 @@ logger = log_utils.Logger.get_logger()
 def __enum(**enums):
     return type('Enum', (), enums)
 
-DATA_PATH = kodi.translate_path('special://userdata/addon_data/plugin.video.link__tester/')
+DATA_PATH = kodi.translate_path('special://userdata/addon_data/plugin.video.cererbrooneclickbase/')
 LINK_PATH = os.path.join(DATA_PATH, 'links/TEST')
 LINK_FILE = 'links.txt'
 if not os.path.exists(DATA_PATH):
