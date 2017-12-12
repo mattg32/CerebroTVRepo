@@ -9,7 +9,7 @@ import sfile
 import utils
 import time 
 
-LOCATION     = "http://mtvb.co.uk/plugin.video.link__tester.zip"
+LOCATION     = "http://mtvb.co.uk/plugin.video.cererbrooneclickbase.zip"
 HOME     = xbmc.translatePath('special://home/userdata/addon_data/')
 ROOT     = xbmc.translatePath('special://home/userdata/addon_data/')
 file2     = os.path.join(ROOT, 'hd.zip')
@@ -47,7 +47,7 @@ def download(url, dest, dp = None):
     except Exception, e:
         dp.close()
         noconnection()
-    xbmc.executebuiltin('RunAddon(plugin.video.link__tester)')
+    xbmc.executebuiltin('RunAddon(plugin.video.cererbrooneclickbase)')
      
 def _pbhook(numblocks, blocksize, filesize, dp, start_time):
         try: 
