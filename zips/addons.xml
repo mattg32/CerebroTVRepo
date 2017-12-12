@@ -22,7 +22,7 @@
 
 <addon id="plugin.video.cerebroHDmovies"
   name=" [COLOR black].[/COLOR][B]Cerebro One Click HD Movies[/B]"
-  version="2.4"
+  version="2.5"
   provider-name="biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
