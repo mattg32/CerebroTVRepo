@@ -58,27 +58,12 @@ provider-name="Cerebro">
 </extension>
 </addon>
 
-<addon id="plugin.video.f4mTester" name="f4mTester" version="2.7.2" provider-name="Shani">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.video.F4mProxy" version="2.7.1"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>f4mTester</summary>
-        <description></description>
-        <platform>all</platform>
-    </extension>
-</addon>
-
 <!--suppress ALL -->
-<addon id="plugin.video.link__tester" version="1.0.14" name="Cerebro HD Movies Core" provider-name="Biglad,Echo Coder">
+<addon id="plugin.video.cererbrooneclickbase" version="1.0.15" name="Cerebro HD Movies Core" provider-name="Biglad,Echo Coder">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.urlresolver" version="2.2.0"/>
-        <import addon="script.module.echo"/>
+        <import addon="script.module.cerebro1cm"/>
 		<import addon="script.module.requests" />
 		<import addon="script.cerebro.pairwith" />
 		<import addon="script.cerebro.pairwith.laucnher" />
@@ -92,6 +77,21 @@ provider-name="Cerebro">
         <description></description>
         <platform>all</platform>
 	</extension>
+</addon>
+
+<addon id="plugin.video.f4mTester" name="f4mTester" version="2.7.2" provider-name="Shani">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0"/>
+        <import addon="script.video.F4mProxy" version="2.7.1"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>f4mTester</summary>
+        <description></description>
+        <platform>all</platform>
+    </extension>
 </addon>
 
 <addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV+[/B][/COLOR]" version="10.38" provider-name="sClarke and Biglad">
@@ -115,7 +115,7 @@ provider-name="Cerebro">
 
 <addon
   id="plugin.video.Showbox"
-  version="9.9"
+  version="10.0"
   name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]CerebroTV Vidics Player[/B][/COLOR]"
   provider-name="Biglad">
   <requires>
@@ -373,6 +373,18 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
+<addon id="script.module.cerebro1cm" name="CerebroTV Libraries" version="1.00.012" provider-name="Biglad">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.requests" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Forked from TK Norris Shared Module. Reusable Modules used by several of Echo's addons</summary>
+	</extension>
+</addon>
+
 <addon id="script.module.certifi"
        name="certifi"
        version="2017.07.27.1"
@@ -415,18 +427,6 @@ provider-name="Cerebro">
     <source>https://github.com/beenje/script.module.chardet</source>
     <email>beenje AT gmail.com</email>
   </extension>
-</addon>
-
-<addon id="script.module.echo" name="CerebroTV Libraries" version="1.00.011" provider-name="Biglad, Echo Coder">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0" />
-		<import addon="script.module.requests" />
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en">Forked from TK Norris Shared Module. Reusable Modules used by several of Echo's addons</summary>
-	</extension>
 </addon>
 
 <addon id="script.module.elementtree"

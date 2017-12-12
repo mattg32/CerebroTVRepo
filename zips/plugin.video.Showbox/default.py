@@ -27,7 +27,7 @@ def d():
 		pass
 #xbmc.sleep(1000)  
 #import html
-
+#d()
 #from thetvdb import TheTvDb
 #self.tvdb_key.decode('base64')
 #tvdb_key = 'MUQ2MkYyRjkwMDMwQzQ0NA=='
@@ -2859,7 +2859,7 @@ elif mode==3:
         #d()
         playVideo(url,name,movieinfo)
 elif mode==4:
-        d()
+        #d()
         Mirrors(url,name,"IMAGE") 
 elif mode==5:
         INDEXList(url,4,5,"movie")
