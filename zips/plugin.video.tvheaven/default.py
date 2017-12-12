@@ -1,6 +1,6 @@
 import urllib,urllib2,re,xbmcplugin,xbmcgui,sys,xbmc,xbmcaddon,os,json,urlresolver,time
 
-addon_id = 'plugin.video.tvmix'
+addon_id = 'plugin.video.tvheaven'
 fanart = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
 icon = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
 art = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id + '/resources/art/', ''))
