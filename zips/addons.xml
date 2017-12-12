@@ -40,7 +40,7 @@
 </addon>
 
 <addon id="plugin.video.cerebroini"
-version="1.0.6"
+version="1.0.7"
 name="Cerebro INI Creator (makes addon ini file for free epg)"
 provider-name="Cerebro">
 <requires>
