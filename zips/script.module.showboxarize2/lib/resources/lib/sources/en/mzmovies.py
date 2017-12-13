@@ -32,8 +32,8 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['mehlizmovies.com']
-        self.base_link = 'https://www.mehlizmovies.com/'
+        self.domains = ['mehlizmovies.com','mehlizmovies.is']
+        self.base_link = 'https://www.mehlizmovies.is/'
         self.search_link = '?s=%s'
         self.search_link2 = '/search/%s/feed/rss2/'
 

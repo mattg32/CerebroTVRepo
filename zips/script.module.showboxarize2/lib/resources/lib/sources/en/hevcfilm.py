@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['300mbmoviesdl.com', 'hevcbluray.info']
-        self.base_link = 'http://hevcbluray.info'
+        self.base_link = 'https://hevcbluray.info'
         self.search_link = '/search/%s/feed/rss2/'
 
     def movie(self, imdb, title, localtitle, aliases, year):

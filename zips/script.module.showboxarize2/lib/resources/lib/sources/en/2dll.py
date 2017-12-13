@@ -30,8 +30,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['2dll.unblocked.pro']
-        self.base_link = 'https://2ddl.unblocked.pro'
+        self.domains = ['2dll.unblocked.pro','2ddl.unblocked.vc']
+        self.base_link = 'https://2ddl.unblocked.vc'
         self.search_link = '/search/%s/feed/rss2/'
 
 

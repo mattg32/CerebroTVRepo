@@ -31,8 +31,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['allrls.me']
-        self.base_link = 'http://allrls.me'
+        self.domains = ['allrls.me','allrls.pw']
+        self.base_link = 'http://allrls.pw'
         self.search_link = '?s=%s+%s&go=Search'
 
 

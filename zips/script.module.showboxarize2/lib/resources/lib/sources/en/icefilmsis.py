@@ -29,10 +29,10 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['icefilms.is','icefilms.unblocked.vc']
-        self.base_link = 'https://www6-icefilms6-info.unblocked.lol'
+        self.domains = ['icefilms.is','icefilms.unblocked.vc','icefilms.info']
+        self.base_link = 'http://www.icefilms.info'
         self.search_link_movie = '/newmov.php?menu=search&query=%s'
-        self.search_link_show = 'show/%s'
+        self.search_link_show = '/show/%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
