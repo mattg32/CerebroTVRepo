@@ -556,7 +556,7 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="script.module.showboxarize2" name="Cerebro ShowBox Scarpers" version="1.00.018" provider-name="biglad">
+<addon id="script.module.showboxarize2" name="Cerebro ShowBox Scarpers" version="1.00.019" provider-name="biglad">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
