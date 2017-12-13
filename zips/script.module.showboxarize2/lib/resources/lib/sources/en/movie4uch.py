@@ -30,8 +30,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['movie4u.ch','movie4k.unblocked.vc']
-        self.base_link = 'http://movie4k.unblocked.vc'
+        self.domains = ['movie4u.ch']
+        self.base_link = 'https://movie4u.ch'
         self.search_link = '/?s=%s'
 
 

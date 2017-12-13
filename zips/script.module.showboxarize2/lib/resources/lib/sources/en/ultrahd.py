@@ -55,7 +55,7 @@ class source:
             title = data['title'].replace(':','').lower()
             year = data['year']
 
-            query = '%s %s' % (data['title'], data['year'])
+            query = '%s' % (data['title'], data['year'])
             query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
 
             url = urlparse.urljoin(self.base_link, self.post_link)

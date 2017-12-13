@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['perfecthdmovies.pw']
-        self.base_link = 'http://www.perfecthdmovies.pw'
+        self.domains = ['perfecthdmovies.pw','fullperfectmovies.com']
+        self.base_link = 'http://www.fullperfectmovies.com'
         self.search_link = '/search/%s/feed/rss2/'
 
 

@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['mydownloadtube.com']
-        self.base_link = 'http://www.mydownloadtube.com'
+        self.domains = ['mydownloadtube.com','mydownloadtube.to']
+        self.base_link = 'https://mydownloadtube.to'
         self.search_link = '/search/search_val?language=English%20-%20UK&term='
         self.download_link = '/movies/add_download'
 

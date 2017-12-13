@@ -33,8 +33,8 @@ class source:
         self.language = ['en']
         self.domains = ['tvbox.ag']
         self.base_link = 'https://tvbox.ag'
-        self.search_link_tv = 'https://tvbox.ag/tvshows'
-        self.search_link_movie = 'https://tvbox.ag/movies'
+        self.search_link_tv = 'https://tvbox.ag/tvshows/'
+        self.search_link_movie = 'https://tvbox.ag/movies/'
 
     
     def movie(self, imdb, title, localtitle, aliases, year):

@@ -31,8 +31,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['watch32hd.co']
-        self.base_link = 'https://watch32hd.co/'
+        self.domains = ['watch32hd.co','watch32hd.org']
+        self.base_link = 'https://watch32hd.org/'
         self.search_link = '%s/watch?v=%s_%s'
 
 

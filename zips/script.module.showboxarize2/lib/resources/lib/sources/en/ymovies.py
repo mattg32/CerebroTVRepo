@@ -52,7 +52,7 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['yesmovies.to',yesmovies.net']
+        self.domains = ['yesmovies.to','yesmovies.net']
         self.base_link = 'http://yesmovies.net/'
         self.search_link = '/movie/search/%s.html'
         self.info_link = '/ajax/movie_info/%s.html?is_login=false'
