@@ -30,8 +30,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['onlinemovies.tube', 'watchonline.pro']
-        self.base_link = 'http://watchonline.pro'
+        self.domains = ['onlinemovies.tube', 'watchonline.pro','onlinehdmovies.org']
+        self.base_link = 'http://onlinehdmovies.org'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -92,7 +92,7 @@ class source:
 
                 else:
                     #url = '%s/watch/%s-%s/' % (self.base_link, cleantitle.geturl(data['title']), data['year'])
-                    url = '%s/%s-%s/' % (self.base_link, cleantitle.geturl(data['title']), data['year'])
+                    url = '%s/?s=%s' % (self.base_link, cleantitle.geturl(data['title']), data['year'])
 
                     url = client.request(url, output='geturl')
                     if url == None: raise Exception()

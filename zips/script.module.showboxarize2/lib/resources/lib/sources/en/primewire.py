@@ -28,10 +28,11 @@ from resources.lib.modules import source_utils
 class source:
     def __init__(self):
         self.priority = 0
+        searchkey = '2c3cdd3869a7ddf6'
         self.language = ['en']
         self.domains = ['primewire.ag','letmewatchthis.ac','primewire.unblocked.pl','primewire.unblocked.vc','letmewatchthis.ltd']
         #self.base_link = 'http://www.primewire.ag'
-        self.base_link = 'http://www.letmewatchthis.ltd'
+        self.base_link = 'https://primewire.unblocked.vc'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'
         self.tvsearch_link = '/index.php?search_keywords=%s&key=%s&search_section=2'
