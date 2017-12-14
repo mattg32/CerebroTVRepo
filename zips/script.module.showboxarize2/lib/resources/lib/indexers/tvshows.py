@@ -178,7 +178,7 @@ class tvshows:
         dbcur.close()
         
         if delete_option:
-            navigator.navigator().addDirectoryItem('Clear Search List', 'clearCacheSearch', 'tools.png', 'DefaultAddonProgram.png')
+            navigator.navigator().addDirectoryItem('[COLOR red]Clear Search List[/COLOR]', 'clearCacheSearch', 'tools.png', 'DefaultAddonProgram.png')
 
         navigator.navigator().endDirectory()
         
