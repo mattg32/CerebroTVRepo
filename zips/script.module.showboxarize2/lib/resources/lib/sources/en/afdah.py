@@ -33,17 +33,17 @@ class source:
         self.language = ['en']
         self.domains = ['afdah.to','afdah.bz']
         self.base_link = 'http://afdah.bz'
-        self.search_link = '/wp-content/themes/afdah/ajax-search.php'
+        self.search_link = '/' #'/wp-content/themes/afdah/ajax-search.php'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
 
             query = urlparse.urljoin(self.base_link, self.search_link)
             if ':' in title:
-                title2 = title.split(':')[0] + ':'
-                post = 'search=%s&what=title' % title2
+                title2 = title.split(':')[0]
+                post = '?s=%s' % title2
 
-            else: post = 'search=%s&what=title' % cleantitle.getsearch(title)
+            else: post = '?s=%s' % cleantitle.getsearch(title)
 
 
             t = cleantitle.get(title)

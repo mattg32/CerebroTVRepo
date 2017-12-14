@@ -152,7 +152,7 @@ class tvshows:
 
     def search(self):
         navigator.navigator().addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
-        navigator.navigator().addDirectoryItem('[COLOR red]• [/COLOR]New TV Show Search...', 'tvSearchnew', 'search.png', 'DefaultTVShows.png')
+        navigator.navigator().addDirectoryItem('[COLOR red]• [/COLOR][COLOR gold]New TV Show Search[/COLOR]...', 'tvSearchnew', 'search.png', 'DefaultTVShows.png')
         try: from sqlite3 import dbapi2 as database
         except: from pysqlite2 import dbapi2 as database
         
