@@ -94,7 +94,7 @@ class navigator:
 
             self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (MOVIES)', 'moviePerson', 'people-search.png', 'DefaultMovies.png')
             #self.addDirectoryItem(32010, 'movieSearch', 'search.png', 'DefaultMovies.png')
-
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Tools (Clear Providers, API Keys, etc.)', 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
         self.endDirectory()
 
 
@@ -159,7 +159,7 @@ class navigator:
 
             self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (TV SHOWS)', 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
             #self.addDirectoryItem(32010, 'tvSearch', 'search.png', 'DefaultTVShows.png')
-
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Tools (Clear Providers, API Keys, etc.)', 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
         self.endDirectory()
 
 
