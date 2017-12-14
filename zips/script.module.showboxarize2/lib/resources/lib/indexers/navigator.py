@@ -41,21 +41,21 @@ class navigator:
     def root(self):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
         self.addDirectoryItem('[COLOR gold]Cerebro ShowBox[/COLOR] - Main Menu', 'ShowChangelog', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem('Search Movies / TV Shows', 'searchNavigator', 'search.png', 'DefaultFolder.png')
-        self.addDirectoryItem('Movies Menu', 'movieNavigator', 'movies.png', 'DefaultMovies.png')
-        self.addDirectoryItem('TV Shows Menu', 'tvNavigator', 'tvshows.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Search Movies / TV Shows', 'searchNavigator', 'search.png', 'DefaultFolder.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Movies Menu', 'movieNavigator', 'movies.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows Menu', 'tvNavigator', 'tvshows.png', 'DefaultTVShows.png')
 
         if not control.setting('lists.widget') == '0':
-            self.addDirectoryItem(32003, 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
-            self.addDirectoryItem(32004, 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]My Movies (IMDB)', 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]My TV Shows (IMDB)', 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
 
-        self.addDirectoryItem('Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
         if (traktIndicators == True and not control.setting('tv.widget.alt') == '0') or (traktIndicators == False and not control.setting('tv.widget') == '0'):
-            self.addDirectoryItem('Latest TV Episodes', 'tvWidget', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Latest TV Episodes', 'tvWidget', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png')
         if not control.setting('movie.widget') == '0':
-            self.addDirectoryItem('Latest Movies', 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Latest Movies', 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
 
-        self.addDirectoryItem('Tools (Clear Providers, API Keys, etc.)', 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Tools (Clear Providers, API Keys, etc.)', 'toolNavigator', 'tools.png', 'DefaultAddonProgram.png')
 
         downloads = True if control.setting('downloads') == 'true' and (len(control.listDir(control.setting('movie.download.path'))[0]) > 0 or len(control.listDir(control.setting('tv.download.path'))[0]) > 0) else False
         if downloads == True:
@@ -71,28 +71,28 @@ class navigator:
     def movies(self, lite=False):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
         self.addDirectoryItem('[COLOR gold]Cerebro ShowBox[/COLOR] - Movies Menu', 'ShowChangelog', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem('Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
-        self.addDirectoryItem('Search For a Movie', 'movieSearch', 'search.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Search For a Movie', 'movieSearch', 'search.png', 'DefaultMovies.png')
         if not control.setting('movie.widget') == '0':
-            self.addDirectoryItem(32005, 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem(32011, 'movieGenres', 'genres.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32012, 'movieYears', 'years.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32013, 'moviePersons', 'people.png', 'DefaultMovies.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Latest Movies', 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Movies by Genres', 'movieGenres', 'genres.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Movies by Year', 'movieYears', 'years.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Movies by Actor/Actress', 'moviePersons', 'people.png', 'DefaultMovies.png')
         #self.addDirectoryItem(32014, 'movieLanguages', 'languages.png', 'DefaultMovies.png')
         #self.addDirectoryItem(32015, 'movieCertificates', 'certificates.png', 'DefaultMovies.png')
         #self.addDirectoryItem(32017, 'movies&url=trending', 'people-watching.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem(32018, 'movies&url=popular', 'most-popular.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32019, 'movies&url=views', 'most-voted.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32020, 'movies&url=boxoffice', 'box-office.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32021, 'movies&url=oscars', 'oscar-winners.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32022, 'movies&url=theaters', 'in-theaters.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Popular Movies', 'movies&url=popular', 'most-popular.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Most Voted Movies', 'movies&url=views', 'most-voted.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Box Office Hits', 'movies&url=boxoffice', 'box-office.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Oscar Winners', 'movies&url=oscars', 'oscar-winners.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]In Theaters Now', 'movies&url=theaters', 'in-theaters.png', 'DefaultRecentlyAddedMovies.png')
         #self.addDirectoryItem(32005, 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem(32003, 'mymovieliteNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem('[COLOR red]• [/COLOR] My Movies (IMDB)', 'mymovieliteNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
 
-            self.addDirectoryItem(32028, 'moviePerson', 'people-search.png', 'DefaultMovies.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (MOVIES)', 'moviePerson', 'people-search.png', 'DefaultMovies.png')
             #self.addDirectoryItem(32010, 'movieSearch', 'search.png', 'DefaultMovies.png')
 
         self.endDirectory()
@@ -136,28 +136,28 @@ class navigator:
     def tvshows(self, lite=False):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
         self.addDirectoryItem('[COLOR gold]Cerebro ShowBox[/COLOR] - TV Menu', 'ShowChangelog', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem('Search For a Show', 'tvSearch', 'search.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Search For a Show', 'tvSearch', 'search.png', 'DefaultTVShows.png')
         if (traktIndicators == True and not control.setting('tv.widget.alt') == '0') or (traktIndicators == False and not control.setting('tv.widget') == '0'):
-            self.addDirectoryItem(32006, 'tvWidget', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png')
-        self.addDirectoryItem(32011, 'tvGenres', 'genres.png', 'DefaultTVShows.png')
-        self.addDirectoryItem('TV Catch Up', 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Latest TV Espidoes', 'tvWidget', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows by Genre', 'tvGenres', 'genres.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]TV Catch Up (Networks)', 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32014, 'tvLanguages', 'languages.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32015, 'tvCertificates', 'certificates.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32017, 'tvshows&url=trending', 'people-watching.png', 'DefaultRecentlyAddedEpisodes.png')
-        self.addDirectoryItem(32018, 'tvshows&url=popular', 'most-popular.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32023, 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32019, 'tvshows&url=views', 'most-voted.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32024, 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Trending TV Shows', 'tvshows&url=trending', 'people-watching.png', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Popuar TV Shows', 'tvshows&url=popular', 'most-popular.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Highlt Rated TV Shows', 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Most voted for TV Shows', 'tvshows&url=views', 'most-voted.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows Due Out Today', 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32025, 'tvshows&url=active', 'returning-tvshows.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32026, 'tvshows&url=premiere', 'new-tvshows.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]New TV Shows', 'tvshows&url=premiere', 'new-tvshows.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32006, 'calendar&url=added', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
         #self.addDirectoryItem(32027, 'calendars', 'calendar.png', 'DefaultRecentlyAddedEpisodes.png')
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem(32004, 'mytvliteNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem('[COLOR red]• [/COLOR] My TV Shows (IMDB)', 'mytvliteNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
 
-            self.addDirectoryItem(32028, 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (TV SHOWS)', 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
             #self.addDirectoryItem(32010, 'tvSearch', 'search.png', 'DefaultTVShows.png')
 
         self.endDirectory()
@@ -246,8 +246,8 @@ class navigator:
 
     def search(self):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem(32001, 'movieSearch', 'search.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32002, 'tvSearch', 'search.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Search for a Movie', 'movieSearch', 'search.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Search for a TV Show', 'tvSearch', 'search.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32029, 'moviePerson', 'people-search.png', 'DefaultMovies.png')
         #self.addDirectoryItem(32030, 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
 
