@@ -35,8 +35,8 @@ class source:
         self.language = ['en']
         self.domains = ['fmovies.se', 'fmovies.to','bmovies.se']
         self.base_link = 'https://bmovies.se'
-        self.movie_search_path = ('/search?keyword=%s')
-        self.episode_search_path = ('/search?keyword=%s')
+        self.movie_search_path = '/search?keyword=%s'
+        self.episode_search_path = '/search?keyword=%s'
         self.film_path = '/film/%s'
         self.info_path = '/ajax/episode/info?ts=%s&_=%s&id=%s&update=0'
         self.grabber_path = '/grabber-api/?ts=%s&id=%s&token=%s&mobile=0'

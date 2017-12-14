@@ -33,7 +33,7 @@ class source:
         self.language = ['en']
         self.domains = ['moviesplanet.is','moviesplanet.tv']
         self.base_link = 'https://www.moviesplanet.tv'
-        self.search_link = '/ajax/search.php'
+        self.search_link = '/index.php?menu=search&query=%s'
         self.user = control.setting('moviesplanet.user')
         self.password = control.setting('moviesplanet.pass')
 
@@ -44,7 +44,7 @@ class source:
 
             t = cleantitle.get(title)
 
-            u = urlparse.urljoin(self.base_link, self.search_link)
+            u = urlparse.urljoin(self.base_link, self.search_link) % title
 
             p = {'q': title.rsplit(':', 1)[0], 'limit': '10', 'timestamp': int(time.time() * 1000), 'verifiedCheck': ''}
             p = urllib.urlencode(p)

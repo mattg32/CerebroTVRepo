@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['freemoviedownloads6.com','freemoviedownloads.online']
-        self.base_link = 'http://freemoviedownloads.online'
+        self.base_link = 'http://freemoviedownloads6.com'
         self.search_link = '/?s=%s&submit=Search'
 
     def movie(self, imdb, title, localtitle, aliases, year):

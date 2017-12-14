@@ -31,8 +31,8 @@ class source:
         self.language = ['en']
         self.domains = ['project-free-tv.ch','project-free-tv.ag','myprojectfreetv.net','projectfreetv.ag']
         self.base_link = 'https://myprojectfreetv.net'
-        self.search_link = '/movies/%s-%s/'
-        self.search_link_2 = '/movies/search-form/?free=%s'
+        self.search_link = '/?s=%'
+        self.search_link_2 = '/?s=%s'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):
