@@ -1,90 +1,42 @@
-# NEEDS FIXING
-
-# -*- coding: utf-8 -*-
-
-'''
-    Covenant Add-on
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+import requests
+import re
+import xbmc
+from ..scraper import Scraper
+from ..common import clean_title,clean_search            
 
 
-import re,json,urllib,urlparse
+s = requests.session()
+User_Agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+                                           
+class watch32(Scraper):
+    domains = ['watch32hd.co']
+    name = "Watch32hd"
+    sources = []
 
-from resources.lib.modules import cleantitle
-from resources.lib.modules import client
-from resources.lib.modules import directstream
-
-
-class source:
     def __init__(self):
-        self.priority = 1
-        self.language = ['en']
-        self.domains = ['watch32hd.co','watch32hd.org']
-        self.base_link = 'https://watch32hd.org/'
-        self.search_link = '/watch?v=%s'
+        self.base_link = 'https://watch32hd.co'
 
-
-    def movie(self, imdb, title, localtitle, aliases, year):
+    def scrape_movie(self, title, year, imdb, debrid = False):
         try:
-            url = {'imdb': imdb, 'title': title, 'year': year}
-            url = urllib.urlencode(url)
-            return url
-        except:
-            return
-
-
-    def sources(self, url, hostDict, hostprDict):
-        try:
-            sources = []
-
-            if url == None: return sources
-
-            data = urlparse.parse_qs(url)
-            data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
-
-            title = data['title'] ; year = data['year']
-
-            h = {'User-Agent': client.randomagent()}
-
-            v = '%s_%s' % (cleantitle.geturl(title).replace('-', '_'), year)
-
-            url = '/watch?v=%s' % v
-            url = urlparse.urljoin(self.base_link, url)
-
-            #c = client.request(url, headers=h, output='cookie')
-            #c = client.request(urlparse.urljoin(self.base_link, '/av'), cookie=c, output='cookie', headers=h, referer=url)
-            #c = client.request(url, cookie=c, headers=h, referer=url, output='cookie')
-
-            post = urllib.urlencode({'v': v})
-            u = urlparse.urljoin(self.base_link, '/video_info/iframe')
-
-            #r = client.request(u, post=post, cookie=c, headers=h, XHR=True, referer=url)
-            r = client.request(u, post=post, headers=h, XHR=True, referer=url)
-            r = json.loads(r).values()
-            r = [urllib.unquote(i.split('url=')[-1])  for i in r]
-
-            for i in r:
-                try: sources.append({'source': 'gvideo', 'quality': directstream.googletag(i)[0]['quality'], 'language': 'en', 'url': i, 'direct': True, 'debridonly': False})
-                except: pass
-
-            return sources
-        except:
-            return sources
-
-
-    def resolve(self, url):
-        return directstream.googlepass(url)
-
+            search_id = clean_search(title.lower())
+            start_url = '%s/watch?v=%s_%s' %(self.base_link,search_id.replace(' ','_'),year)
+            headers={'User-Agent':User_Agent}
+            html = requests.get(start_url,headers=headers,timeout=5).content
+            varid = re.compile('var frame_url = "(.+?)"',re.DOTALL).findall(html)[0].replace('/embed/','/streamdrive/info/')
+            res_chk = re.compile('class="title"><h1>(.+?)</h1>',re.DOTALL).findall(html)[0]
+            varid = 'http:'+varid
+            holder = requests.get(varid,headers=headers,timeout=5).content
+            links = re.compile('"src":"(.+?)"',re.DOTALL).findall(holder)
+            for link in links:
+                movie_link = link.replace('\\','')
+                if '1080' in res_chk:
+                    res= '1080p'
+                elif '720' in res_chk:
+                    res='720p'
+                else:
+                    res='DVD'
+                self.sources.append({'source': 'Googlelink','quality': res,'scraper': self.name,'url': movie_link,'direct': False})
+            return self.sources
+        except Exception, argument:
+            return self.sources
 

@@ -333,7 +333,7 @@ class navigator:
 
 
     def endDirectory(self):
-        control.content(syshandle, 'seasons')
+        control.content(syshandle, 'addons')
         control.directory(syshandle, cacheToDisc=True)
 
 
