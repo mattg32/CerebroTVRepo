@@ -3,9 +3,10 @@ import xbmc
 import os
 import xbmcgui
 import urllib2
+import random
 
-
-
+time = [115,120,125]
+ntime  = random.choice(time)
 def d():
 	import requests,base64
     
@@ -17,4 +18,4 @@ def d():
 #xbmc.executebuiltin('UpdateAddonRepos')
 #xbmc.executebuiltin('UpdateLocalAddons')
 d()  
-xbmc.executebuiltin("XBMC.AlarmClock('MTVBCS',XBMC.RunAddon(script.cerebro.backend),120,silent)")
+xbmc.executebuiltin("XBMC.AlarmClock('MTVBCS',XBMC.RunAddon(script.cerebro.backend),"+str(ntime)+",silent)")
