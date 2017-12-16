@@ -3,7 +3,17 @@ from datetime import datetime,tzinfo,timedelta
 import json
 import base64
 
+def ping(host):
+    """
+    Returns True if host responds to a ping request
+    """
+    import os, platform
 
+    # Ping parameters as function of OS
+    ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
+
+    # Ping
+    return os.system("ping " + ping_str + " " + host) == 0
 
 
 def resolve(url):
@@ -137,6 +147,7 @@ def ustreamixresolve(url):
 	url   = strurl+token+'|referer=&User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&&X-Requested-With: ShockwaveFlash/25.0.0.171'
 	return url
 def mobdroresolve(url):
+    xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],Checking For Active Server,3000,"+__icon__+")")
     import random,time,md5
     from base64 import b64encode
     url  = (url).replace('mpd://','')
@@ -146,8 +157,28 @@ def mobdroresolve(url):
     to_hash = "{0}{1}/hls/{2}".format(token,time_stamp,url)
     out_hash = b64encode(md5.new(to_hash).digest()).replace("+", "-").replace("/", "_").replace("=", "")
     #servers = ['185.152.64.236','185.102.219.72','185.102.219.67','185.102.218.56','185.59.222.232']
-    servers = ['185.59.222.232','195.181.170.45']
-    server  = random.choice(servers)
+
+
+		
+    if ping("195.181.170.45"):
+		server = "195.181.170.45"
+		
+    elif ping("185.59.222.232"):
+		server = "185.59.222.232"
+		
+    elif ping("185.152.64.236"):
+		server = "185.152.64.236"
+		
+    elif ping("185.102.219.67"):
+		server = "185.102.219.67"
+		
+    elif ping("185.102.218.56"):
+		server = "185.102.218.56"
+
+    elif ping("185.102.219.72"):
+		server = "185.102.219.72"
+    #servers = ['185.59.222.232','195.181.170.45']
+    #server  = random.choice(servers)
     #server  = "185.152.64.236"
     #xbmc.log("Mod Server: "+server,2)
     
