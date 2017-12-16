@@ -30,7 +30,7 @@ USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/
 headers = {'User-Agent': USER_AGENT,'Accept': '*/*','Connection': 'keep-alive'}
 
 addon_handle = int(sys.argv[1])
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 icon = addon.getAddonInfo('icon')
 path = 'special://home/addons/%s/' % addon_id

@@ -7,7 +7,7 @@ import importlib
 import xbmcgui
 import urllib
 
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 
 class Sites:

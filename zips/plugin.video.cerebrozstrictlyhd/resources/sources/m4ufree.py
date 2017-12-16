@@ -17,7 +17,7 @@ import sys
 import re
 
 _handle = int(sys.argv[1])
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 query_url = 'http://m4ufree.com/?keyword=%s&search_section=1'
 regulate = HTMLParser.HTMLParser()

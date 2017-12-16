@@ -18,7 +18,7 @@ import sys
 import re
 
 _handle = int(sys.argv[1])
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 query_url = 'http://cyberreel.com/search/%s'
 regulate = HTMLParser.HTMLParser()

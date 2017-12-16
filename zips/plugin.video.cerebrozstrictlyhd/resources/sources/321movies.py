@@ -17,7 +17,7 @@ import sys
 import re
 
 _handle = int(sys.argv[1])
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 regulate = HTMLParser.HTMLParser()
 query_url = 'http://321movies.cc/?s=%s'

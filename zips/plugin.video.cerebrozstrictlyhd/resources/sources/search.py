@@ -13,7 +13,7 @@ import json
 import sys
 import os
 
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 path = 'special://home/addons/%s/' % addon_id
 addonname = addon.getAddonInfo('name')
