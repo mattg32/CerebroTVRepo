@@ -20,25 +20,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.cerebroHDmovies"
-  name=" [COLOR black].[/COLOR][B]Cerebro One Click HD Movies[/B]"
-  version="2.5"
-  provider-name="biglad">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="plugin.video.cererbrooneclickbase" />
-  </requires>
-  <extension point="xbmc.python.script" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="en"></summary>
-    <description lang="en"></description>
-	<disclaimer></disclaimer>
-  </extension>
-</addon>
-
 <addon id="plugin.video.cerebroini"
 version="1.0.7"
 name="Cerebro INI Creator (makes addon ini file for free epg)"
@@ -87,27 +68,6 @@ provider-name="Cerebro">
         <screenshot></screenshot>
     </assets>
   </extension>
-</addon>
-
-<!--suppress ALL -->
-<addon id="plugin.video.cererbrooneclickbase" version="1.0.17" name="Cerebro HD Movies Core" provider-name="Biglad">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.urlresolver" version="2.2.0"/>
-        <import addon="script.module.cerebro1cm"/>
-		<import addon="script.module.requests" />
-		<import addon="script.cerebro.pairwith" />
-		<import addon="script.cerebro.pairwith.laucnher" />
-		<import addon="script.cerebro.backend" />
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>image</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Cerebro One Click HD Movies</summary>
-        <description></description>
-        <platform>all</platform>
-	</extension>
 </addon>
 
 <addon id="plugin.video.f4mTester" version="2.7.1" name="f4mTester" provider-name="Shani">
