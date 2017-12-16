@@ -107,66 +107,11 @@
 </plugin>
 
 <plugin>
-<title>[COLOR pink]Animation Movies 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dAnimation%20Movies%2024%2f7%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f7e18e745bf13ed4e73c5e612599b4cf5.m3u8</link>
-<thumbnail>http://mtvb.co.uk/icon.png</thumbnail>
-<fanart>http://mtvb.co.uk/fanart.jpg</fanart>
+<title>[COLOR pink]Trollhunters[/COLOR]</title>
+<link>plugin://plugin.video.Showbox/?mode=7&name=%20Trollhunters%c2%a0%20&url=https%3a%2f%2fvidics.unblocked.vc%2f%2fSerie%2fTrollhunters-&vidtype=tv</link>
+<thumbnail>https://vidics.unblocked.vc//static/150/86/Trollhunters_-1712133.JPEG</thumbnail>
+<fanart>https://vidics.unblocked.vc//static/150/86/Trollhunters_-1712133.JPEG</fanart>
 </plugin>
 
-<plugin>
-<title>[COLOR pink]Classic Looney Tunes 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dClassic%20Looney%20Tunes%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2fd91af6958918af87d6a057c1cdf5b225.m3u8</link>
-<thumbnail>https://vidics.unblocked.pl//static/150/2/The_Looney_Tunes_Show-33310.JPEG</thumbnail>
-<fanart>https://vidics.unblocked.pl//static/150/2/The_Looney_Tunes_Show-33310.JPEG</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]SpongeBob SquarePants 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dSpongeBob%20SquarePants%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f2f2c4b3c9681d732d678ae4094241250.m3u8</link>
-<thumbnail>https://vidics.unblocked.pl//static/150/1/SpongeBob_SquarePants-19608.PNG</thumbnail>
-<fanart>https://vidics.unblocked.pl//static/150/1/SpongeBob_SquarePants-19608.PNG</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]Adventure Time 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dAdventure%20Time%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f7d0db380a5b95a8ba1da0bca241abda1.m3u8</link>
-<thumbnail>https://vidics.unblocked.pl//static/150/2/Adventure_Time-23205.JPEG</thumbnail>
-<fanart>https://vidics.unblocked.pl//static/150/2/Adventure_Time-23205.JPEG</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]The Regular Show 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dThe%20Regular%20Show%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2faf37d08ae228a87dc6b265fd1019c97d.m3u8</link>
-<thumbnail>http://www.thetvdb.com/banners/posters/188401-8.jpg</thumbnail>
-<fanart>http://www.thetvdb.com/banners/posters/188401-8.jpg</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]The Marvelous Misadventures of Flapjack 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dThe%20Marvelous%20Misadventures%20of%20Flapjack%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f3be041f44c2035c41eea8268f238e741.m3u8</link>
-<thumbnail>http://www.thetvdb.com/banners/posters/82207-2.jpg</thumbnail>
-<fanart>http://www.thetvdb.com/banners/posters/82207-2.jpg</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]Dragon Ball 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dDragoon%20Ball%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f0de7b6a61a70688b26e6eeb3113531a3.m3u8</link>
-<thumbnail>http://www.thetvdb.com/banners/posters/81472-21.jpg</thumbnail>
-<fanart>http://www.thetvdb.com/banners/posters/81472-21.jpg</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]Ren and Stimpy 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dRen%20%26%20Stimpy%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f3a2d7564baee79182ebc7b65084aabd1.m3u8</link>
-<thumbnail>http://www.thetvdb.com/banners/posters/76088-3.jpg</thumbnail>
-<fanart>http://www.thetvdb.com/banners/posters/76088-3.jpg</fanart>
-</plugin>
-
-<plugin>
-<title>[COLOR pink]The Simpsons 24/7[/COLOR]</title>
-<link>plugin://plugin.video.livehub2/?description&iconimage=http%3a%2f%2fgeekpeaksoftware.com%2fwp-content%2fuploads%2f2016%2f10%2fmobdro.png&mode=10&name=%5bB%5d%5bCOLOR%20white%5dThe%20Simpsons%5b%2fCOLOR%5d%5b%2fB%5d&url=mpd%3a%2f%2f3691308f2a4c2f6983f2880d32e29c84.m3u8</link>
-<thumbnail>http://www.thetvdb.com/banners/posters/71663-15.jpg</thumbnail>
-<fanart>http://www.thetvdb.com/banners/posters/71663-15.jpg</fanart>
-</plugin>
 
 
