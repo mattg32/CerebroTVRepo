@@ -58,7 +58,7 @@ provider-name="Cerebro">
 </extension>
 </addon>
 
-<addon id="plugin.video.cerebrozstrictlyhd" name="Cerebro Strictly HD" version="1.0.6" provider-name="Biglad, @LuciferOnKodi, SpezC">
+<addon id="plugin.video.cerebrozstrictlyhd" name="Cerebro Strictly HD" version="1.0.7" provider-name="Biglad, @LuciferOnKodi, SpezC">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.beautifulsoup" version="3.2.1"/>

@@ -19,7 +19,7 @@ import re
 
 _url = sys.argv[0]
 _handle = int(sys.argv[1])
-addon_id = 'plugin.video.spinzstrictlyhd'
+addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 path = 'special://home/addons/%s/' % addon_id
 icon = addon.getAddonInfo('icon')
