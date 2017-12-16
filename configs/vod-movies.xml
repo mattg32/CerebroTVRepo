@@ -17,7 +17,7 @@
 </plugin>
 
 <dir>
-<name>[COLOR pink]CerebroTV: [/COLOR][COLOR red]Movies On Demand[/COLOR] (can request movies)</name>
+<name>[COLOR pink]CerebroTV: [/COLOR][COLOR red]Our Movie Picks![/COLOR] (can request movies)</name>
 <link>https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/configs/cerebro-movies.xml</link>
 <thumbnail>http://www.manolith.com/wp-content/uploads//2011/02/MoviesOnDemand1.png</thumbnail>
 <fanart>http://mtvb.co.uk/fanart.jpg</fanart>
