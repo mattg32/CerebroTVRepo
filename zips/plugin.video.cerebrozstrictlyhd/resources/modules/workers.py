@@ -16,7 +16,7 @@ class Sites:
         self.sources = sources.__all__
         self.links = []
         self.pDialog = xbmcgui.DialogProgress()
-        self.pDialog.create('Strictly HD','Initializing scrapers...')
+        self.pDialog.create('Cerebro HD Only','Initializing scrapers...')
         
     def search(self, term):
         src = 1
@@ -26,7 +26,7 @@ class Sites:
         #[self.links.extend(r.result()) for r in as_completed(futures)]
         for r in as_completed(futures):
             percent = int((float(src) / total) * 100)
-            self.pDialog.update(percent, "Searching Lucifer's little black book","Page %s" % str(src))
+            self.pDialog.update(percent, "Searching Cerebro's Data Banks","Page %s" % str(src))
             self.links.extend(r.result())
             src += 1
         self.pDialog.close()
