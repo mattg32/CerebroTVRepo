@@ -146,7 +146,7 @@ provider-name="Cerebro">
 
 <addon
   id="plugin.video.Showbox"
-  version="10.0"
+  version="10.1"
   name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]CerebroTV Vidics Player[/B][/COLOR]"
   provider-name="Biglad">
   <requires>

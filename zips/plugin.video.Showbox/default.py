@@ -95,7 +95,8 @@ playablehost=[
 'gorillavid',
 'vidoza',
 'cloudtime',
-'netu'
+'netu',
+'streamin'
 ]
 
 
@@ -1579,7 +1580,6 @@ def Seasons(url):
                 addDir(epsodlist[1]+"",url,8,str(vimg))
 
 def INDEX(url,modenum,curmode,vidtype,ctitle):
-        d()
     #try:
         ctitle = ctitle.replace("%20"," ")
         #ctitle = ctitle.replace("+"," ")
@@ -2521,8 +2521,6 @@ if os.path.isfile(db_dir)==False:
      initDatabase()
      
 def playVideo(url,name,movieinfo):
-        d()
-        xbmc.sleep(2000)
         #pl=xbmc.PlayList(1)
         builtin = 'XBMC.Notification(CerebroTV,Link not playable try another,2000,'+__icon__+')' 
         #url=url.replace("openload.co","oload.stream")  
