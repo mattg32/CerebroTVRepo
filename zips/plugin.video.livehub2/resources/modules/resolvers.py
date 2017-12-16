@@ -169,7 +169,7 @@ def mobdroresolve(url):
     #servers = ['185.152.64.236','185.102.219.72','185.102.219.67','185.102.218.56','185.59.222.232']
     #servers = ['185.102.218.56','185.59.222.232']
     xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],This Channel May Take A Couple Of Clicks Checking 2 Servers,3000,"+__icon__+")")
-    myservers = ['185.102.218.56','185.59.222.232']
+    myservers = ['185.59.222.232']
     server  = random.choice(myservers)
     #server  = '185.102.219.67'
     xbmc.log("Mod Server: "+str(server),2)

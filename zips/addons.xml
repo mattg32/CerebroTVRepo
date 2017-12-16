@@ -94,7 +94,7 @@ provider-name="Cerebro">
     </extension>
 </addon>
 
-<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.39" provider-name="Biglad">
+<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.40" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
