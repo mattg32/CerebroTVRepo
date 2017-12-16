@@ -168,6 +168,7 @@ def ustreamixresolve(url):
     url   = strurl+token+'|referer=&User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&&X-Requested-With: ShockwaveFlash/25.0.0.171'
     return url
 def mobdroresolve(url):
+    xbmc.executebuiltin('PlayerControl(stop)') 
     xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],Checking For Active Server,3000,"+__icon__+")")
     import random,time,md5
     from base64 import b64encode
