@@ -29,8 +29,19 @@ cookie_file = xbmc.translatePath(path+'cookies.lwp')
 def get_url(**kwargs):
     kwargs = {k: unicode(v).encode('ascii', 'ignore') for k,v in kwargs.iteritems()}
     return '{0}?{1}'.format(_url, urlencode(kwargs))
-
 params = dict(parse_qsl(sys.argv[2][1:]))
+
+endpoint = params.get('endpoint')
+if endpoint == "pair": 
+    xbmc.executebuiltin('RunAddon(script.cerebro.pairwith)')  #
+
+list_item = xbmcgui.ListItem(label='[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)')
+trending = xbmc.translatePath(path+'icon.png')
+url = get_url(module='pair', endpoint='pair')
+list_item.setArt({'thumb':trending,'fanart':fanart,'poster':trending})
+xbmcplugin.addDirectoryItem(_handle, url, list_item, True)
+
+
 if not params:
     trending = xbmc.translatePath(path+'trending.png')
     list_item = xbmcgui.ListItem(label='Trending')
@@ -79,6 +90,8 @@ else:
         page = params.get('page')
         endpoint = params.get('endpoint')
         from resources.modules import tmdb as api
+		
+
         
         if genre:
             if page: api.get_genre(genre, page)
