@@ -180,7 +180,7 @@ def mobdro():
 			
             all   = re.compile('\n([^:]+):(mpd://[^\n]+)').findall(data)
             for name,url in all:
-				addDir('[B][COLOR white]%s[/COLOR][/B]'%name,url,10,icon,fanart,'')
+				addDir('[COLOR white]%s[/COLOR]'%name,url,10,icon,fanart,'')
 				
 
 		
