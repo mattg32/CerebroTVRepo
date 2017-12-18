@@ -21,7 +21,7 @@ _handle = int(sys.argv[1])
 addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 icon = addon.getAddonInfo('icon')
-query_url = 'http://www.mehlizmovies.com/?s=%s'
+query_url = 'http://www.mehlizmovies.is/?s=%s'
 regulate = HTMLParser.HTMLParser()
 
 def RESOLVE(link):

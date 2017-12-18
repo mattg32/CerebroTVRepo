@@ -20,8 +20,8 @@ _handle = int(sys.argv[1])
 addon_id = 'plugin.video.cerebrozstrictlyhd'
 addon = xbmcaddon.Addon(id=addon_id)
 
-query_url = 'http://www.filmxy.cc/category/720p-1080p/?s=%s'
-query_url2 = 'http://www.filmxy.cc/tag/720p-1080p-movies/?s=%s'
+query_url = 'http://www.filmxy.me/category/720p-1080p/?s=%s'
+query_url2 = 'http://www.filmxy.me/tag/720p-1080p-movies/?s=%s'
 
 def RESOLVE(link):
     try: play_link = urlresolver.HostedMediaFile(link).resolve()
