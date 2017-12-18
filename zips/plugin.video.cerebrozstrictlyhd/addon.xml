@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.cerebrozstrictlyhd" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro Strictly HD[/B][/COLOR]" version="1.0.17" provider-name="Biglad">
+<addon id="plugin.video.cerebrozstrictlyhd" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro Strictly HD[/B][/COLOR]" version="1.0.18" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
@@ -9,6 +9,7 @@
     <import addon="script.cerebro.backend" />
     <import addon="script.cerebro.pairwith" />
     <import addon="script.cerebro.pairwith.laucnher" />
+	<import addon="repository.cerebro" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
     <provides>video</provides>
