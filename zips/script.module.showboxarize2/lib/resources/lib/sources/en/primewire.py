@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Covenant Add-on
+    Exodus Add-on
+    Copyright (C) 2016 Exodus
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,15 +24,13 @@ import re,urllib,urlparse,base64
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import proxy
-from resources.lib.modules import source_utils
+
 
 class source:
     def __init__(self):
         self.priority = 0
-        searchkey = '2c3cdd3869a7ddf6'
         self.language = ['en']
         self.domains = ['primewire.ag','letmewatchthis.ac','primewire.unblocked.pl','primewire.unblocked.vc','letmewatchthis.ltd']
-        #self.base_link = 'http://www.primewire.ag'
         self.base_link = 'https://primewire.unblocked.vc'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'
@@ -186,7 +185,9 @@ class source:
                     host = host.encode('utf-8')
 
                     quality = client.parseDOM(i, 'span', ret='class')[0]
-                    quality,info = source_utils.get_release_quality(quality, url)
+                    if quality == 'quality_cam' or quality == 'quality_ts': quality = 'CAM'
+                    elif quality == 'quality_dvd': quality = 'SD'
+                    else:  raise Exception()
 
                     sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
                 except:

@@ -46,7 +46,7 @@ class source:
 
             u = urlparse.urljoin(self.base_link, self.search_link) % title
 
-            p = {'q': title.rsplit(':', 1)[0], 'limit': '10', 'timestamp': int(time.time() * 1000), 'verifiedCheck': ''}
+            p = {'q': title.rsplit(':', 1)[0], 'limit': '3', 'timestamp': int(time.time() * 1000), 'verifiedCheck': ''}
             p = urllib.urlencode(p)
 
             r = client.request(u, post=p, XHR=True)

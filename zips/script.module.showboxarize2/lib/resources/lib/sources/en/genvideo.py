@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['genvideos.org', 'genvideos.com','genvideos.to']
-        self.base_link = 'https://genvideos.co'
+        self.base_link = 'http://genvideos.org/'
         self.search_link = '/results?q=%s'
 
 

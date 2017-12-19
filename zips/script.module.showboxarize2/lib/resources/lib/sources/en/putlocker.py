@@ -33,7 +33,7 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domains = ['cartoonhd.life','putlocker.systems', 'putlocker-movies.tv', 'cartoonhd.website', 'cartoonhd.online', 'cartoonhd.cc','putlockertv.to','putlockertv.se','cartoonhd.life','putlockers.global']
-        self.base_link = 'https://putlockertv.se/'
+        self.base_link = 'https://putlockertv.to/'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -68,7 +68,7 @@ class source:
     def searchShow(self, title, season, episode, aliases, headers):
         try:
             for alias in aliases:
-                url = '/search?keyword=' % (self.base_link, cleantitle.geturl(alias['title'])) #url = '%s/show/%s/season/%01d/episode/%01d' % (self.base_link, cleantitle.geturl(alias['title']), int(season), int(episode))
+                url = '%s/show/%s/season/%01d/episode/%01d' % (self.base_link, cleantitle.geturl(alias['title']), int(season), int(episode))
                 url = client.request(url, headers=headers,output='geturl', timeout='10')
                 if not url == None and url != self.base_link: break
             return url

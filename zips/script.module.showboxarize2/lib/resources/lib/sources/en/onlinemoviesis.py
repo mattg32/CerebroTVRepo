@@ -29,7 +29,7 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['http://www.onlinemovies.me/']
+        self.domains = ['onlinemovies.me']
         self.base_link = 'http://www.onlinemovies.me/'
 
 

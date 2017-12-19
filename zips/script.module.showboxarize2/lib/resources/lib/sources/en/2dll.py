@@ -152,8 +152,8 @@ class source:
                 except:
                     pass
 
-            check = [i for i in sources if not i['quality'] == 'CAM']
-            if check: sources = check
+            #check = [i for i in sources if not i['quality'] == 'CAM']
+            #if check: sources = check
 
             return sources
         except:
