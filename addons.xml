@@ -75,12 +75,12 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.48" provider-name="Biglad">
+<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.50" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
 	<import addon="script.video.F4mProxy" />
-	<import addon="script.module.f4mproxy" />
+	<!--<import addon="script.module.f4mproxy" />-->
     <import addon="script.cerebro.backend" />
 	<import addon="repository.cerebro" />
   </requires>
@@ -333,21 +333,6 @@ provider-name="Cerebro">
 		<platform>all</platform>
 		<summary lang="en">Forked from TK Norris Shared Module. Reusable Modules used by several of Echo's addons</summary>
 	</extension>
-</addon>
-
-<addon id="script.module.f4mproxy"
-	     name="f4m proxy"
-	     version="1.0.16"
-	     provider-name="Shani">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0" />
-  </requires>
-  <extension point="xbmc.python.module" library="lib" />
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="en">Proxy for f4m</summary>
-    <description lang="en">Use this addon to play F4m v1 and v2 streams</description>
-  </extension>
 </addon>
 
 <addon id="script.module.futures"
