@@ -107,6 +107,8 @@
         <setting id="provider.videoscraper" type="bool" label="VIDEOSCRAPER" default="true" />
         <setting id="provider.xmovies" type="bool" label="XMOVIES" default="true" />
         <setting id="provider.ymovies" type="bool" label="YMOVIES" default="true" />
+        <setting id="provider.123netflix" type="bool" label="123NETFLIX" default="true" />
+        <setting id="provider.icefilms" type="bool" label="ICEFILMS" default="true" />
         <setting label="Italian" type="lsep" />
         <setting id="provider.allucit" type="bool" label="ALLUC" default="true" />
         <setting label="German" type="lsep" />
