@@ -46,8 +46,8 @@ class navigator:
         self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows Menu', 'tvNavigator', 'tvshows.png', 'DefaultTVShows.png')
 
         if not control.setting('lists.widget') == '0':
-            self.addDirectoryItem('[COLOR red]• [/COLOR]My Movies (IMDB)', 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
-            self.addDirectoryItem('[COLOR red]• [/COLOR]My TV Shows (IMDB)', 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]My Movies (IMDB / Trakt)', 'mymovieNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
+            self.addDirectoryItem('[COLOR red]• [/COLOR]My TV Shows (IMDB / Trakt)', 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
 
         self.addDirectoryItem('[COLOR red]• [/COLOR]Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
         if (traktIndicators == True and not control.setting('tv.widget.alt') == '0') or (traktIndicators == False and not control.setting('tv.widget') == '0'):
@@ -90,7 +90,7 @@ class navigator:
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem('[COLOR red]• [/COLOR] My Movies (IMDB)', 'mymovieliteNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem('[COLOR red]• [/COLOR] My Movies (IMDB / Trakt)', 'mymovieliteNavigator', 'mymovies.png', 'DefaultVideoPlaylists.png')
 
             self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (MOVIES)', 'moviePerson', 'people-search.png', 'DefaultMovies.png')
             #self.addDirectoryItem(32010, 'movieSearch', 'search.png', 'DefaultMovies.png')
@@ -155,7 +155,7 @@ class navigator:
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem('[COLOR red]• [/COLOR] My TV Shows (IMDB)', 'mytvliteNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem('[COLOR red]• [/COLOR] My TV Shows (IMDB / Trakt)', 'mytvliteNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')
 
             self.addDirectoryItem('[COLOR red]• [/COLOR]Search by Persons Name (TV SHOWS)', 'tvPerson', 'people-search.png', 'DefaultTVShows.png')
             #self.addDirectoryItem(32010, 'tvSearch', 'search.png', 'DefaultTVShows.png')
