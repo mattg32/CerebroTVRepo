@@ -54,7 +54,7 @@ if not params:
     url = get_url(module='tmdb', endpoint='trending')
     xbmcplugin.addDirectoryItem(_handle, url, list_item, True)
     genres = xbmc.translatePath(path+'genres.png')
-    list_item = xbmcgui.ListItem(label='[COLOR red]* [/COLOR]'Genres')
+    list_item = xbmcgui.ListItem(label='[COLOR red]* [/COLOR]Genres')
     list_item.setArt({'thumb':genres,'fanart':fanart,'poster':genres})
     url = get_url(module='tmdb', endpoint='genres')
     xbmcplugin.addDirectoryItem(_handle, url, list_item, True)
