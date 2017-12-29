@@ -478,3 +478,7 @@ elif action == 'tvSearchterm':
 elif action == 'clearCacheSearch':
     from resources.lib.indexers import navigator
     navigator.navigator().clearCacheSearch()
+	
+elif action == 'clearCacheSearch2':
+    from resources.lib.indexers import navigator
+    navigator.navigator().clearCacheSearch2()

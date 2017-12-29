@@ -198,7 +198,7 @@ class movies:
         dbcur.close()
         
         if delete_option:
-            navigator.navigator().addDirectoryItem('[COLOR red]Clear Search List[/COLOR]', 'clearCacheSearch', 'tools.png', 'DefaultAddonProgram.png')
+            navigator.navigator().addDirectoryItem('[COLOR red]Clear Search List[/COLOR]', 'clearCacheSearch2', 'tools.png', 'DefaultAddonProgram.png')
 
         navigator.navigator().endDirectory()
 

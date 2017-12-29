@@ -214,6 +214,7 @@ class navigator:
         self.addDirectoryItem(32049, 'viewsNavigator', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32050, 'clearSources', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32052, 'clearCache', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32052, 'clearCache2', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32073, 'authTrakt', 'trakt.png', 'DefaultAddonProgram.png')
 
         self.endDirectory()
@@ -315,6 +316,14 @@ class navigator:
         if not yes: return
         from resources.lib.modules import cache
         cache.cache_clear_search()
+        control.infoDialog(control.lang(32057).encode('utf-8'), sound=True, icon='INFO')
+        
+    def clearCacheSearch2(self):
+        control.idle()
+        yes = control.yesnoDialog(control.lang(32056).encode('utf-8'), '', '')
+        if not yes: return
+        from resources.lib.modules import cache
+        cache.cache_clear_search2()
         control.infoDialog(control.lang(32057).encode('utf-8'), sound=True, icon='INFO')
 
     def addDirectoryItem(self, name, query, thumb, icon, context=None, queue=False, isAction=True, isFolder=True):
