@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['onlinemovies.me']
-        self.base_link = 'http://www.onlinemovies.me/'
+        self.base_link = 'http://www.onlinemovies.me/movies/'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):

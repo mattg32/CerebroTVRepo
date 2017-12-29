@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['onlinemovies.tube', 'watchonline.pro','onlinehdmovies.org']
-        self.base_link = 'http://watchonline.pro/'
+        self.base_link = 'https://watchonline.sc/'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):
