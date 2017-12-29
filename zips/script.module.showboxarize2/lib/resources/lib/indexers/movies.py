@@ -643,14 +643,13 @@ class movies:
     def imdb_person_list(self, url):
         try:
             result = client.request(url)
-            items = client.parseDOM(result, 'tr', attrs = {'class': '.+? detailed'})
+            items = client.parseDOM(result, 'div', attrs = {'class': '.+?etail'})
         except:
             return
 
         for item in items:
             try:
-                name = client.parseDOM(item, 'a', ret='title')[0]
-                name = client.replaceHTMLCodes(name)
+                name = client.parseDOM(item, 'img', ret='alt')[0]
                 name = name.encode('utf-8')
 
                 url = client.parseDOM(item, 'a', ret='href')[0]
@@ -660,7 +659,7 @@ class movies:
                 url = url.encode('utf-8')
 
                 image = client.parseDOM(item, 'img', ret='src')[0]
-                if not ('._SX' in image or '._SY' in image): raise Exception()
+                # if not ('._SX' in image or '._SY' in image): raise Exception()
                 image = re.sub('(?:_SX|_SY|_UX|_UY|_CR|_AL)(?:\d+|_).+?\.', '_SX500.', image)
                 image = client.replaceHTMLCodes(image)
                 image = image.encode('utf-8')
@@ -675,7 +674,7 @@ class movies:
     def imdb_user_list(self, url):
         try:
             result = client.request(url)
-            items = client.parseDOM(result, 'div', attrs = {'class': 'list_name'})
+            items = client.parseDOM(result, 'li', attrs = {'class': 'ipl-zebra-list__item user-list'})
         except:
             pass
 
@@ -686,7 +685,7 @@ class movies:
                 name = name.encode('utf-8')
 
                 url = client.parseDOM(item, 'a', ret='href')[0]
-                url = url.split('/list/', 1)[-1] #url = url.split('/list/', 1)[-1].replace('/', '')
+                url = url.split('/list/', 1)[-1].strip('/')
                 url = self.imdblist_link % url
                 url = client.replaceHTMLCodes(url)
                 url = url.encode('utf-8')
@@ -800,13 +799,13 @@ class movies:
 
             try:
                 artmeta = True
-                #if self.fanart_tv_user == '': raise Exception()           
+                #if self.fanart_tv_user == '': raise Exception()
                 art = client.request(self.fanart_tv_art_link % imdb, headers=self.fanart_tv_headers, timeout='10', error=True)
                 try: art = json.loads(art)
                 except: artmeta = False
             except:
                 pass
-                
+
             try:
                 poster2 = art['movieposter']
                 poster2 = [x for x in poster2 if x.get('lang') == self.lang][::-1] + [x for x in poster2 if x.get('lang') == 'en'][::-1] + [x for x in poster2 if x.get('lang') in ['00', '']][::-1]
