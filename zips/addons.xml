@@ -40,13 +40,13 @@ provider-name="Cerebro">
 </extension>
 </addon>
 
-<addon id="plugin.video.cerebroIPTV" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV 2[/B][/COLOR]" version="1.01" provider-name="Biglad">
+<addon id="plugin.video.cerebroIPTV" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV 2[/B][/COLOR]" version="1.03" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.livestreamer" />
+	<import addon="plugin.video.livehub2" />
     <import addon="script.module.requests" />
     <import addon="script.module.routing" />
-	<import addon="plugin.video.livehub2" />
 	<import addon="script.cerebro.backend" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
@@ -101,12 +101,12 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.52" provider-name="Biglad">
+<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.53" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
 	<import addon="script.video.F4mProxy" />
-	<!--<import addon="plugin.video.cerebroIPTV" />-->
+	<import addon="plugin.video.cerebroIPTV" />
     <import addon="script.cerebro.backend" />
 	<import addon="repository.cerebro" />
   </requires>
