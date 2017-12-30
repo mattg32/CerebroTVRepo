@@ -40,19 +40,21 @@ provider-name="Cerebro">
 </extension>
 </addon>
 
-<addon id="plugin.video.cerebroIPTV" name="tvOne11" version="7" provider-name="RACC">
+<addon id="plugin.video.cerebroIPTV" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV 2[/B][/COLOR]" version="1.01" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.livestreamer" />
     <import addon="script.module.requests" />
     <import addon="script.module.routing" />
+	<import addon="plugin.video.livehub2" />
+	<import addon="script.cerebro.backend" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_gb">tvOne</summary>
-    <description lang="en_gb">tvOne</description>
+    <summary lang="en_gb">Cerebro IPTV 2</summary>
+    <description lang="en_gb">Cerebro IPTV 2</description>
     <disclaimer lang="en_gb"></disclaimer>
     <language></language>
     <platform>all</platform>
@@ -99,12 +101,12 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.50" provider-name="Biglad">
+<addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.51" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
 	<import addon="script.video.F4mProxy" />
-	<!--<import addon="script.module.f4mproxy" />-->
+	<import addon="plugin.video.cerebroIPTV" />
     <import addon="script.cerebro.backend" />
 	<import addon="repository.cerebro" />
   </requires>
