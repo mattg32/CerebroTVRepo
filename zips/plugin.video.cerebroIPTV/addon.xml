@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.cerebroIPTV" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV 2[/B][/COLOR]" version="1.05" provider-name="Biglad">
+<addon id="plugin.video.cerebroIPTV" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV 2[/B][/COLOR]" version="1.06" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.livestreamer" />
