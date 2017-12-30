@@ -40,6 +40,30 @@ provider-name="Cerebro">
 </extension>
 </addon>
 
+<addon id="plugin.video.cerebroIPTV" name="tvOne11" version="7" provider-name="RACC">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.livestreamer" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.routing" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_gb">tvOne</summary>
+    <description lang="en_gb">tvOne</description>
+    <disclaimer lang="en_gb"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license></license>
+    <forum></forum>
+    <website></website>
+    <email></email>
+    <source></source>
+  </extension>
+</addon>
+
 <addon id="plugin.video.cerebrozstrictlyhd" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro Strictly HD[/B][/COLOR]" version="1.0.23" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
