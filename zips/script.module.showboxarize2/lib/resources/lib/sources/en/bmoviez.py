@@ -30,7 +30,7 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domains = ['best-moviez.ws']
-        self.base_link = 'http://www.best-moviez.ws'
+        self.base_link = 'http://www.best-moviez.ws/'
         self.search_link = '/search/%s/feed/rss2/'
 
 

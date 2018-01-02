@@ -33,7 +33,7 @@ class source:
         self.language = ['en']
         self.domains = ['moviesgolds.net']
         self.base_link = 'https://www.moviesgolds.net/'
-        self.search_path = ('?s=%s')
+        self.search_path = ('/?s=%s')
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

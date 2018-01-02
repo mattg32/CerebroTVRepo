@@ -29,9 +29,9 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['ddlvalley.me','ddlvalley.unblocked.vc']
+        self.domains = ['ddlvalley.me']
         self.base_link = 'http://ddlvalley.me/'
-        self.search_link = 'search/%s/'
+        self.search_link = '/search/%s/'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):

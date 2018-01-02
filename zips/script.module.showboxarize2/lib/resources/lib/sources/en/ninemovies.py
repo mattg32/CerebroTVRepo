@@ -34,7 +34,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['fmovies.se', 'fmovies.to','bmovies.se']
-        self.base_link = 'https://bmovies.se/'
+        self.base_link = 'http://fmovies.ac/'
         self.movie_search_path = '/search?keyword=%s'
         self.episode_search_path = '/search?keyword=%s'
         self.film_path = '/film/%s'
