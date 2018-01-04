@@ -15,12 +15,12 @@ def d():
         pass
 #d()
 
-def ping(host):
+def ping(host,pingsrv):
     """
     Returns True if host responds to a ping request
     """
     import os, platform
-
+    xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],Checking Server : "+str(pingsrv)+",1000,"+__icon__+")")
     # Ping parameters as function of OS
     ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
 
@@ -178,40 +178,46 @@ def mobdroresolve(url):
     time_stamp = str(int(time.time()) + 14400)
     to_hash = "{0}{1}/hls/{2}".format(token,time_stamp,url)
     out_hash = b64encode(md5.new(to_hash).digest()).replace("+", "-").replace("/", "_").replace("=", "")
-    #servers = ['185.102.219.72','185.102.219.67','185.102.218.56','185.59.222.232']
-    #servers = ['185.152.64.236','185.102.219.72','185.102.219.67','185.102.218.56','185.59.222.232']
-    #servers = ['185.102.218.56','185.59.222.232']
+    servers = ['185.180.15.201','185.59.221.153','195.181.170.36','185.59.222.232','195.181.170.45']
+    server  = random.choice(servers)
 
-    if ping("185.180.15.201"):
+    if ping("185.180.15.201","1"):
         server = "185.180.15.201"
 		
-    elif ping("185.59.221.153"):
+		
+    elif ping("185.59.221.153","2"):
         server = "185.59.221.153"
+        
 
-    elif ping("195.181.170.41"):
+    elif ping("195.181.170.41","3"):
         server = "195.181.170.41"
 		
-    elif ping("195.181.170.36"):
+    elif ping("195.181.170.36","4"):
         server = "195.181.170.36"
 		
-    elif ping("195.181.170.45"):
+    elif ping("195.181.170.45","5"):
         server = "195.181.170.45"
 		
-    elif ping("185.59.222.232"):
+    elif ping("185.59.222.232","6"):
         server = "185.59.222.232"
             
-    elif ping("185.152.64.236"): #old
-        server = "185.152.64.236"
+    #elif ping("185.152.64.236"): #old
+    #    server = "185.152.64.236"
         
-    elif ping("185.102.219.67"): #old
-        server = "185.102.219.67"
+    #elif ping("185.102.219.67"): #old
+    #    server = "185.102.219.67"
         
-    elif ping("185.102.218.56"): #dol
-        server = "185.102.218.56"
+    #elif ping("185.102.218.56"): #dol
+    #    server = "185.102.218.56"
 
-    elif ping("185.102.219.72"): #dol
-        server = "185.102.219.72"
-        
+    #elif ping("185.102.219.72"): #dol
+    #    server = "185.102.219.72"
+	
+    else:
+        xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],No Active Servers Found.. Try Again,3000,"+__icon__+")")
+        server = "0.0.0.0" 
+        exit()
+		
     #servers = ['185.180.15.201','185.59.221.153','195.181.170.41','195.181.170.36','195.181.170.45']
     #server  = random.choice(servers)
     #server  = '185.102.219.67'
