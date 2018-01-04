@@ -178,17 +178,15 @@ def mobdroresolve(url):
     time_stamp = str(int(time.time()) + 14400)
     to_hash = "{0}{1}/hls/{2}".format(token,time_stamp,url)
     out_hash = b64encode(md5.new(to_hash).digest()).replace("+", "-").replace("/", "_").replace("=", "")
-    servers = ['185.180.15.201','185.59.221.153','195.181.170.36','185.59.222.232','195.181.170.45']
+    servers = ['185.180.15.201','185.59.221.153','195.181.170.41','195.181.170.36','185.59.222.232','195.181.170.45']
     server  = random.choice(servers)
-
+	
     if ping("185.180.15.201","1"):
         server = "185.180.15.201"
-		
-		
+				
     elif ping("185.59.221.153","2"):
         server = "185.59.221.153"
         
-
     elif ping("195.181.170.41","3"):
         server = "195.181.170.41"
 		
