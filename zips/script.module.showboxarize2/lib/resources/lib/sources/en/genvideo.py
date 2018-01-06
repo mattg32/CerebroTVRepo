@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['genvideos.org', 'genvideos.com','genvideos.to']
-        self.base_link = 'http://genvideos.com/'
+        self.domains = ['genvideos.org', 'genvideos.com','genvideos.to','afdah.org']
+        self.base_link = 'https://afdah.org/'
         self.search_link = '/results?q=%s'
 
 

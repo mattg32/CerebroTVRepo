@@ -32,8 +32,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['afdah.to','afdah.bz']
-        self.base_link = 'http://afdah.bz'
-        self.search_link = '/' #'/wp-content/themes/afdah/ajax-search.php'
+        self.base_link = 'http://afdah.to'
+        self.search_link = '/wp-content/themes/afdah/ajax-search.php'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

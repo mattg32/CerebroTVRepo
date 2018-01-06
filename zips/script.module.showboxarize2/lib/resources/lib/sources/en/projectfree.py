@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['project-free-tv.ch','project-free-tv.ag','myprojectfreetv.net','projectfreetv.ag']
-        self.base_link = 'http://projectfreetv.bz/'
+        self.base_link = 'https://my-project-free.tv/'
         self.search_link = '/?s=%'
         self.search_link_2 = '/?s=%s'
 

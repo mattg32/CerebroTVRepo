@@ -33,7 +33,7 @@ class source:
         self.language = ['en']
         self.domains = ['tv-release.pw', 'tv-release.immunicity.st']
         self.base_link = 'http://tv-release.pw/'
-        self.search_link = '/?s=%s' #'%s?s=%s+%s&cat=Movies-XviD,Movies-720p,Movies-480p,Movies-Foreign,Movies-DVDR,2017'
+        self.search_link = '%s?s=%s+%s&cat=Movies-XviD,Movies-720p,Movies-480p,Movies-Foreign,Movies-DVDR,2017'
         self.search_link = self.search_link.replace(' ','+')
 
     def movie(self, imdb, title, localtitle, aliases, year):

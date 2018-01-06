@@ -31,10 +31,10 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['xmovies8.tv', 'xmovies8.ru','xmovies8.fm','xmovies8.so']
-        self.base_link = 'http://xmovies8.so/'
-        self.search_base = '/search?key=%s' #'http://xmovies8.so/search-movies'
-        self.search_link = '/search?key=%s' #'/%s.html'
+        self.domains = ['xmovies8.so','xmovies8.video']
+        self.base_link = 'https://www.xmovies8.video/'
+        self.search_base = 'https://www.xmovies8.video/'
+        self.search_link = 'search?key=%s'
         self.scraper = cfscrape.create_scraper()
 
     def matchAlias(self, title, aliases):

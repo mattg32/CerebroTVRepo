@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['sceper.ws','sceper.unblocked.pro']
-        self.base_link = 'https://sceper.unblocked.pro'
+        self.base_link = 'http://sceper.ws/'
         self.search_link = '/search/%s/feed/rss2/'
 
     def movie(self, imdb, title, localtitle, aliases, year):

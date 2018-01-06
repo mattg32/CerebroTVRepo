@@ -34,9 +34,9 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['fmovies.se', 'fmovies.to','bmovies.se']
-        self.base_link = 'http://fmovies.ac/'
-        self.movie_search_path = '/search?keyword=%s'
-        self.episode_search_path = '/search?keyword=%s'
+        self.base_link = 'https://1-fmovies.bypassed.org/'
+        self.movie_search_path = '/search/%s.html'
+        self.episode_search_path = '/search/%s.html'
         self.film_path = '/film/%s'
         self.info_path = '/ajax/episode/info?ts=%s&_=%s&id=%s&update=0'
         self.grabber_path = '/grabber-api/?ts=%s&id=%s&token=%s&mobile=0'

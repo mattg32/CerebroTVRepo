@@ -31,8 +31,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['movieshd.tv', 'movieshd.is', 'movieshd.watch', 'flixanity.is', 'flixanity.me','istream.is','flixanity.online','flixanity.cc','123movies.it']
-        self.base_link = 'https://123movies.it/'
-        self.streampost = 'ajax/zuxkvfdvfn.php'
+        self.base_link = 'http://123moviesfree.ac/'
+        self.streampost = '/ajax/zuxkvfdvfn.php'
         
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

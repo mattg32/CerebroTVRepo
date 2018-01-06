@@ -32,8 +32,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['movie4k.is']
-        self.base_link = 'https://movie4k.is/'
+        self.domains = ['movie4k.is','movie4k.ws']
+        self.base_link = 'https://2-movie4k.bypassed.org/'
         self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

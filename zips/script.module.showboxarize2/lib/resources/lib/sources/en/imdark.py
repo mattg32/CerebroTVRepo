@@ -55,9 +55,9 @@ class source:
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
             query = self.search_link % (urllib.quote_plus(title))
-            query = urlparse.urljoin(self.base_link, query)
-            #query = urlparse.urljoin(self.base_link, self.ajax_link)            
-            #post = urllib.urlencode({'action':'sufi_search', 'search_string': title})
+            #query = urlparse.urljoin(self.base_link, query)
+            query = urlparse.urljoin(self.base_link, self.ajax_link)            
+            post = urllib.urlencode({'action':'sufi_search', 'search_string': title})
             
             result = client.request(query)
             r = client.parseDOM(result, 'div', attrs={'id':'showList'})
