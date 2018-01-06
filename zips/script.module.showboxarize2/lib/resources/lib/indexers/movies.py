@@ -1082,5 +1082,5 @@ class movies:
             except:
                 pass
 
-        control.content(syshandle, 'movies')
+        control.content(syshandle, 'addons')
         control.directory(syshandle, cacheToDisc=True)

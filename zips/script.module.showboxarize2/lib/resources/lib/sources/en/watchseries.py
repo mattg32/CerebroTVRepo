@@ -31,7 +31,7 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domains = ['watch-series.io','watch-series.co','watch-series.ru']
-        self.base_link = 'https://watch-series.io/'
+        self.base_link = 'http://watch-series.ru/'
         self.search_link = '/search.html?keyword=%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
