@@ -29,7 +29,7 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['primewire.bypassed.org','primewire.life']
+        self.domains = ['primewire.bypassed.org','primewire.life','primewire.ag']
         self.base_link = 'https://primewire.bypassed.org/'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'

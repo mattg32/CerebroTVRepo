@@ -29,7 +29,7 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['ewatchseries.to', 'dwatchseries.to','onwatchseries.to','mywatchseries.to','itswatchseries.to']
+        self.domains = ['ewatchseries.to','onwatchseries.to','mywatchseries.to','itswatchseries.to']
         self.base_link = 'http://1-watchseries.bypassed.st/'
         self.search_link = 'http://1-watchseries.bypassed.st/%s'
         self.search_link_2 = 'http://1-watchseries.bypassed.st/%s'
