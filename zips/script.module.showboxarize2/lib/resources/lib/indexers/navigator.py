@@ -209,21 +209,20 @@ class navigator:
         self.addDirectoryItem(32045, 'openSettings&query=1.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32046, 'openSettings&query=6.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32047, 'openSettings&query=2.0', 'tools.png', 'DefaultAddonProgram.png')
-        #self.addDirectoryItem(32556, 'libraryNavigator', 'tools.png', 'DefaultAddonProgram.png')
-        #self.addDirectoryItem(32048, 'openSettings&query=5.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem("[B]SETTINGS[/B] : Library", 'libraryNavigator', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem(32048, 'openSettings&query=5.0', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32049, 'viewsNavigator', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32050, 'clearSources', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32052, 'clearCache', 'tools.png', 'DefaultAddonProgram.png')
-        self.addDirectoryItem(32052, 'clearCache2', 'tools.png', 'DefaultAddonProgram.png')
         self.addDirectoryItem(32073, 'authTrakt', 'trakt.png', 'DefaultAddonProgram.png')
 
         self.endDirectory()
 
     def library(self):
-        #self.addDirectoryItem(32557, 'openSettings&query=4.0', 'tools.png', 'DefaultAddonProgram.png')
-        #self.addDirectoryItem(32558, 'updateLibrary&query=tool', 'library_update.png', 'DefaultAddonProgram.png')
-        #self.addDirectoryItem(32559, control.setting('library.movie'), 'movies.png', 'DefaultMovies.png', isAction=False)
-        #self.addDirectoryItem(32560, control.setting('library.tv'), 'tvshows.png', 'DefaultTVShows.png', isAction=False)
+        self.addDirectoryItem(32557, 'openSettings&query=4.0', 'tools.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem("[B]LIBRARY[/B] : Update Library...", 'updateLibrary&query=tool', 'library_update.png', 'DefaultAddonProgram.png')
+        self.addDirectoryItem("[B]LIBRARY[/B] : Movies Folder", control.setting('library.movie'), 'movies.png', 'DefaultMovies.png', isAction=False)
+        self.addDirectoryItem("[B]LIBRARY[/B] : TV Shows Folder", control.setting('library.tv'), 'tvshows.png', 'DefaultTVShows.png', isAction=False)
 
         if trakt.getTraktCredentialsInfo():
             self.addDirectoryItem(32561, 'moviesToLibrary&url=traktcollection', 'trakt.png', 'DefaultMovies.png')
