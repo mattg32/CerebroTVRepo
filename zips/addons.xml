@@ -75,6 +75,39 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
+<addon id="plugin.video.goodfellas2"
+       name=".Cerebro Prime"
+       version="10.0.1"
+       provider-name="Biglad">
+   <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" />
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" />
+    <import addon="script.module.metahandler" version="2.5.1"/>
+	<import addon="plugin.video.f4mTester" optional="true"/>
+	<import addon="script.cerebro.backend" />
+	<import addon="repository.cerebro" />
+	<import addon="plugin.video.SportsDevil" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Media content from the Internet</summary>
+    <description lang="en">We do not host or upload any video, films, media file, live streams (avi, mov, flv, mpg, mpeg, divx, dvd rip, mp3, mp4.
+	We have no control over the links on any site that we provide a link to. If you see any form of infringements, please contact appropriate media
+	file owners or host sites immediately.  </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.57" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -149,6 +182,38 @@ provider-name="Cerebro">
 	<extension point="xbmc.addon.metadata">
 	<platform>all</platform>
 	</extension>
+</addon>
+
+<addon
+  id="plugin.video.SportsDevil"
+  version="2018.01.07"
+  name="SportsDevil"
+  provider-name="SportsDevil">
+  <requires>
+   <import addon="xbmc.python" version="2.14.0"/>
+   <import addon="script.module.dateutil" />
+   <import addon="script.module.simplejson" />
+   <import addon="script.module.six" />
+   <import addon="script.module.requests" />
+   <import addon="script.module.livestreamer" />
+   <!-- <import addon="script.video.F4mProxy" /> -->
+   <!-- <import addon="plugin.video.f4mTester" /> -->
+  </requires>
+  <extension
+    point="xbmc.python.pluginsource"
+    library="default.py">
+   <provides>video</provides>
+  </extension>
+  <extension point="xbmc.service" library="service/proxy_service.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">SportsDevil addon</summary>
+    <description lang="en">Play videos of different ad-financed sports streaming sites.</description>
+    <description lang="he">נגן סרטונים של אתרי ספורט שונים הממומנים על ידי מודעות.</description>
+    <disclaimer lang="en">SportsDevil does not provide any streams of its own; stream quality, content and copyright are responsibility of the ad-financed source web site. For updates - check the readme.</disclaimer>
+    <disclaimer lang="he">SportsDevil אינו מספק שום הזרמה; איכות הזרם, התוכן וזכויות היוצרים הם באחריות אתר האינטרנט הממומן על ידי המודעה. לעדכונים בדוק את קובץ readme</disclaimer>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="plugin.video.tvheaven" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro TV Heaven[/B][/COLOR]" version="1.0.19" provider-name="Biglad">
