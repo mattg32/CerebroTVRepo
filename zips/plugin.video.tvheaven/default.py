@@ -18,12 +18,24 @@ d()
 
 tempplotinfo = "Meta Data Coming soon!!"
 
+def pickserver():
+    import random
+    servers = ['http://watchepisodeseries.unblockall.org/','http://watchepisodeseries.unblockall.org/']
+    host = str(random.choice(servers))
+    #xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV Heaven[/COLOR],Using Server @ "+host+","+icon+")")
+	
+    return host
+try:
+	if CurrentServer == "":
+		CurrentServer = pickserver()
+except: CurrentServer = pickserver()
+
 def CATEGORIES():
         addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
-        addDir('New Latest Episodes','http://watchepisodeseries.unblockall.org/',1,art+'latest.png',fanart)
-        addDir('New TV Shows','http://watchepisodeseries.unblockall.org/home/new-series',3,art+'new.png',fanart)
-        addDir('Popular TV Shows','http://watchepisodeseries.unblockall.org/home/popular-series',3,art+'popular.png',fanart)
-        addDir('TV Show Genres','http://watchepisodeseries.unblockall.org/home/series',7,art+'genres.png',fanart)
+        addDir('New Latest Episodes',CurrentServer,1,art+'latest.png',fanart)
+        addDir('New TV Shows',CurrentServer+'home/new-series',3,art+'new.png',fanart)
+        addDir('Popular TV Shows',CurrentServer+'home/popular-series',3,art+'popular.png',fanart)
+        addDir('TV Show Genres',CurrentServer+'home/series',7,art+'genres.png',fanart)
         addDir('Search For A Show','url',5,art+'search.png',fanart)
         addDir('[COLOR gold][B]Vidics Site Scarper[/B][/COLOR]','Link',9899,'','')
         xbmc.executebuiltin('Container.SetViewMode(50)')
@@ -35,7 +47,7 @@ def GETGENRES(url):
         match=re.compile('<input data-genrename="(.+?)"').findall(link)   
         for genre in match:
                 name=genre.capitalize()
-                url='http://watchepisodeseries.unblockall.org/home/series?genres='+genre
+                url=CurrentServer+'home/series?genres='+genre
                 iconimage=art+name+'.png'
                 addDir(name,url,8,iconimage,fanart,tempplotinfo)
         xbmc.executebuiltin('Container.SetViewMode(500)')
@@ -59,15 +71,15 @@ def SEARCH():
         if keyboard.isConfirmed():
                 search_entered = keyboard.getText().replace(' ','+').replace('+and+','+%26+')
         if len(search_entered)>1:
-                url = 'http://watchepisodeseries.unblockall.org/home/search?q='+ search_entered
+                url = CurrentServer+'home/search?q='+ search_entered
                 link=open_url(url)
                 data = json.loads(link)
                 data=data['series']
                 for item in data:
                         name=item['original_name']
                         movurl=item['seo_name']
-                        url='http://watchepisodeseries.unblockall.org/'+movurl
-                        iconimage='http://watchepisodeseries.unblockall.org/series_images/'+movurl+'.jpg'
+                        url=CurrentServer+movurl
+                        iconimage=CurrentServer+'series_images/'+movurl+'.jpg'
                         fanart=iconimage
                         iconimage=iconimage
                         xbmc.log(movurl,2)
