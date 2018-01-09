@@ -1,41 +1,75 @@
-import requests
-import re
-import xbmc
-from ..scraper import Scraper
-from ..common import clean_title,clean_search            
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
+
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 
-s = requests.session()
-User_Agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
-                                           
-class ten80p(Scraper):
-    domains = ['1080pMovies.com']
-    name = "1080pMovies"
-    sources = []
+import re,urllib,urlparse,json,base64
 
+from resources.lib.modules import cleantitle
+from resources.lib.modules import client
+from resources.lib.modules import directstream
+from resources.lib.modules import source_utils
+
+class source:
     def __init__(self):
+        self.priority = 1
+        self.language = ['en']
+        self.domains = ['1080pmovie.com']
         self.base_link = 'https://1080pmovie.com'
-                      
+        self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
 
-    def scrape_movie(self, title, year, imdb, debrid = False):
+
+    def movie(self, imdb, title, localtitle, aliases, year):
         try:
-            search_id = clean_search(title.lower())
-            start_url = self.base_link + '/wp-json/wp/v2/posts?search=%s' %search_id.replace(' ','%20')
-            #print 'STARTURL:::::::::::::::: '+start_url
-            headers={'User-Agent':User_Agent}
-            html = requests.get(start_url,headers=headers,timeout=5).content
+            url = {'imdb': imdb, 'title': title, 'year': year}
+            url = urllib.urlencode(url)
+            return url
+        except:
+            return
+
+    def sources(self, url, hostDict, hostprDict):
+        sources = []
+        try:
+            if url == None: return
+            urldata = urlparse.parse_qs(url)
+            urldata = dict((i, urldata[i][0]) for i in urldata)
+            title = urldata['title'].replace(':', ' ').lower()
+            year = urldata['year']
+
+            search_id = title.lower()
+            start_url = self.search_link % (self.base_link, search_id.replace(' ','%20'))
+
+            headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
+            html = client.request(start_url,headers=headers)
             Links = re.compile('"post","link":"(.+?)","title".+?"rendered":"(.+?)"',re.DOTALL).findall(html)
             for link,name in Links:
                 link = link.replace('\\','')
-                if clean_title(title).lower() in clean_title(name).lower(): 
+                if title.lower() in name.lower(): 
                     if year in name:
-                        #print 'pass link> ' + link
-                        holder = requests.get(link,headers=headers,timeout=5).content
+                        holder = client.request(link,headers=headers)
                         new = re.compile('<iframe src="(.+?)"',re.DOTALL).findall(holder)[0]
-                        end = requests.get(new,headers=headers,timeout=5).content
+                        end = client.request(new,headers=headers)
                         final_url = re.compile('<iframe src="(.+?)"',re.DOTALL).findall(end)[0]
-                        self.sources.append({'source': 'openload','quality': '1080p','scraper': self.name,'url': final_url,'direct': False})
-            return self.sources
+                        valid, host = source_utils.is_host_valid(final_url, hostDict)
+                        sources.append({'source':host,'quality':'1080p','language': 'en','url':final_url,'info':[],'direct':False,'debridonly':False})
+                        continue
+            return sources
         except Exception, argument:
-            return self.sources
+            return sources
+
+
+
+    def resolve(self, url):
+        return directstream.googlepass(url)
+
 

@@ -31,7 +31,7 @@ class source:
         self.language = ['en']
         self.domains = ['hdpopcorns.com','popcorntime.unblocked.vc','hdpopcorns.in']
         self.base_link = 'http://hdpopcorns.com/'
-        self.search_link = '/wp-admin/admin-ajax.php?action=mts_search&q=%s'
+        self.search_link = '/?s='
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
