@@ -67,7 +67,7 @@ def GENRESERIES(url):
 
 def SEARCH():
         search_entered =''
-        keyboard = xbmc.Keyboard(search_entered, 'Search TV Mix')
+        keyboard = xbmc.Keyboard(search_entered, 'Search TV Heaven')
         keyboard.doModal()
         if keyboard.isConfirmed():
                 search_entered = keyboard.getText().replace(' ','+').replace('+and+','+%26+')
@@ -131,7 +131,7 @@ def GETSOURCES(name,url,iconimage):
         link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
         match=re.compile('ico"></div><a href="(.+?)">(.+?)\.(.+?)</a>').findall(link)
         if len(match)<1:
-                notification('TV Mix','No Compatible Streams Found','3000', icon)
+                notification('TV Heaven','No Compatible Streams Found','3000', icon)
         else:
                 for url,host,domain in match:
                         host=host+'.'+domain
@@ -169,7 +169,7 @@ def PLAY(name,url,iconimage,description):
                                 liz.setPath(stream_url)
                                 xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, liz)
                 except:
-                        notification('TV Mix','Stream Unavailable','3000', icon)
+                        notification('TV Heaven','Stream Unavailable','3000', icon)
                 
 def notification(title, message, ms, nart):
     xbmc.executebuiltin("XBMC.notification(" + title + "," + message + "," + ms + "," + nart + ")")        
