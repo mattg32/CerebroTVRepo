@@ -14,22 +14,23 @@ def d():
         requests.get(base64.b64decode('aHR0cDovL2FmZmlsaWF0ZS5lbnRpcmV3ZWIuY29tL3NjcmlwdHMvY3owNm5mP2E9Y2VyZWJyb3R2JmFtcDtiPWM3ZmJiZDkzJmFtcDtkZXN0dXJsPWh0dHAlM0ElMkYlMkZtdHZiLmNvLnVrJTJGcCUyRg=='),headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'},verify=False,timeout=4).text
     except:
         pass
-d() 
+#d() 
 
 tempplotinfo = "Meta Data Coming soon!!"
 
 def pickserver():
     import random
-    servers = ['http://watchepisodeseries.unblockall.org/','http://watchepisodeseries.unblockall.org/']
-    host = str(random.choice(servers))
+    #servers = ['https://watchepisodeseries.unblocked.vc/','http://watchepisodeseries.unblockall.org/']
+    #host = str(random.choice(servers))
+    host = 'http://watchepisodeseries.unblocked.vc/'
     #xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV Heaven[/COLOR],Using Server @ "+host+","+icon+")")
-	
-    return host
-try:
-	if CurrentServer == "":
-		CurrentServer = pickserver()
-except: CurrentServer = pickserver()
-
+    
+    return str(host)
+#try:
+#    if CurrentServer == "":
+#        CurrentServer = pickserver()
+#except: CurrentServer = pickserver()
+CurrentServer = pickserver()
 def CATEGORIES():
         addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
         addDir('New Latest Episodes',CurrentServer,1,art+'latest.png',fanart)
@@ -124,17 +125,17 @@ def CHOICE(name,url,iconimage):
                         GETSEASONS(name,url,iconimage)
 
 def GETSOURCES(name,url,iconimage):
-		addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
-		sec=name
-		link=open_url(url)
-		link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
-		match=re.compile('ico"></div><a href="(.+?)">(.+?)\.(.+?)</a>').findall(link)
-		if len(match)<1:
-				notification('TV Mix','No Compatible Streams Found','3000', icon)
-		else:
-				for url,host,domain in match:
-						host=host+'.'+domain
-						addLink(host,url,100,iconimage,fanart,tempplotinfo)
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
+        sec=name
+        link=open_url(url)
+        link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
+        match=re.compile('ico"></div><a href="(.+?)">(.+?)\.(.+?)</a>').findall(link)
+        if len(match)<1:
+                notification('TV Mix','No Compatible Streams Found','3000', icon)
+        else:
+                for url,host,domain in match:
+                        host=host+'.'+domain
+                        addLink(host,url,100,iconimage,fanart,tempplotinfo)
 
 def GETSEASONS(name,url,iconimage):
         addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
