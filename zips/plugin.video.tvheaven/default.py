@@ -80,7 +80,7 @@ def SEARCH():
                         name=item['original_name']
                         movurl=item['seo_name']
                         url=CurrentServer+movurl
-                        iconimage=CurrentServer+'series_images/'+movurl+'.jpg'
+                        iconimage=CurrentServer+'/series_images/'+movurl+'.jpg'
                         fanart=iconimage
                         iconimage=iconimage
                         xbmc.log(movurl,2)
@@ -157,7 +157,7 @@ def GETSEASONS(name,url,iconimage):
                         addDir(name,url,6,iconimage,fanart,tempplotinfo)
 
 def PLAY(name,url,iconimage,description):
-        url = "http:"+url
+        #url = "http:"+url
         link=open_url(url)
         url=re.compile('<a rel="nofollow" target="_blank" href="(.+?)"').findall(link)
         #url = "http:"+url
@@ -200,8 +200,8 @@ def get_params():
         return param
 
 def addDir(name,url,mode,iconimage,fanart,description=''):
-        if "http:" not in url: url = "http:"+url
-        if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
+        #if "http:" not in url: url = "http:"+url
+        #if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         #if addon_id not in iconimage: iconimage = "http:"+iconimage
