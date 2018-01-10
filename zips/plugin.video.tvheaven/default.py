@@ -20,7 +20,7 @@ tempplotinfo = "Meta Data Coming soon!!"
 
 def pickserver():
     import random
-    #servers = ['https://watchepisodeseries.unblocked.vc/','http://watchepisodeseries.unblockall.org/']
+    #servers = ['http://watchepisodeseries.unblocked.vc/','http://watchepisodeseries.unblockall.org/']
     #host = str(random.choice(servers))
     host = 'http://watchepisodeseries.unblocked.vc/'
     #xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV Heaven[/COLOR],Using Server @ "+host+","+icon+")")
@@ -31,12 +31,15 @@ def pickserver():
 #        CurrentServer = pickserver()
 #except: CurrentServer = pickserver()
 CurrentServer = pickserver()
+Altserver = 'http://watchepisodeseries.unblockall.org/'
+Altserver = str(Altserver)
+
 def CATEGORIES():
         addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
-        addDir('New Latest Episodes',CurrentServer,1,art+'latest.png',fanart)
-        addDir('New TV Shows',CurrentServer+'home/new-series',3,art+'new.png',fanart)
-        addDir('Popular TV Shows',CurrentServer+'home/popular-series',3,art+'popular.png',fanart)
-        addDir('TV Show Genres',CurrentServer+'home/series',7,art+'genres.png',fanart)
+        addDir('New Latest Episodes',Altserver,1,art+'latest.png',fanart)
+        addDir('New TV Shows',Altserver+'home/new-series',3,art+'new.png',fanart)
+        addDir('Popular TV Shows',Altserver+'home/popular-series',3,art+'popular.png',fanart)
+        addDir('TV Show Genres',Altserver+'home/series',7,art+'genres.png',fanart)
         addDir('Search For A Show','url',5,art+'search.png',fanart)
         addDir('[COLOR gold][B]Vidics Site Scarper[/B][/COLOR]','Link',9899,'','')
         xbmc.executebuiltin('Container.SetViewMode(50)')
@@ -200,8 +203,8 @@ def get_params():
         return param
 
 def addDir(name,url,mode,iconimage,fanart,description=''):
-        #if "http:" not in url: url = "http:"+url
-        #if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
+        if "http:" not in url: url = "http:"+url
+        if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         #if addon_id not in iconimage: iconimage = "http:"+iconimage
@@ -213,7 +216,7 @@ def addDir(name,url,mode,iconimage,fanart,description=''):
         return ok
 
 def addLink(name,url,mode,iconimage,fanart,description=''):
-        #if "http:" not in url: url = "http:"+url
+        if "http:" not in url: url = "http:"+url
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
