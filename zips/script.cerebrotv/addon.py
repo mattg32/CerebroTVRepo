@@ -85,6 +85,7 @@ def platform():
 
         
 def killxbmc():
+    xbmc.executebuiltin("Action(Close)")
     dp = xbmcgui.DialogProgress()
     myplatform = platform()
     dialog = xbmcgui.Dialog()
