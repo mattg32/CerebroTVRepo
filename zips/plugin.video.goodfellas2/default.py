@@ -2517,7 +2517,7 @@ elif mode==12:
         if "first" in url:
             #xbmc.executebuiltin("XBMC.Notification(Cerebro Prime,Please Wait Getting Stream Data. This May Take 30 secsonds.... Hang Tight!!! ,30000,"+__icon__+")")
             dp = xbmcgui.DialogProgress()
-            dp.create("[COLOR=blue][B]Optimus Prime Is Working[/COLOR][/B]","Connecting to Stream Server","Time can take 5-60 seconds..","It may look like its frozen its not, this is ok just wait... Some times needs a 2nd click")
+            dp.create("[COLOR=blue][B]Optimus Prime Is Transforming..[/COLOR][/B]","Connecting to Stream Server","Time can take 5-60 seconds..","It may look like its frozen its not, this is ok just wait... Some times needs a 2nd click")
             dp.update(1)
             xbmc.sleep(1000)
             dp.update(2)
@@ -2576,7 +2576,7 @@ elif mode==12:
         else:
             #xbmc.executebuiltin("XBMC.Notification(Cerebro Prime,Opening Stream. Please Wait ,5000,"+__icon__+")")	
             dp = xbmcgui.DialogProgress()
-            dp.create("[COLOR=blue][B]Optimus Prime Is Working[/COLOR][/B]","Connecting to Stream Server","Time can take 2-20 seconds..","Some times needs a 2nd click")
+            dp.create("[COLOR=blue][B]Optimus Prime Is Transforming..[/COLOR][/B]","Connecting to Stream Server","Time can take 2-20 seconds..","Some times needs a 2nd click")
             dp.update(1)
             xbmc.sleep(1000)
             dp.update(2)
