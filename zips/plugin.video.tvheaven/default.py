@@ -16,7 +16,7 @@ def d():
         pass
 #d() 
 
-tempplotinfo = "Meta Data Coming soon!!"
+tempplotinfo = "Cerebro's TV Heaven!"
 
 def pickserver():
     import random
@@ -41,7 +41,7 @@ def CATEGORIES():
         addDir('Popular TV Shows',Altserver+'home/popular-series',3,art+'popular.png',fanart)
         addDir('TV Show Genres',Altserver+'home/series',7,art+'genres.png',fanart)
         addDir('Search For A Show','url',5,art+'search.png',fanart)
-        addDir('[COLOR gold][B]Vidics Site Scarper[/B][/COLOR]','Link',9899,'','')
+        #addDir('[COLOR gold][B]Vidics Site Scarper[/B][/COLOR]','Link',9899,'','')
         xbmc.executebuiltin('Container.SetViewMode(50)')
 
 
@@ -58,15 +58,15 @@ def GETGENRES(url):
 
                 
 def GENRESERIES(url):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
         link=open_url(url)
         link=link.replace("'",'"')
         match=re.compile('<a href="(.+?)" class="wsb-image" style="background-image: url\("(.+?)"\)"></a>').findall(link)
         for url,iconimage in match:
                 name=url.split('/')[-1].replace('-',' ').title()
-                addDir(name,url,4,iconimage,fanart)
+                addDir(name,url,4,iconimage,iconimage)
         np=re.compile('<a href="(.+?)" class="paginator-next">Next</a>').findall(link)[0].split('<a href="')[-1]
-        addDir('next',np,8,iconimage,fanart,tempplotinfo)
+        addDir('next',np,8,iconimage,iconimage,tempplotinfo)
 
 def SEARCH():
         search_entered =''
@@ -85,18 +85,18 @@ def SEARCH():
                         url=CurrentServer+movurl
                         iconimage=CurrentServer+'/series_images/'+movurl+'.jpg'
                         fanart=iconimage
-                        iconimage=iconimage
-                        xbmc.log(movurl,2)
+                        #iconimage=iconimage
+                        #xbmc.log(url,2)
                         addDir(name,url,4,iconimage,fanart,tempplotinfo)
       
 def NEW_POPSERIES(url):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
         link=open_url(url)
         link=link.replace("'",'"')
         link=link.replace('\n','').replace('  ','').replace("('",'"').replace("')",'')
         match=re.compile('<div class="cb-image" style="background-image: url\("(.+?)"\)"></div><a href="(.+?)" class="cb-details"><div class="cb-name">(.+?)</div>').findall(link)
         for iconimage,url,name in match:
-                addDir(name,url,4,iconimage,fanart)
+                addDir(name,url,4,iconimage,iconimage)
                        
 def GETMAINMENUITEMS(name,url):
         sec=name
@@ -115,7 +115,7 @@ def GETMAINMENUITEMS(name,url):
                 tempplotinfo=name
                 #if "http:" not in iconimage: iconimage = "http:"+iconimage
                 name=name.replace('&amp;','&')
-                addDir(name,url,2,iconimage,fanart,tempplotinfo)
+                addDir(name,url,2,iconimage,iconimage,tempplotinfo)
 
 def CHOICE(name,url,iconimage):
                 dialog = xbmcgui.Dialog()
@@ -128,7 +128,10 @@ def CHOICE(name,url,iconimage):
                         GETSEASONS(name,url,iconimage)
 
 def GETSOURCES(name,url,iconimage):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
+        xbmc.log(url,2)
+        #if "https:" in url: url=url
+        #elif "http:" not in url: url = "http:"+url
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
         sec=name
         link=open_url(url)
         link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
@@ -138,10 +141,10 @@ def GETSOURCES(name,url,iconimage):
         else:
                 for url,host,domain in match:
                         host=host+'.'+domain
-                        addLink(host,url,100,iconimage,fanart,tempplotinfo)
+                        addLink(host,url,100,iconimage,iconimage,tempplotinfo)
 
 def GETSEASONS(name,url,iconimage):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
         link=open_url(url)
         match=re.compile('href="(.+?)">.+?<div class="season">(.+?)</div>.+?<div class="episode">(.+?)</div>.+?<div class="name">(.+?)</div>.+?<div class="date">(.+?)</div>',re.DOTALL).findall(link)[1:]
         for url,season,episode,title,dte in match:
@@ -157,7 +160,7 @@ def GETSEASONS(name,url,iconimage):
                 except: pass
                 name=season+' '+episode+'  -  '+title+' '+dte
                 if not '</div>' in name:
-                        addDir(name,url,6,iconimage,fanart,tempplotinfo)
+                        addDir(name,url,6,iconimage,iconimage,tempplotinfo)
 
 def PLAY(name,url,iconimage,description):
         #url = "http:"+url
@@ -203,30 +206,43 @@ def get_params():
         return param
 
 def addDir(name,url,mode,iconimage,fanart,description=''):
+        #if "http:" not in url: url = "http:"+url
+        #if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
+        if "https:" in url: 
+            url = url.split("//")
+            url = url[1]
         if "http:" not in url: url = "http:"+url
-        if "http:" not in iconimage and addon_id not in iconimage: iconimage = "http:"+iconimage
+        if "http://" not in url: 
+            url = url.split("http:")
+            url = url[1]
+            url = "http://"+url
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
-        #if addon_id not in iconimage: iconimage = "http:"+iconimage
-        #xbmc.log(iconimage,2)
+        if addon_id not in iconimage and "http:" not in iconimage: iconimage = "http:"+iconimage
+        xbmc.log(iconimage,2)
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setProperty('fanart_image', fanart)
+        liz.setProperty('fanart_image', iconimage)
         liz.setProperty('plot', description)
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
         return ok
 
 def addLink(name,url,mode,iconimage,fanart,description=''):
         if "http:" not in url: url = "http:"+url
+        if addon_id not in iconimage and "http:" not in iconimage: iconimage = "http:"+iconimage
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
-        liz.setProperty('fanart_image', fanart)
+        liz.setProperty('fanart_image', iconimage)
         liz.setProperty("IsPlayable","true")
         liz.setProperty('plot', description)
         ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
         return ok
         
 def open_url(url):
+    if "https:" in url: 
+        url = url.split("//")
+        url = url[1]
+    if "http://" not in url: url = "http://"+url
     #if "http:" not in url: url = "http:"+url
     req = urllib2.Request(url)
     req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36')
