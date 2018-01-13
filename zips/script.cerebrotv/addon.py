@@ -86,6 +86,7 @@ def platform():
         
 def killxbmc():
     xbmc.executebuiltin("Action(Close)")
+    os._exit(1)
     dp = xbmcgui.DialogProgress()
     myplatform = platform()
     dialog = xbmcgui.Dialog()
@@ -127,7 +128,7 @@ def killxbmc():
         #try: os.system('adb shell am force-stop com.semperpax.spmc16')
         #except: pass
         #try: os.system("su -c 'reboot'")
-        #except:  dialog.ok("[COLOR=red][B]CerebroTV Updater[/COLOR][/B]", "If you\'re seeing this message it means the updater was unable", "to close kodi or reboot your deivice. Please pull the power lead or power off your tablet [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu. [COLOR=lime]DO NOT[/COLOR] press OK",'')		
+        #except:  dialog.ok("[COLOR=red][B]CerebroTV Updater[/COLOR][/B]", "If you\'re seeing this message it means the updater was unable", "to close kodi or reboot your deivice. Please pull the power lead or power off your tablet [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu. [COLOR=lime]DO NOT[/COLOR] press OK",'')      
         #dialog.ok("[COLOR=red][B]CerebroTV Updater[/COLOR][/B]", "If you\'re seeing this message it means the updater was unable", "to close kodi or reboot your deivice. Please pull the power lead or power off your tablet [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu. [COLOR=lime]DO NOT[/COLOR] press OK",'')
         dialog.ok("[COLOR=red][B]CerebroTV Updater[/COLOR][/B]", "If you\'re seeing this message it means the updater was unable", "to close kodi or reboot your deivice. Please pull the power lead or power off your tablet [COLOR=lime]DO NOT[/COLOR] exit cleanly via the menu. [COLOR=lime]DO NOT[/COLOR] press OK",'')
         dp.create("[COLOR tomato]CerebroTV[/COLOR]","PLEASE EXIT KODI OR PULL THE POWER LEAD","PLEASE EXIT KODI OR PULL THE POWER LEAD")
@@ -227,17 +228,17 @@ xbmc.sleep(1500)
 dp.close()
 
 def getOld(old):
-	try:
-		old = '"%s"' % old 
-		query = '{"jsonrpc":"2.0", "method":"Settings.GetSettingValue","params":{"setting":%s}, "id":1}' % (old)
-		response = xbmc.executeJSONRPC(query)
-		response = simplejson.loads(response)
-		if response.has_key('result'):
-			if response['result'].has_key('value'):
-				return response ['result']['value'] 
-	except:
-		pass
-	return None
+    try:
+        old = '"%s"' % old 
+        query = '{"jsonrpc":"2.0", "method":"Settings.GetSettingValue","params":{"setting":%s}, "id":1}' % (old)
+        response = xbmc.executeJSONRPC(query)
+        response = simplejson.loads(response)
+        if response.has_key('result'):
+            if response['result'].has_key('value'):
+                return response ['result']['value'] 
+    except:
+        pass
+    return None
 
 def setNew(new, value):
     try:
@@ -250,11 +251,11 @@ def setNew(new, value):
     return None
 
 def swapSkins(skin):
-	old = 'lookandfeel.skin'
-	value = skin
-	current = getOld(old)
-	new = old
-	setNew(new, value)
+    old = 'lookandfeel.skin'
+    value = skin
+    current = getOld(old)
+    new = old
+    setNew(new, value)
 
 skindir = xbmc.getSkinDir()
 
