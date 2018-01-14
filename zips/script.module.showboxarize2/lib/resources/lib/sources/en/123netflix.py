@@ -1,8 +1,7 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
-    Fantastic Add-on
-
+    Covenant Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +29,7 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['123netflix.com', '123netflix.to', '123netflix.pro']
+        self.domains = ['123netflix.com']
         self.base_link = 'http://123netflix.com'
         self.search_link = '/search-movies/%s.html'
 

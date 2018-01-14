@@ -33,7 +33,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['movie4k.is','movie4k.ws']
-        self._base_link = 'http://www.movie4k.io'
+        self._base_link = 'https://www.breakfreemovies.biz/'
         self.search_link = '/movies.php?list=search&search=%s'
 
     @property
