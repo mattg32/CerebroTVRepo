@@ -1,7 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
 '''
-    Covenant Add-on
+    Fantastic Add-on
+
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,7 +30,7 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['primewire.ag','primewire.life']
+        self.domains = ['primewire.ag']
         self.base_link = 'http://www.primewire.ag'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'
