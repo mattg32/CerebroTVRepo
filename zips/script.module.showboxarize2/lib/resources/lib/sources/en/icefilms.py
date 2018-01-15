@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['icefilms.info','icefilms.unblocked.pro','icefilms.unblocked.vc','www6-icefilms6-info.unblocked.lol']
-        self.base_url = 'https://icefilms1.unblocked.lol/'
+        self.domains = ['icefilms.info','icefilms.unblocked.pro','icefilms.unblocked.vc','icefilms.unblocked.vc']
+        self.base_url = 'https://icefilms.unblocked.vc/'
         self.search_link = urlparse.urljoin(self.base_url, 'search.php?q=%s+%s&x=0&y=0')
         self.list_url = urlparse.urljoin(self.base_url, 'membersonly/components/com_iceplayer/video.php?h=374&w=631&vid=%s&img=')
         self.post = 'id=%s&s=%s&iqs=&url=&m=%s&cap= &sec=%s&t=%s'
@@ -39,7 +39,7 @@ class source:
         try:
             clean_title = cleantitle.geturl(title)
             search_url = self.search_link % (clean_title.replace('-','+'), year)
-            headers = {'Host': 'www6-icefilms6-info.unblocked.lol',
+            headers = {'Host': 'https://icefilms.unblocked.vc',
                        'Cache-Control': 'max-age=0',
                         'Connection': 'keep-alive',
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
@@ -103,7 +103,7 @@ class source:
         try:
             sources = []     
             url_for_post = url
-            headers = {'Host': 'www6-icefilms6-info.unblocked.lol',
+            headers = {'Host': 'https://icefilms.unblocked.vc',
                        'Connection': 'keep-alive',
                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
                        'Upgrade-Insecure-Requests': '1',
@@ -159,10 +159,10 @@ class source:
                     
                     post = self.post % (link_id, s, m, secret, t)
 
-                    headers =  {'Host': 'www6-icefilms6-info.unblocked.lol',
+                    headers =  {'Host': 'https://icefilms.unblocked.vc',
                                 'Connection': 'keep-alive',
                                 'Content-Length': '65',
-                                'Origin': 'https://www6-icefilms6-info.unblocked.lol',
+                                'Origin': 'https://icefilms.unblocked.vc',
                                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36',
                                 'Content-type': 'application/x-www-form-urlencoded',
                                 'Accept': '*/*',
