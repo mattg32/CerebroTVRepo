@@ -32,7 +32,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['tvbox.ag']
-        self.base_link = 'https://tvbox.bypassed.org/'
+        self.base_link = 'https://1-tvbox.bypassed.org/'
         self.search_link_tv = '/search?q=%s'
         self.search_link_movie = '/search?q=%s'
 
