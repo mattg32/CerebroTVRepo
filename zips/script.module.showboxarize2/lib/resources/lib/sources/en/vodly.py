@@ -30,7 +30,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['vodly.us', 'vodly.unblocked.pro','vodly.unblocked.vc']
-        self.base_link = 'https://1-vodly.bypassed.org/'
+        self.base_link = 'https://2-vodly.bypassed.org/'
         self.search_link = '/search?s=%s'
 
 

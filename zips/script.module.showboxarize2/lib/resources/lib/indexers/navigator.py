@@ -71,8 +71,8 @@ class navigator:
     def movies(self, lite=False):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
         self.addDirectoryItem('[COLOR gold]Cerebro ShowBox[/COLOR] - Movies Menu', 'ShowChangelog', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem('[COLOR red]• [/COLOR]Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Search For a Movie', 'movieSearch', 'search.png', 'DefaultMovies.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Sky Cinema on Demand', 'channels', 'channels.png', 'DefaultMovies.png')
         if not control.setting('movie.widget') == '0':
             self.addDirectoryItem('[COLOR red]• [/COLOR]Latest Movies', 'movieWidget', 'latest-movies.png', 'DefaultRecentlyAddedMovies.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Movies by Genres', 'movieGenres', 'genres.png', 'DefaultMovies.png')

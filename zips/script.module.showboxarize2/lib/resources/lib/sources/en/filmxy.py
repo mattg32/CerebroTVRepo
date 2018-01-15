@@ -27,10 +27,10 @@ from resources.lib.modules import source_utils
 
 class source:
     def __init__(self):
-        self.priority = 1
+        self.priority = 0
         self.language = ['en']
-        self.domains = ['filmxy.cc']
-        self.base_link = 'http://www.filmxy.cc'
+        self.domains = ['filmxy.cc','filmxy.me']
+        self.base_link = 'http://www.filmxy.me/'
         self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
 
 

@@ -74,7 +74,7 @@ class source:
                 for link in vidpage:
                     if 'trailer' not in link.lower():
                         link = self.base_link + link
-                        sources.append({'source':'DirectLink','quality':'SD','language': 'en','url':link,'info':[],'direct':True,'debridonly':False})
+                        sources.append({'source':'DirectLink','quality':'HD','language': 'en','url':link,'info':[],'direct':True,'debridonly':False})
             return sources   
         except:
             return sources

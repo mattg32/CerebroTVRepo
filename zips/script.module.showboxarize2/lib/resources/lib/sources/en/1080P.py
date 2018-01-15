@@ -61,6 +61,7 @@ class source:
                         end = client.request(new,headers=headers)
                         final_url = re.compile('<iframe src="(.+?)"',re.DOTALL).findall(end)[0]
                         valid, host = source_utils.is_host_valid(final_url, hostDict)
+                        #if "openload" in host: str(host) = "(PAIR) "+host
                         sources.append({'source':host,'quality':'1080p','language': 'en','url':final_url,'info':[],'direct':False,'debridonly':False})
                         continue
             return sources

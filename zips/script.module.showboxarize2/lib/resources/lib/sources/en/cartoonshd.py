@@ -201,6 +201,7 @@ class source:
 
                     else:
                         valid, hoster = source_utils.is_host_valid(i, hostDict)
+                        #if "openload" in hoster: str(hoster) = hoster "(PAIR" )+hoster
                         if not valid: continue
 
                         sources.append({
