@@ -2364,6 +2364,35 @@ def get_epg(url, regex):
             addon_log(regex)
             return
 
+            
+            
+def opentimer():
+    if xbmc.Player().isPlaying():
+        xbmc.Player().stop()
+    timer = 120
+    counter = 0
+    percent = 1
+    dp = xbmcgui.DialogProgress()
+    #if dp: dp.close()
+    dp.create("[COLOR=gold][B]Cerebro IPTV Hunter[/COLOR][/B]","This can take 2-120 seconds.(based on host & your device/speed)","It may look like its frozen its not, it's opening the stream... ","Please Wait!!!!")
+    dp.update(percent)        
+    while counter < timer:
+        if percent > 100: percent = percent-100
+        dp.update(percent)
+        percent = percent+1
+        counter = counter+1
+        xbmc.sleep(1000)
+        if xbmc.Player().isPlaying():
+            percent = 1		
+            dp.close() 
+            break
+        if dp.iscanceled(): 
+            percent = 1
+            dp.close()
+            break              
+    #dp.close()
+    #exit()
+
 
 xbmcplugin.setContent(int(sys.argv[1]), 'movies')
 
@@ -2503,9 +2532,6 @@ elif mode==11:
     addSource(url)
 
 elif mode==12:
-    if xbmc.Player().isPlaying():
-        xbmc.Player().stop()
-        xbmc.sleep(1500)
     addon_log("setResolvedUrl")
     if not url.startswith("plugin://plugin") or not any(x in url for x in g_ignoreSetResolved):#not url.startswith("plugin://plugin.video.f4mTester") :
         item = xbmcgui.ListItem(path=url)
@@ -2514,228 +2540,7 @@ elif mode==12:
     else:
         print 'Not setting setResolvedUrl'
         xbmc.executebuiltin('XBMC.RunPlugin('+url+')')
-        if "first" in url:
-            #xbmc.executebuiltin("XBMC.Notification(Cerebro Prime,Please Wait Getting Stream Data. This May Take 30 secsonds.... Hang Tight!!! ,30000,"+__icon__+")")
-            dp = xbmcgui.DialogProgress()
-            dp.create("[COLOR=blue][B]Optimus Prime Is Transforming..[/COLOR][/B]","Connecting to Stream Server","Time can take 5-60 seconds..","It may look like its frozen its not, this is ok just wait... Some times needs a 2nd click")
-            dp.update(1)
-            xbmc.sleep(1000)
-            dp.update(2)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(5)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(10)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(20)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(25)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(30)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(35)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(40)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(45)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(3000)
-            dp.update(50)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(70)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(3000)
-            dp.update(90)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(100)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(1000)
-            dp.close() 
-        else:
-            #xbmc.executebuiltin("XBMC.Notification(Cerebro Prime,Opening Stream. Please Wait ,5000,"+__icon__+")") 
-            dp = xbmcgui.DialogProgress()
-            dp.create("[COLOR=blue][B]Optimus Prime Is Transforming..[/COLOR][/B]","Connecting to Stream Server","Time can take 2-20 seconds..","Some times needs a 2nd click")
-            dp.update(1)
-            xbmc.sleep(1000)
-            dp.update(2)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(5)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(10)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(20)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(25)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(30)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(35)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(40)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(45)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(3000)
-            dp.update(50)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(70)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(3000)
-            dp.update(90)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(2000)
-            dp.update(100)
-            if xbmc.Player().isPlaying():  
-                dp.close()
-                exit()
-            if dp.iscanceled(): 
-                dp.close()
-                exit()
-            xbmc.sleep(1000)
-            dp.close()           
+        opentimer()
 
 elif mode==13:
     addon_log("play_playlist")
