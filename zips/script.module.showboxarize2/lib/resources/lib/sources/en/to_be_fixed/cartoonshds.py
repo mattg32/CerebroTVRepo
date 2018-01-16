@@ -30,9 +30,9 @@ from resources.lib.modules import source_utils
 
 class source:
     def __init__(self):
-        self.priority = 0
+        self.priority = 1
         self.language = ['en']
-        self.domains = ['putlocker.systems', 'cartoonhd.website', 'cartoonhd.online', 'cartoonhd.cc', 'cartoonhd.life', 'cartoonhd.zone']
+        self.domains = ['cartoonhd.website', 'cartoonhd.online', 'cartoonhd.cc', 'cartoonhd.life', 'cartoonhd.zone']
         self.base_link = 'http://cartoonhd.space'
 
     def movie(self, imdb, title, localtitle, aliases, year):
@@ -78,12 +78,12 @@ class source:
     def searchMovie(self, title, year, aliases, headers):
         try:
             for alias in aliases:
-                url = '%s/movie/%s' % (self.base_link, cleantitle.geturl(alias['title']))
+                url = '%s/full-movie/%s' % (self.base_link, cleantitle.geturl(alias['title']))
                 url = client.request(url, headers=headers, output='geturl', timeout='10')
                 if not url == None and url != self.base_link: break
             if url == None:
                 for alias in aliases:
-                    url = '%s/movie/%s-%s' % (self.base_link, cleantitle.geturl(alias['title']), year)
+                    url = '%s/full-movie/%s-%s' % (self.base_link, cleantitle.geturl(alias['title']), year)
                     url = client.request(url, headers=headers, output='geturl', timeout='10')
                     if not url == None and url != self.base_link: break
 

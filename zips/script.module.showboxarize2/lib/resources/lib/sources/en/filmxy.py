@@ -75,6 +75,14 @@ class source:
         try:
             headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
             html = client.request(url,headers=headers)
+			
+            block480 = re.compile('class="links_480p"(.+?)</ul>',re.DOTALL).findall(html)
+            Links480 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block480)) 
+            for link in Links480:
+                host = link.split('//')[1].replace('www.','')
+                host = host.split('/')[0].lower()
+                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
+                    sources.append({'source':host,'quality':'SD','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
             
             block720 = re.compile('class="links_720p"(.+?)</ul>',re.DOTALL).findall(html)
             Links720 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block720)) 

@@ -32,7 +32,7 @@ class source:
         self.language = ['en']
         self.domains = ['imdark.com']
         self.base_link = 'http://imdark.com'
-        self.search_link = '/?s=%s&lang=en'
+        self.search_link = '/?s=%s&darkestsearch=8c26461d68&_wp_http_referer=%2F&quality=&genre=&year=&lang=en'
         self.ajax_link = '/wp-admin/admin-ajax.php'
        
 

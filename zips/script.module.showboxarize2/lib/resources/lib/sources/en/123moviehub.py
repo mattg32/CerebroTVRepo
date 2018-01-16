@@ -30,8 +30,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['123moviesex','123moviesonline']
-        self.base_link = 'http://123moviesonline.stream/'
+        self.domains = ['123moviesex']
+        self.base_link = 'http://123movies.unblocked.lol/'
         self.search_link = '/search-movies/%s.html'
 
 
