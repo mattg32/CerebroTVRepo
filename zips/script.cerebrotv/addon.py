@@ -200,7 +200,8 @@ if DoStart ==0:
     
 
 response2 = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/updaternew.php?show=yes&v=1').read()
-UPDATE ="http://mtvb.co.uk/"+str(response2)+".zip"
+#UPDATE ="http://mtvb.co.uk/"+str(response2)+".zip"
+UPDATE ="https://github.com/biglad/BUILDONLY/blob/master/build_data/131.3.zip?raw=true"
 
 
 
