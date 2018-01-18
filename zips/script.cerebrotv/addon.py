@@ -24,7 +24,8 @@ if not update: #IT'S BACKWARDS
 PART1  = "http://megatvbox.eu/install1.zip"
 PART2  = "http://megatvbox.eu/install2.zip"
 PART3  = "http://megatvbox.eu/install3.zip"
-PART4  = "http://mtvb.co.uk/install4.zip"
+#PART4  = "http://mtvb.co.uk/install4.zip"
+PART4  = "https://github.com/biglad/BUILDONLY/blob/master/build_data/131.3.zip?raw=true"
 
 USERDATA    = xbmc.translatePath('special://userdata/')
 HOME        = xbmc.translatePath('special://home/')
