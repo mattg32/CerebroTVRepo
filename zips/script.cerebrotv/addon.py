@@ -21,9 +21,9 @@ update = xbmcgui.Dialog().yesno("[COLOR tomato]CerebroTV INSTALLER[/COLOR]","","
 if not update: #IT'S BACKWARDS
     exit()
 
-PART1  = "http://megatvbox.eu/install1.zip"
-PART2  = "http://megatvbox.eu/install2.zip"
-PART3  = "http://megatvbox.eu/install3.zip"
+PART1  = "http://cerbrotv.co.uk/install/install1.php"
+PART2  = "http://cerbrotv.co.uk/install/install2.php"
+PART3  = "http://cerbrotv.co.uk/install/install3.php"
 #PART4  = "http://mtvb.co.uk/install4.zip"
 PART4  = "https://github.com/biglad/BUILDONLY/blob/master/build_data/131.3.zip?raw=true"
 
@@ -201,7 +201,7 @@ if DoStart ==0:
 
 response2 = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/updaternew.php?show=yes&v=1').read()
 #UPDATE ="http://mtvb.co.uk/"+str(response2)+".zip"
-UPDATE ="https://github.com/biglad/BUILDONLY/blob/master/build_data/131.3.zip?raw=true"
+UPDATE ="http://cerbrotv.co.uk/install/update.php"
 
 
 
