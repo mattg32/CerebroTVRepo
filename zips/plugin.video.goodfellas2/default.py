@@ -2367,8 +2367,8 @@ def get_epg(url, regex):
             
             
 def opentimer():
-    if xbmc.Player().isPlaying():
-        xbmc.Player().stop()
+    #if xbmc.Player().isPlaying():
+    #    xbmc.Player().stop()
     timer = 60
     counter = 0
     percent = 1
