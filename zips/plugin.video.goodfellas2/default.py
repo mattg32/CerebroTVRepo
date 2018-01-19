@@ -2369,12 +2369,12 @@ def get_epg(url, regex):
 def opentimer():
     if xbmc.Player().isPlaying():
         xbmc.Player().stop()
-    timer = 120
+    timer = 60
     counter = 0
     percent = 1
     dp = xbmcgui.DialogProgress()
     #if dp: dp.close()
-    dp.create("[COLOR=gold][B]Cerebro IPTV Hunter[/COLOR][/B]","This can take 2-120 seconds.(based on host & your device/speed)","It may look like its frozen its not, it's opening the stream... ","Please Wait!!!!")
+    dp.create("[COLOR=gold][B]Cerebro IPTV Hunter[/COLOR][/B]","This can take 2-45 seconds.(based on host & your device/speed)","It may look like its frozen its not, it's opening the stream... ","Please Wait!!!!")
     dp.update(percent)        
     while counter < timer:
         if percent > 100: percent = percent-100
