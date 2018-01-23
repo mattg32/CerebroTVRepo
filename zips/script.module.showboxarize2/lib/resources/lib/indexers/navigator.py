@@ -140,7 +140,7 @@ class navigator:
         if (traktIndicators == True and not control.setting('tv.widget.alt') == '0') or (traktIndicators == False and not control.setting('tv.widget') == '0'):
             self.addDirectoryItem('[COLOR red]• [/COLOR]Latest TV Espidoes', 'tvWidget', 'latest-episodes.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows by Genre', 'tvGenres', 'genres.png', 'DefaultTVShows.png')
-        self.addDirectoryItem('[COLOR red]• [/COLOR]TV Catch Up (Networks)', 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
+        #self.addDirectoryItem('[COLOR red]• [/COLOR]TV Catch Up (Networks)', 'tvNetworks', 'networks.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32014, 'tvLanguages', 'languages.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32015, 'tvCertificates', 'certificates.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Trending TV Shows', 'tvshows&url=trending', 'people-watching.png', 'DefaultRecentlyAddedEpisodes.png')
