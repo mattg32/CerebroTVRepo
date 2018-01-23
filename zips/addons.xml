@@ -129,7 +129,7 @@ provider-name="Cerebro">
 
 <addon
   id="plugin.video.Showbox"
-  version="10.3"
+  version="10.4"
   name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]CerebroTV Vidics Player[/B][/COLOR]"
   provider-name="Biglad">
   <requires>
@@ -142,10 +142,6 @@ provider-name="Cerebro">
         <import addon="script.cerebro.pairwith.laucnher" />
         <import addon="script.module.requests" />
 		<import addon="script.module.futures" />
-		<import addon="repository.cerebro" />
-        <import addon="plugin.video.1channel" optional="true"/>
-        <import addon="script.xbmc.unpausejumpback" />
-		<import addon="script.module.thetvdb" version="0.0.1" />
 		<import addon="script.cerebro.backend" />
 
   </requires>
@@ -405,7 +401,7 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="script.module.showboxarize2" name="Cerebro ShowBox Scraper" version="1.00.204" provider-name="biglad">
+<addon id="script.module.showboxarize2" name="Cerebro ShowBox Scraper" version="1.00.205" provider-name="biglad">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>

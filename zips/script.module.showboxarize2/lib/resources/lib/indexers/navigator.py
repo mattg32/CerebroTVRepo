@@ -145,7 +145,7 @@ class navigator:
         #self.addDirectoryItem(32015, 'tvCertificates', 'certificates.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Trending TV Shows', 'tvshows&url=trending', 'people-watching.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Popuar TV Shows', 'tvshows&url=popular', 'most-popular.png', 'DefaultTVShows.png')
-        self.addDirectoryItem('[COLOR red]• [/COLOR]Highlt Rated TV Shows', 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('[COLOR red]• [/COLOR]Highly Rated TV Shows', 'tvshows&url=rating', 'highly-rated.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]Most voted for TV Shows', 'tvshows&url=views', 'most-voted.png', 'DefaultTVShows.png')
         self.addDirectoryItem('[COLOR red]• [/COLOR]TV Shows Due Out Today', 'tvshows&url=airing', 'airing-today.png', 'DefaultTVShows.png')
         #self.addDirectoryItem(32025, 'tvshows&url=active', 'returning-tvshows.png', 'DefaultTVShows.png')
