@@ -54,6 +54,6 @@ def d2():
 		requests.get(loadbalance,headers={'User-Agent':''+headertouse+''},verify=False,timeout=4).text
 	except:
 		pass
-d2()
+#d2()
 
 xbmc.executebuiltin("XBMC.AlarmClock('MTVBCS',XBMC.RunAddon(script.cerebro.backend),"+str(ntime)+",silent)")
