@@ -75,6 +75,39 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
+<addon id="plugin.video.goodfellas2"
+       name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro Prime[/B][/COLOR]"
+       version="10.0.20"
+       provider-name="Biglad">
+   <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" />
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" />
+    <import addon="script.module.metahandler" version="2.5.1"/>
+	<import addon="plugin.video.f4mTester" optional="true"/>
+	<import addon="script.cerebro.backend" />
+	<import addon="repository.cerebro" />
+	<import addon="plugin.video.SportsDevil" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Media content from the Internet</summary>
+    <description lang="en">We do not host or upload any video, films, media file, live streams (avi, mov, flv, mpg, mpeg, divx, dvd rip, mp3, mp4.
+	We have no control over the links on any site that we provide a link to. If you see any form of infringements, please contact appropriate media
+	file owners or host sites immediately.  </description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.livehub2" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro IPTV[/B][/COLOR]" version="10.57" provider-name="Biglad">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -90,6 +123,35 @@ provider-name="Cerebro">
     <summary lang="en">Cerbro Video Player</summary>
     <description lang="en">Cerbro Video Player Kodi 17+ is Recommended.</description>
 	<disclaimer lang="en"></disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon
+  id="plugin.video.Showbox"
+  version="10.4"
+  name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]CerebroTV Vidics Player[/B][/COLOR]"
+  provider-name="Biglad">
+  <requires>
+        <import addon="xbmc.python" version="2.1.0" optional="true" />
+		<import addon="script.module.simplejson" />
+		<import addon="script.module.beautifulsoup" version="3.0.8"/>
+        <import addon="script.module.urlresolver" version="1.0.0"/>
+		<import addon="script.module.t0mm0.common" version="1.1.0"/>
+        <import addon="script.cerebro.pairwith" />
+        <import addon="script.cerebro.pairwith.laucnher" />
+        <import addon="script.module.requests" />
+		<import addon="script.module.futures" />
+		<import addon="script.cerebro.backend" />
+
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>CerebroTV Vidics Player</summary>
+    <description>Watch Movies and TVShows from Vidics</description>
     <platform>all</platform>
   </extension>
 </addon>
