@@ -56,8 +56,6 @@ try:
         return ffi
 
     def buffer_from_bytes(initializer):
-        if sys.platform == 'win32':
-            return ffi.new('unsigned char[]', initializer)
         return ffi.new('char[]', initializer)
 
     def buffer_from_unicode(initializer):
@@ -196,13 +194,11 @@ except (ImportError):
         'void *': True,
         'wchar_t *': True,
         'char *': True,
-        'char **': True,
     }
     _type_map = {
         'void *': c_void_p,
         'wchar_t *': c_wchar_p,
         'char *': c_char_p,
-        'char **': ctypes.POINTER(c_char_p),
         'int': c_int,
         'unsigned int': c_uint,
         'size_t': ctypes.c_size_t,
@@ -217,7 +213,6 @@ except (ImportError):
             'LPCWSTR': True,
         })
         _type_map.update({
-            'BYTE': ctypes.c_byte,
             'LPSTR': c_char_p,
             'LPWSTR': c_wchar_p,
             'LPCSTR': c_char_p,
@@ -225,7 +220,6 @@ except (ImportError):
             'ULONG': wintypes.ULONG,
             'DWORD': wintypes.DWORD,
             'char *': ctypes.POINTER(ctypes.c_byte),
-            'char **': ctypes.POINTER(ctypes.POINTER(ctypes.c_byte)),
         })
 
     def _type_info(library, type_):

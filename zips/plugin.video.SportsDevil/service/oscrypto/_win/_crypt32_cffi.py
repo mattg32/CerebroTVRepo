@@ -29,7 +29,7 @@ else:
     ffi.cdef("typedef unsigned long ULONG_PTR;")
 ffi.cdef("""
     typedef HANDLE HCERTSTORE;
-    typedef unsigned char *PBYTE;
+    typedef char *PBYTE;
 
 
     typedef struct _CRYPTOAPI_BLOB {

@@ -8,7 +8,6 @@ import urllib
 import urlparse
 import string
 import xbmc
-import json
 from string import lower
 
 from entities.CList import CList
@@ -148,6 +147,7 @@ class Parser(object):
             msg += ' with Parameter(s): '
             msg += ",".join(params)
         common.log(msg)
+
         outputList = self.__parseCfg(filename, data, lItem)
 
         return outputList
@@ -217,8 +217,7 @@ class Parser(object):
                     items = self.__parseHtml(inputList.curr_url, data, inputList.rules, inputList.skill, inputList.cfg, lItem)
                     count = len(items)
                     common.log('    -> ' + str(count) + ' item(s) found')
-                    #common.log("JairoXparserPY: " + str(items[0]))
-                    
+                    #common.log("JairoXparserPY: " + items[0]['url'])
                     
                     
 
@@ -455,18 +454,14 @@ class Parser(object):
 
     def __parseHtml(self, url, data, rules, skills, definedIn, lItem):          
 
-        common.log('_parseHtml called: ')
+        #common.log('_parseHtml called' + url)
         items = []
 
         for item_rule in rules:            
             
             #precheck attribute is used to filter correct rule from _streams.cfg
             if not hasattr(item_rule, 'precheck') or (item_rule.precheck in data):
-                #common.log('Parser rule: ' + str(item_rule.infos))
-                try:
-                    common.log('Parser rule precheck: %s'%str(item_rule.precheck))
-                except:
-                    pass
+                #common.log('rule: ' + item_rule.infos)
 
                 revid = re.compile(item_rule.infos, re.IGNORECASE + re.DOTALL + re.MULTILINE + re.UNICODE)
                 for reinfos in revid.findall(data):
@@ -485,7 +480,7 @@ class Parser(object):
                     else:
                         tmp[item_rule.order] = reinfos
 
-                    for info in item_rule.info_list:                                             
+                    for info in item_rule.info_list:
                         info_value = tmp[info.name]
                         if info_value:
                             if info.build.find('%s') != -1:
@@ -503,11 +498,9 @@ class Parser(object):
                                         src = src + t.strip('\'')
                                     else:
                                         src = src + (tmp[t] or '')
-                                        
                             elif info.src.__contains__('||'):
                                 variables = info.src.split('||')
                                 src = firstNonEmpty(tmp, variables)
-                                
                             else:
                                 src = tmp[info.src]
 
@@ -541,14 +534,13 @@ class Parser(object):
                         tmp['videoTitle'] = tmp['title']
 
                     tmp['definedIn'] = definedIn
-                    #common.log('JairoXYZParserPy: ' + str(tmp))
                     items.append(tmp)
 
         return items
 
 
     def __parseCommands(self, item, src, convCommands):
-        common.log('_parseCommands called ')
+        common.log('_parseCommands called')
         # helping function
         def parseCommand(txt):
             command = {"command": txt, "params": ""}
@@ -768,17 +760,17 @@ class Parser(object):
             #     if not proxyIsRunning:
             #         xbmc.executebuiltin('RunScript(' + serverPath + ')')
 
-            # elif command == 'startLivestreamerProxy':
-            #     libPath = os.path.join(common.Paths.rootDir, 'service')
-            #     serverPath = os.path.join(libPath, 'livestreamerXBMCLocalProxy.py')
-            #     try:
-            #         import requests
-            #         requests.get('http://127.0.0.1:19000/version')
-            #         proxyIsRunning = True
-            #     except:
-            #         proxyIsRunning = False
-            #     if not proxyIsRunning:
-            #         xbmc.executebuiltin('RunScript(' + serverPath + ')')
+            elif command == 'startLivestreamerProxy':
+                libPath = os.path.join(common.Paths.rootDir, 'service')
+                serverPath = os.path.join(libPath, 'livestreamerXBMCLocalProxy.py')
+                try:
+                    import requests
+                    requests.get('http://127.0.0.1:19000/version')
+                    proxyIsRunning = True
+                except:
+                    proxyIsRunning = False
+                if not proxyIsRunning:
+                    xbmc.executebuiltin('RunScript(' + serverPath + ')')
                     #xbmc.sleep(500)                
             #     common.log('Debug from cfg file: ' + requests.get('http://127.0.0.1:19001/version').text)      
 
@@ -811,7 +803,6 @@ def resolveVariable(varStr, item):
 
 
 def firstNonEmpty(tmp, variables):
-    
     for v in variables:
         vClean = v.strip()
         if vClean.find("'") != -1:
@@ -819,7 +810,7 @@ def firstNonEmpty(tmp, variables):
         else:
             vClean = tmp.getInfo(vClean)
 
-        if vClean is not None and vClean != '':
+        if vClean != '':
             return vClean
 
     return ''

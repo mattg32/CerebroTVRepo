@@ -67,7 +67,7 @@ ffi.cdef("""
     typedef struct _SecBuffer {
         ULONG cbBuffer;
         ULONG BufferType;
-        BYTE *pvBuffer;
+        char *pvBuffer;
     } SecBuffer;
 
     typedef struct _SecBufferDesc {
