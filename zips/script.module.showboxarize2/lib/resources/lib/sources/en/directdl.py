@@ -1,16 +1,22 @@
-# -*- coding: UTF-8 -*-
-#######################################################################
- # ----------------------------------------------------------------------------
- # "THE BEER-WARE LICENSE" (Revision 42):
- # @tantrumdev wrote this file.  As long as you retain this notice you
- # can do whatever you want with this stuff. If we meet some day, and you think
- # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
- # ----------------------------------------------------------------------------
-#######################################################################
+# -*- coding: utf-8 -*-
 
-# Addon Name: Placenta
-# Addon id: plugin.video.placenta
-# Addon Provider: MuadDib
+'''
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'''
 
 
 import re,urllib,urlparse,json,random,base64
@@ -34,7 +40,6 @@ class source:
         self.r_link = 'aHR0cDovL2lwdjYuaWNlZmlsbXMuaW5mby9pcC5waHA/dj0lcyY='
         self.j_link = 'aHR0cDovL2lwdjYuaWNlZmlsbXMuaW5mby9tZW1iZXJzb25seS9jb21wb25lbnRzL2NvbV9pY2VwbGF5ZXIvdmlkZW8ucGhwQWpheFJlc3AucGhwP3M9JXMmdD0lcw=='
         self.p_link = 'aWQ9JXMmcz0lcyZpcXM9JnVybD0mbT0lcyZjYXA9KyZzZWM9JXMmdD0lcw=='
-
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -73,7 +78,7 @@ class source:
             if not cookie == None: headers['Cookie'] = cookie
             if not referer == None: headers['Referer'] = referer
             result = client.request(url, post=post, headers=headers, output=output, close=close)
-            print result
+            #print result
             result = result.decode('iso-8859-1').encode('utf-8')
             result = urllib.unquote_plus(result)
             return result
@@ -84,9 +89,9 @@ class source:
     def directdl_cache(self, url):
         try:
             url = urlparse.urljoin(base64.b64decode(self.b_link), url)
-            print url
+            #print url
             result = self.request(url)
-            print result
+            #print result
             result = re.compile('id=(\d+)>.+?href=(.+?)>').findall(result)
             result = [(re.sub('http.+?//.+?/','/', i[1]), 'tt' + i[0]) for i in result]
             return result
@@ -118,7 +123,7 @@ class source:
                 
                 q = urlparse.urljoin(self.base_link, q)
                 result = client.request(q)
-                print q
+                #print q
                 result = json.loads(result)
 
                 result = result['results']

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Covenant Add-on
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -46,7 +47,7 @@ class source:
                   client.parseDOM(i, 'img', ret='alt')[0],
                   dom_parser2.parse_dom(i, 'span', attrs={'class': 'year'})) for i in r]
             r = [(i[0].attrs['href'], i[1], i[2][0].content) for i in r if
-                 (cleantitle.get(i[1]) == cleantitle.get(title) and i[2][0].content == year)]
+                 i[2][0].content == year]
             url = r[0][0]
     
             return url
@@ -65,7 +66,6 @@ class source:
             r = [(i[0].attrs['href'], i[1], i[2][0].content) for i in r if
                  (cleantitle.get(i[1]) == cleantitle.get(tvshowtitle) and i[2][0].content == year)]
             url = source_utils.strip_domain(r[0][0])
-
             return url
         except:
             return
@@ -74,9 +74,11 @@ class source:
         try:
             if not url:
                 return
-
             t = url.split('/')[2]
-            url = self.base_link + '/episodes/%s-%dx%d' % (t, int(season), int(episode))
+            url = self.base_link + '/tvshows/%s/#episodes' % (t)
+            r = client.request(url)
+            express = '''<a\s*href="(https://movie4u.ch/episodes/.+?%sx%s)/''' % (season, episode)
+            url = re.findall(express, r)[0]
             return url
         except:
             return

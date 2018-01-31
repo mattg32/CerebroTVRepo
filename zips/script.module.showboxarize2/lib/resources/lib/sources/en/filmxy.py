@@ -1,8 +1,7 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
-    Fantastic Add-on
-
+    Filmnet Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,21 +17,23 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import re,urllib,urlparse,json,base64
+
+import re, urllib, urlparse, json, time
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
-from resources.lib.modules import directstream
 from resources.lib.modules import source_utils
+from resources.lib.modules import cfscrape
+
 
 class source:
     def __init__(self):
-        self.priority = 0
+        self.priority = 1
         self.language = ['en']
-        self.domains = ['filmxy.cc','filmxy.me']
-        self.base_link = 'http://www.filmxy.me/'
+        self.domains = ['filmxy.me']
+        self.base_link = 'http://www.filmxy.me'
         self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
-
+        self.scraper = cfscrape.create_scraper()
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -43,66 +44,67 @@ class source:
             return
 
     def sources(self, url, hostDict, hostprDict):
-        sources = []
+        self.sources = []
         try:
             if url == None: return
             urldata = urlparse.parse_qs(url)
             urldata = dict((i, urldata[i][0]) for i in urldata)
             title = urldata['title'].replace(':', ' ').replace('-', ' ').lower()
-            year  = urldata['year']
+            year = urldata['year']
+            self.hostprDict = hostprDict
 
-            search_id = title.lower()
-            start_url = self.search_link % (self.base_link, search_id.replace(' ','%20'))
+            query = self.search_link % (self.base_link, title.lower().replace(' ', '%20'))
+            r = self.scraper.get(query).content
+            r = json.loads(r)
+            links = [(i['link'], i['title']['rendered']) for i in r if i]
+            links = [(i[0], i[1]) for i in links if cleantitle.get_simple(i[1].split('(')[0]) in cleantitle.get_simple(title)]
+            links = [i[0] for i in links if year in i[1]]
 
-            headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
-            html = client.request(start_url,headers=headers)
-            Links = re.compile('"post","link":"(.+?)","title".+?"rendered":"(.+?)"',re.DOTALL).findall(html)
-            for link,name in Links:
-                link = link.replace('\\','')
-                name = name.replace('&#038;', '')
-                if title.lower() in name.lower(): 
-                    if year in name:
-                        holder = client.request(link,headers=headers)
-                        dpage = re.compile('id="main-down".+?href="(.+?)"',re.DOTALL).findall(holder)[0]
-                        sources = self.scrape_results(dpage, title, year)
-                        return sources
-            return sources
+            for i in links:
+                r = self.scraper.get(i).content
+                url = client.parseDOM(r, 'a', ret='href', attrs={'id':'main-down'})[0]
+
+                self.scrape_results(url)
+
+            return self.sources
         except:
-            return sources
+            return self.sources
 
-    def scrape_results(self,url,title,year):
-        sources = []
+
+    def scrape_results(self, url):
         try:
-            headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
-            html = client.request(url,headers=headers)
-			
-            block480 = re.compile('class="links_480p"(.+?)</ul>',re.DOTALL).findall(html)
-            Links480 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block480)) 
-            for link in Links480:
-                host = link.split('//')[1].replace('www.','')
-                host = host.split('/')[0].lower()
-                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
-                    sources.append({'source':host,'quality':'SD','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
-            
-            block720 = re.compile('class="links_720p"(.+?)</ul>',re.DOTALL).findall(html)
-            Links720 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block720)) 
-            for link in Links720:
-                host = link.split('//')[1].replace('www.','')
-                host = host.split('/')[0].lower()
-                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
-                    sources.append({'source':host,'quality':'720p','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
 
-            block1080 = re.compile('class="links_1080p"(.+?)</ul>',re.DOTALL).findall(html)
-            Links1080 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block1080)) 
-            for link in Links1080:
-                host = link.split('//')[1].replace('www.','')
-                host = host.split('/')[0].lower()
-                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
-                    sources.append({'source':host,'quality':'1080p','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
+            r = self.scraper.get(url).content
 
-            return sources   
-        except:
-            return sources
+            links720 = client.parseDOM(r, 'div', attrs={'class': 'links_720p'})
+            links720 = client.parseDOM(links720, 'a', ret='href')
+            for link in links720:
+                valid, host = source_utils.is_host_valid(link, self.hostprDict)
+                print host
+                if host in self.hostprDict:
+                    debrid = True
+                else:
+                    debrid = False
+                self.sources.append(
+                    {'source': host, 'quality': '720p', 'language': 'en', 'url': link, 'info': [],
+                     'direct': False,
+                     'debridonly': debrid})
+
+            links1080 = client.parseDOM(r, 'div', attrs={'class': 'links_1080p'})
+            links1080 = client.parseDOM(links1080, 'a', ret='href')
+            for link in links1080:
+                valid, host = source_utils.is_host_valid(link, self.hostprDict)
+                print host
+                if host in self.hostprDict:
+                    debrid = True
+                else:
+                    debrid = False
+                self.sources.append(
+                    {'source': host, 'quality': '1080p', 'language': 'en', 'url': link, 'info': [],
+                     'direct': False,
+                     'debridonly': debrid})
+
+        except:pass
 
     def resolve(self, url):
         return url

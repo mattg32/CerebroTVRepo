@@ -1,8 +1,8 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 
 '''
-    Fantastic Add-on
-
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 '''
 
 
-import re,urllib,urlparse,base64,xbmc
+import re,urllib,urlparse,base64
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
@@ -30,12 +30,12 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['primewire.ag']
-        self.base_link = 'http://www.mprimewire.com/'#'http://www.primewire.ag'
+        self.domains = ['primewire.ag','primewire.unblocked.vc']
+        self.base_link = 'http://www.primewire.ag'
+        self.base_link = 'https://primewire.unblocked.vc'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'
         self.tvsearch_link = '/index.php?search_keywords=%s&key=%s&search_section=2'
-
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -198,3 +198,5 @@ class source:
 
     def resolve(self, url):
         return url
+
+

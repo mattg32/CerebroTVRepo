@@ -1,16 +1,24 @@
-# -*- coding: UTF-8 -*-
-#######################################################################
- # ----------------------------------------------------------------------------
- # "THE BEER-WARE LICENSE" (Revision 42):
- # @tantrumdev wrote this file.  As long as you retain this notice you
- # can do whatever you want with this stuff. If we meet some day, and you think
- # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
- # ----------------------------------------------------------------------------
-#######################################################################
+# -*- coding: utf-8 -*-
 
-# Addon Name: Placenta
-# Addon id: plugin.video.placenta
-# Addon Provider: MuadDib
+# Broken - Needs fixing by manually creating the cookie from the first page.
+
+'''
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'''
 
 
 import re,urllib,urlparse,json,base64,hashlib,time
@@ -19,22 +27,22 @@ from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import source_utils
 from resources.lib.modules import dom_parser
-
-
+from resources.lib.modules import cfscrape
 
 class source:
-    def __init__(self):
+    def __init__(self):       
         self.priority = 1
         self.language = ['en']
-        self.domains = ['tvbox.ag']
-        self.base_link = 'https://tvbox.ag'
-        self.search_link_tv = 'https://tvbox.ag/tvshows'
-        self.search_link_movie = 'https://tvbox.ag/movies'
+        self.domains = ['tvbox.ag','tvbox.unblocked.pl']
+        self.base_link = 'https://tvbox.unblocked.pl'
+        self.search_link_tv = 'https://tvbox.unblocked.pl/tvshows'
+        self.search_link_movie = 'https://tvbox.unblocked.pl/movies'
 
-
+    
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
-            result = client.request(self.search_link_movie, cookie='check=1')
+            self.scraper = cfscrape.create_scraper()
+            result = self.scraper.get(self.search_link_movie, verify=False).content
             m = client.parseDOM(result, 'div', attrs={'class': 'masonry'})[0]
             m = dom_parser.parse_dom(m, 'a', req='href')
             m = [(i.attrs['href'], i.content) for i in m]
@@ -46,9 +54,9 @@ class source:
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
-
         try:
-            result = client.request(self.search_link_tv, cookie='check=1')
+            self.scraper = cfscrape.create_scraper()
+            result = self.scraper.get(self.search_link_tv, verify=False).content
             m = client.parseDOM(result, 'div', attrs={'class': 'masonry'})[0]
             m = dom_parser.parse_dom(m, 'a', req='href')
             m = [(i.attrs['href'], i.content) for i in m]
@@ -63,12 +71,10 @@ class source:
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
             if url == None: return
-
             url = urlparse.urljoin(self.base_link, url)
             for i in range(3):
-                result = client.request(url, cookie='check=1', timeout=10)
-                if not result == None: break
-
+                result = self.scraper.get(url, verify=False).content
+                if not result == None: break  
             title = cleantitle.get(title)
             premiered = re.compile('(\d{4})-(\d{2})-(\d{2})').findall(premiered)[0]
             premiered = '%s/%s/%s' % (premiered[2], premiered[1], premiered[0])
@@ -88,12 +94,12 @@ class source:
             if url == None: return sources
             url = urlparse.urljoin(self.base_link, url)
             for i in range(3):
-                result = client.request(url, cookie='check=1')
+                result = self.scraper.get(url, verify=False).content
                 if not result == None: break
-
-            links = re.compile('onclick="report\(\'([^\']+)').findall(result)
+            
+            links = re.compile('onclick="report\(\'([^\']+)').findall(result)         
             for link in links:
-                try:
+                try:                    
                     valid, hoster = source_utils.is_host_valid(link, hostDict)
                     if not valid: continue
                     urls, host, direct = source_utils.check_directstreams(link, hoster)

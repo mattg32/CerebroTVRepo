@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Exodus Add-on
-    Copyright (C) 2016 Exodus
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,51 +19,35 @@
 '''
 
 
-import re,urllib,urlparse,json
+import re,urllib,urlparse,json,base64
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
-from resources.lib.modules import proxy
+from resources.lib.modules import source_utils
+from resources.lib.modules import dom_parser
+#from resources.lib.modules import log_utils
+
 
 
 class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['dwatchseries.to','onwatchseries.to','mywatchseries.to','itswatchseries.to', 'ewatchseries.to']
-        self.base_link = 'http://watchtvseries.unblckd.bz'
-        self.search_link = 'http://watchtvseries.unblckd.bz/search/%s' #'http://dwatchseries.to/show/search-shows-json'
-        self.search_link_2 = 'http://watchtvseries.unblckd.bz/search/%s'
-
+        self.domains = ['watchseriesfree.to','seriesfree.to']
+        self.base_link = 'https://seriesfree.to'
+        self.search_link = 'https://seriesfree.to/search/%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
-            t = cleantitle.get(tvshowtitle)
+            query = self.search_link % urllib.quote_plus(cleantitle.query(tvshowtitle))
+            result = client.request(query)
+            #tvshowtitle = cleantitle.get(tvshowtitle)
+            t = [tvshowtitle] + source_utils.aliases_to_array(aliases)
+            t = [cleantitle.get(i) for i in set(t) if i]
+            result = re.compile('itemprop="url"\s+href="([^"]+).*?itemprop="name"\s+class="serie-title">([^<]+)', re.DOTALL).findall(result)
+            for i in result:
+                if cleantitle.get(cleantitle.normalize(i[1])) in t and year in i[1]: url = i[0]
 
-            q = urllib.quote_plus(cleantitle.query(tvshowtitle))
-            p = urllib.urlencode({'term': q})
-
-            r = client.request(self.search_link, post=p, XHR=True)
-            try: r = json.loads(r)
-            except: r = None
-            r = None
-
-            if r:
-                r = [(i['seo_url'], i['value'], i['label']) for i in r if 'value' in i and 'label' in i and 'seo_url' in i]
-            else:
-                r = proxy.request(self.search_link_2 % q, 'tv shows')
-                r = client.parseDOM(r, 'div', attrs = {'valign': '.+?'})
-                r = [(client.parseDOM(i, 'a', ret='href'), client.parseDOM(i, 'a', ret='title'), client.parseDOM(i, 'a')) for i in r]
-                r = [(i[0][0], i[1][0], i[2][0]) for i in r if i[0] and i[1] and i[2]]
-
-            r = [(i[0], i[1], re.findall('(\d{4})', i[2])) for i in r]
-            r = [(i[0], i[1], i[2][-1]) for i in r if i[2]]
-            r = [i for i in r if t == cleantitle.get(i[1]) and year == i[2]]
-
-            url = r[0][0]
-            url = proxy.parse(url)
-
-            url = url.strip('/').split('/')[-1]
             url = url.encode('utf-8')
             return url
         except:
@@ -74,28 +58,16 @@ class source:
         try:
             if url == None: return
 
-            url = '%s/serie/%s' % (self.base_link, url)
+            url = urlparse.urljoin(self.base_link, url)
+            result = client.request(url)
 
-            r = proxy.request(url, 'tv shows')
-            r = client.parseDOM(r, 'li', attrs = {'itemprop': 'episode'})
+            title = cleantitle.get(title)
+            premiered = re.compile('(\d{4})-(\d{2})-(\d{2})').findall(premiered)[0]
+            premiered = '%s/%s/%s' % (premiered[2], premiered[1], premiered[0])
+            items = dom_parser.parse_dom(result, 'a', attrs={'itemprop':'url'})
 
-            t = cleantitle.get(title)
-
-            r = [(client.parseDOM(i, 'a', ret='href'), client.parseDOM(i, 'span', attrs = {'itemprop': 'name'}), re.compile('(\d{4}-\d{2}-\d{2})').findall(i)) for i in r]
-            r = [(i[0], i[1][0].split('&nbsp;')[-1], i[2]) for i in r if i[1]] + [(i[0], None, i[2]) for i in r if not i[1]]
-            r = [(i[0], i[1], i[2][0]) for i in r if i[2]] + [(i[0], i[1], None) for i in r if not i[2]]
-            r = [(i[0][0], i[1], i[2]) for i in r if i[0]]
-
-            url = [i for i in r if t == cleantitle.get(i[1]) and premiered == i[2]][:1]
-            if not url: url = [i for i in r if t == cleantitle.get(i[1])]
-            if len(url) > 1 or not url: url = [i for i in r if premiered == i[2]]
-            if len(url) > 1 or not url: raise Exception() 
-
-            url = url[0][0]
-            url = proxy.parse(url)
-
-            url = re.findall('(?://.+?|)(/.+)', url)[0]
-            url = client.replaceHTMLCodes(url)
+            url = [i.attrs['href'] for i in items if bool(re.compile('<span\s*>%s<.*?itemprop="episodeNumber">%s<\/span>' % (season,episode)).search(i.content))][0]
+            
             url = url.encode('utf-8')
             return url
         except:
@@ -107,31 +79,33 @@ class source:
             sources = []
 
             if url == None: return sources
-
             url = urlparse.urljoin(self.base_link, url)
-
-            r = proxy.request(url, 'tv shows')
-
-            links = client.parseDOM(r, 'a', ret='href', attrs = {'target': '.+?'})
-            links = [x for y,x in enumerate(links) if x not in links[:y]]
-
-            for i in links:
+            for i in range(3):
+                result = client.request(url, timeout=10)
+                if not result == None: break
+            
+            dom = dom_parser.parse_dom(result, 'div', attrs={'class':'links', 'id': 'noSubs'})
+            result = dom[0].content
+            
+            links = re.compile('<tr\s*>\s*<td><i\s+class="fa fa-youtube link-logo"></i>([^<]+).*?href="([^"]+)"\s+class="watch',re.DOTALL).findall(result)         
+            for link in links[:5]:
                 try:
-                    url = i
-                    url = proxy.parse(url)
-                    url = urlparse.parse_qs(urlparse.urlparse(url).query)['r'][0]
-                    url = url.decode('base64')
-                    url = client.replaceHTMLCodes(url)
-                    url = url.encode('utf-8')
-
-                    host = re.findall('([\w]+[.][\w]+)$', urlparse.urlparse(url.strip().lower()).netloc)[0]
-                    if not host in hostDict: raise Exception()
-                    host = host.encode('utf-8')
-
-                    sources.append({'source': host, 'quality': 'SD', 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
+                    url2 = urlparse.urljoin(self.base_link, link[1])
+                    for i in range(2):
+                        result2 = client.request(url2, timeout=3)
+                        if not result2 == None: break                    
+                    r = re.compile('href="([^"]+)"\s+class="action-btn').findall(result2)[0]
+                    valid, hoster = source_utils.is_host_valid(r, hostDict)
+                    if not valid: continue
+                    #log_utils.log('JairoxDebug1: %s - %s' % (url2,r), log_utils.LOGDEBUG)
+                    urls, host, direct = source_utils.check_directstreams(r, hoster)
+                    for x in urls: sources.append({'source': host, 'quality': x['quality'], 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False})
+                    
                 except:
-                    pass
-
+                    #traceback.print_exc()
+                    pass           
+                    
+            #log_utils.log('JairoxDebug2: %s' % (str(sources)), log_utils.LOGDEBUG)
             return sources
         except:
             return sources

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    Covenant Add-on
+    Filmnet Add-on (C) 2017
+    Credits to Exodus and Covenant; our thanks go to their creators
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -32,8 +33,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['cmovieshd.net']
-        self.base_link = 'https://cmovieshd.net'
-        self.search_link = '/search/?q=%s'
+        self.base_link = 'http://cmovieshd.net/'
+        self.search_link = 'search/?q=%s'
 
     def matchAlias(self, title, aliases):
         try:
