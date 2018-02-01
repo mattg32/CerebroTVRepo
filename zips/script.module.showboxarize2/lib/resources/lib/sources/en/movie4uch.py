@@ -1,22 +1,16 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Filmnet Add-on (C) 2017
-    Credits to Exodus and Covenant; our thanks go to their creators
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 import re, urlparse, urllib
 
@@ -47,7 +41,7 @@ class source:
                   client.parseDOM(i, 'img', ret='alt')[0],
                   dom_parser2.parse_dom(i, 'span', attrs={'class': 'year'})) for i in r]
             r = [(i[0].attrs['href'], i[1], i[2][0].content) for i in r if
-                 i[2][0].content == year]
+                 (cleantitle.get(i[1]) == cleantitle.get(title) and i[2][0].content == year)]
             url = r[0][0]
     
             return url
@@ -66,6 +60,7 @@ class source:
             r = [(i[0].attrs['href'], i[1], i[2][0].content) for i in r if
                  (cleantitle.get(i[1]) == cleantitle.get(tvshowtitle) and i[2][0].content == year)]
             url = source_utils.strip_domain(r[0][0])
+
             return url
         except:
             return
@@ -74,11 +69,9 @@ class source:
         try:
             if not url:
                 return
+
             t = url.split('/')[2]
-            url = self.base_link + '/tvshows/%s/#episodes' % (t)
-            r = client.request(url)
-            express = '''<a\s*href="(https://movie4u.ch/episodes/.+?%sx%s)/''' % (season, episode)
-            url = re.findall(express, r)[0]
+            url = self.base_link + '/episodes/%s-%dx%d' % (t, int(season), int(episode))
             return url
         except:
             return
