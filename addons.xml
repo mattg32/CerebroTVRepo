@@ -156,30 +156,6 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="plugin.video.showboxarize2" version="100.0.15" name=" [COLOR black].[/COLOR][COLOR ghostwhite][B]Cerebro ShowBox[/B][/COLOR]" provider-name="biglad">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0" />
-		<import addon="script.module.showboxarize2" />
-		<import addon="script.showboxarize2.artwork" version="1.0.0" />
-		<import addon="script.showboxarize2.metadata" version="1.0.0" />
-		<import addon="script.module.urlresolver" version="3.0.0" />
-		<import addon="script.module.metahandler" version="1.0.0" />
-		<import addon="script.module.requests" />
-		<import addon="script.cerebro.backend" />
-		<import addon="script.cerebro.pairwith" />
-        <import addon="script.cerebro.pairwith.laucnher" />
-		<import addon="repository.cerebro" />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="cerebro.py">
-		<provides>video</provides>
-	</extension>
-	<summary>Cerebro ShowBox Addon</summary>
-	<description>Based of showboxarize.</description>
-	<extension point="xbmc.addon.metadata">
-	<platform>all</platform>
-	</extension>
-</addon>
-
 <addon
   id="plugin.video.SportsDevil"
   version="2018.01.30a"
@@ -465,18 +441,6 @@ provider-name="Cerebro">
   </extension>
 </addon>
 
-<addon id="script.module.showboxarize2" name="Cerebro ShowBox Scraper" version="1.00.210" provider-name="biglad">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Scrapers For Cerebro ShowBox Addon</summary>
-		<description>...</description>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="script.module.streamlink.base" name="Streamlink Library" version="2018.01.14" provider-name="Twilight0">
   <requires>
     <import addon="xbmc.python" version="2.24.0"/>
@@ -572,30 +536,6 @@ provider-name="Cerebro">
     <!--<website></website>-->
     <!--<language></language>-->
   </extension>
-</addon>
-
-<addon id="script.showboxarize2.artwork" version="1.0.9" name="Cerebro ShowBox Artwork" provider-name="biglad">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Themes for the Cerebro ShowBox Addon</summary>
-		<description>Themes for Cerebro ShowBox are maintained separately to make distribution of the the addon itself easier/faster.</description>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="script.showboxarize2.metadata" version="1.0.0" name="Cerebro ShowBox Metadata" provider-name="biglad">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Metadata for the Cerebro ShowBox Addon</summary>
-		<description>Metadata for Cerebro ShowBox are maintained separately to make distribution of the the addon itself easier/faster.</description>
-		<platform>all</platform>
-	</extension>
 </addon>
 
 <addon id="script.tvguide.cerebrotv.uk.2017" name="Cerebro TV Guide FREE (EPG)" version="100.8" provider-name="Biglad-FREE VERSION">
