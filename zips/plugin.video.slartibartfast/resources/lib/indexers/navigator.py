@@ -25,25 +25,25 @@ class navigator:
     def movies(self, lite=False):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
         self.addDirectoryItem('Search For A Movie', 'movieSearch', 'search.png', 'DefaultMovies.png')
-        self.addDirectoryItem('New Movies', 'movieWidget', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem(32017, 'movies&url=trending', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem(32018, 'movies&url=popular', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32019, 'movies&url=views', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32020, 'movies&url=boxoffice', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32021, 'movies&url=oscars', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem('In Cinema', 'movies&url=theaters', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem('Channels', 'channels', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedMovies.png')
-        self.addDirectoryItem(32011, 'movieGenres', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32012, 'movieYears', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32013, 'moviePersons', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-        self.addDirectoryItem(32015, 'movieCertificates', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem('New Movies', 'movieWidget', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem(32017, 'movies&url=trending', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem(32018, 'movies&url=popular', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32019, 'movies&url=views', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32020, 'movies&url=boxoffice', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32021, 'movies&url=oscars', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem('In Cinema', 'movies&url=theaters', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedMovies.png')
+        #self.addDirectoryItem('Channels', 'channels', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedMovies.png')
+        self.addDirectoryItem(32011, 'movieGenres', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32012, 'movieYears', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32013, 'moviePersons', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32015, 'movieCertificates', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem(32003, 'mymovieliteNavigator', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem(32003, 'mymovieliteNavigator', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultVideoPlaylists.png')
 
-            #self.addDirectoryItem(32028, 'moviePerson', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
-            self.addDirectoryItem(32010, 'movieSearch', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
+            #self.addDirectoryItem(32028, 'moviePerson', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
+            self.addDirectoryItem(32010, 'movieSearch', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
 
         self.endDirectory()
 
@@ -52,14 +52,14 @@ class navigator:
         self.accountCheck()
 
         if traktCredentials == True:
-            self.addDirectoryItem(32032, 'movies&url=traktcollection', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png', queue=True)
-            self.addDirectoryItem(32033, 'movies&url=traktwatchlist', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png', queue=True)
-            self.addDirectoryItem(32035, 'movies&url=traktfeatured', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png', queue=True)
+            self.addDirectoryItem(32032, 'movies&url=traktcollection', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png', queue=True)
+            self.addDirectoryItem(32033, 'movies&url=traktwatchlist', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png', queue=True)
+            self.addDirectoryItem(32035, 'movies&url=traktfeatured', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png', queue=True)
 
         if traktIndicators == True:
-            self.addDirectoryItem(32036, 'movies&url=trakthistory', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png', queue=True)
+            self.addDirectoryItem(32036, 'movies&url=trakthistory', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png', queue=True)
 
-        self.addDirectoryItem(32039, 'movieUserlists', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png')
+        self.addDirectoryItem(32039, 'movieUserlists', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png')
 
         if lite == False:
             self.addDirectoryItem(32031, 'movieliteNavigator', 'movies.png', 'DefaultMovies.png')
@@ -71,24 +71,24 @@ class navigator:
 
     def tvshows(self, lite=False):
         self.addDirectoryItem('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)', 'pair', __icon__, 'DefaultFolder.png')
-        self.addDirectoryItem('Search For A TV Shows', 'tvSearch', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32023, 'tvshows&url=rating', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32019, 'tvshows&url=views', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32017, 'tvshows&url=trending', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedEpisodes.png')
-        self.addDirectoryItem(32018, 'tvshows&url=popular', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32011, 'tvGenres', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        #self.addDirectoryItem(32016, 'tvNetworks', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32015, 'tvCertificates', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem(32024, 'tvshows&url=airing', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-        self.addDirectoryItem('New Episodes', 'calendar&url=added', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
-        self.addDirectoryItem(32027, 'calendars', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem('Search For A TV Shows', 'tvSearch', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32023, 'tvshows&url=rating', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32019, 'tvshows&url=views', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32017, 'tvshows&url=trending', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png')
+        self.addDirectoryItem(32018, 'tvshows&url=popular', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32011, 'tvGenres', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        #self.addDirectoryItem(32016, 'tvNetworks', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32015, 'tvCertificates', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32024, 'tvshows&url=airing', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem('New Episodes', 'calendar&url=added', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
+        self.addDirectoryItem(32027, 'calendars', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png')
 
         if lite == False:
             if not control.setting('lists.widget') == '0':
-                self.addDirectoryItem(32004, 'mytvliteNavigator', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultVideoPlaylists.png')
+                self.addDirectoryItem(32004, 'mytvliteNavigator', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultVideoPlaylists.png')
 
-            #self.addDirectoryItem(32028, 'tvPerson', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32010, 'tvSearch', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
+            #self.addDirectoryItem(32028, 'tvPerson', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32010, 'tvSearch', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
 
         self.endDirectory()
 
@@ -97,22 +97,22 @@ class navigator:
         self.accountCheck()
 
         if traktCredentials == True:
-            self.addDirectoryItem(32032, 'tvshows&url=traktcollection', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32033, 'tvshows&url=traktwatchlist', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32035, 'tvshows&url=traktfeatured', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32041, 'episodeUserlists', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32032, 'tvshows&url=traktcollection', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32033, 'tvshows&url=traktwatchlist', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32035, 'tvshows&url=traktfeatured', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32041, 'episodeUserlists', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
 			
         if traktIndicators == True:
-            self.addDirectoryItem(32036, 'calendar&url=trakthistory', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png', queue=True)
-            self.addDirectoryItem(32037, 'calendar&url=progress', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
-            self.addDirectoryItem(32038, 'calendar&url=mycalendar', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
+            self.addDirectoryItem(32036, 'calendar&url=trakthistory', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png', queue=True)
+            self.addDirectoryItem(32037, 'calendar&url=progress', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
+            self.addDirectoryItem(32038, 'calendar&url=mycalendar', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
 
-        self.addDirectoryItem(32040, 'tvUserlists', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32040, 'tvUserlists', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
 
         if lite == False:
-            self.addDirectoryItem(32031, 'tvliteNavigator', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32028, 'tvPerson', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
-            self.addDirectoryItem(32010, 'tvSearch', 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32031, 'tvliteNavigator', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32028, 'tvPerson', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+            self.addDirectoryItem(32010, 'tvSearch', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
 
         self.endDirectory()
 
@@ -121,9 +121,9 @@ class navigator:
         tv_downloads = control.setting('tv.download.path')
 
         if len(control.listDir(movie_downloads)[0]) > 0:
-            self.addDirectoryItem(32001, movie_downloads, 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultMovies.png', isAction=False)
+            self.addDirectoryItem(32001, movie_downloads, 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultMovies.png', isAction=False)
         if len(control.listDir(tv_downloads)[0]) > 0:
-            self.addDirectoryItem(32002, tv_downloads, 'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png', 'DefaultTVShows.png', isAction=False)
+            self.addDirectoryItem(32002, tv_downloads, 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png', isAction=False)
 
         self.endDirectory()
 
