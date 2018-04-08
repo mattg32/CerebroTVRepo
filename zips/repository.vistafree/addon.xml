@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.vistafree" name="VistaTVs Free Addon Repo" version="1.1" provider-name="VistaTV">
-	<extension point="xbmc.addon.repository" name="VistaTVs Free Addon Repo">
+<addon id="repository.vistafree" name="VistaTVs Free Addon Repo" version="1.7" provider-name="VistaTV">
+	<extension point="xbmc.addon.repository" name="VistaTVs FREE Addon Repo">
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/addons.xml</info>
 			<checksum>https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/addons.xml.md5</checksum>
@@ -19,7 +19,7 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary></summary>
-		<description>VistaTV Free Repo</description>
+		<description>VistaTVs TVs FREE Repo</description>
 		<platform>all</platform>
 	</extension>
 </addon>
