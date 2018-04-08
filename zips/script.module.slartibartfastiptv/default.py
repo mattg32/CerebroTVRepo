@@ -7,8 +7,8 @@ fanart     = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id
 logfile    = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'log.txt'))
 
 def home():
-	addDir('[COLOR white][B]BBCi Player[/COLOR][/B]','url',1000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
-	addDir('[COLOR white][B]NO Geo Locked IPTV[/COLOR][/B]','url',4000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
+	addDir('[COLOR white][B]UK IPTV[/COLOR][/B] (If out use UK enable VPN)','url',1000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
+	addDir('[COLOR white][B]Mobdro & Pak India Streams[/COLOR][/B]','url',4000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
 	
 def log(text):
 	file = open(logfile,"w+")

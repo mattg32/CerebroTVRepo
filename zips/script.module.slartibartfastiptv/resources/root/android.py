@@ -8,10 +8,10 @@ fanart     = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id
 def cat():
 	#addDir('[COLOR white][B]Geo TV[/COLOR][/B]','geotv',4,'https://image.winudf.com/v2/image/Y29tLnNuci5lbnRfaWNvbl8wX2I0N2VlYjZi/icon.png?w=170&fakeurl=1&type=.png',fanart,'')
 	#addDir('[COLOR white][B]eDoctor IPTV[/COLOR][/B]','edoctor',4,'https://lh3.googleusercontent.com/qydRpyUiySg1MuswXdbQE88PBfyPH8uJYhONBL3UO1Ij4yEHtftHFK3pKXHXppFUCmk=w300',fanart,'')
-	addDir('[COLOR white][B]Mobdro Streams[/COLOR][/B]','mobdro',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
+	addDir('[COLOR white][B]Mobdro Streams[/COLOR][/B] [I](May be blocked in UK if not working use a VPN)[/I]','mobdro',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
 	#addDir('[COLOR white][B]Mobdro 24/7 TV[/COLOR][/B]','mobdro247',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
 	#addDir('[COLOR white][B]Mobdro 24/7 Movies[/COLOR][/B]','mobdro247Movies',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
-	a#ddDir('[COLOR white][B]Mobdro 24/7 Kids[/COLOR][/B]','mobdro247Kids',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
+	#addDir('[COLOR white][B]Mobdro 24/7 Kids[/COLOR][/B]','mobdro247Kids',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
 	#addDir('[COLOR white][B]Mobile TV[/COLOR][/B]','mobiletv',4,'https://4.bp.blogspot.com/-mAW-a99Dvlw/WO9Mf16-k6I/AAAAAAAAXTg/z_lXe9-JV2UA3xwrFTkfvSBvmXcXI0imwCLcB/s1600/unnamed.jpg',fanart,'')
 	addDir('[COLOR white][B]Pak India Streams[/COLOR][/B]','pakindiasport',4,'http://www.madhyamam.com/en/sites/default/files/india-pak.jpg',fanart,icon)
 	#addDir('[COLOR white][B]Swift Streams[/COLOR][/B]','snappystreams',4,'https://image.winudf.com/v2/image/Y29tLnN3aWZ0LnN0cmVhbV9zcmNqdHBicg/icon.png?w=170&fakeurl=1&type=.png',fanart,'')
