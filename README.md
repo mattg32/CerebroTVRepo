@@ -1,2 +1,5 @@
 Vista TV's Free Add-on Repo
-www.vistatv.uk
+
+NO SUPPORT FOR FOR FREE ADD-ONS
+
+http://www.vistatv.uk
