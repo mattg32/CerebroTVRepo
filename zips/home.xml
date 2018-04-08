@@ -32,8 +32,14 @@
  
 
 <plugin>
-<name>[COLOR ffff0000][B]L[/COLOR][COLOR white]ive Tv[/COLOR][/B]</name>
+<name>[COLOR ffff0000][B]L[/COLOR][COLOR white]ive Tv[/COLOR][/B] [I](FREE IPTV)[/I]</name>
 <link>plugin://script.module.slartibartfastiptv</link>
+<thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
+</plugin>
+
+<plugin>
+<title> </title>
+<link>plugin://script.vistatv-wizard</link>
 <thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
 </plugin>
 
@@ -50,7 +56,7 @@
 </plugin>
 
 <plugin>
-<name>[COLOR ffff0000][B]24/7 [/COLOR][COLOR white]Kids[/COLOR][/B]</name>
+<name>[COLOR ffff0000][B]24/7 [/COLOR][COLOR white]Kids Shows[/COLOR][/B] [I](best digital babysitter going)[/I]</name>
 <link>plugin://script.module.slartibartfastiptv/?description=C%3a%5cUsers%5cbigla%5cAppData%5cRoaming%5cKodi%5caddons%5cscript.module.slartibartfastiptv%5cicon.png&iconimage=http%3a%2f%2fapk.co%2fimages%2fmobdro-2014-freemium.png&mode=4&name=%5bCOLOR%20white%5d%5bB%5dMobdro%2024%2f7%20Kids%5b%2fCOLOR%5d%5b%2fB%5d&url=mobdro247Kids</link>
 <thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
 </plugin>
