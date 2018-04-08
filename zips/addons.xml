@@ -55,12 +55,12 @@
 
 <addon id="script.cerebro.pairwith"
   name="VistaTV Pair With"
-  version="2.4"
+  version="2.5"
   provider-name="VistaTV">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
-	<import addon="repository.cerebro" />
+	<import addon="repository.vistafree" />
   </requires>
   <extension point="xbmc.python.script" library="addon.py">
     <provides>executable</provides>
