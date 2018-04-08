@@ -1,6 +1,6 @@
 
 import os,xbmc
-logfile    = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.vistatv', 'log.txt'))
+logfile    = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.slartibartfast', 'log.txt'))
 
 
 def log(text):
@@ -11,7 +11,7 @@ def check4update():
 	import re,time,xbmc,xbmcgui
 	from resources.lib.modules import client
 
-	addonxml = xbmc.translatePath('special://home/addons/plugin.video.vistatv/addon.xml')
+	addonxml = xbmc.translatePath('special://home/addons/plugin.video.slartibartfast/addon.xml')
 	file     = open(addonxml)
 	data     = file.read()
 	file.close()
@@ -21,13 +21,13 @@ def check4update():
 	
 	log(c_version2)
 
-	html = client.request('https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/addons.xml')
+	html = client.request('https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/addons.xml')
 
-	o_version = re.compile('plugin.video.vistatv.+?version="(.+?)"').findall(html)[0]
+	o_version = re.compile('plugin.video.slartibartfast.+?version="(.+?)"').findall(html)[0]
 	o_version2= (o_version).replace('.','')
 	log(o_version2)
 	if c_version2 < o_version2:
-		update = 'https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/zips/plugin.video.vistatv/plugin.video.vistatv-%s.zip'%o_version
+		update = 'https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/zips/plugin.video.slartibartfast/plugin.video.slartibartfast-%s.zip'%o_version
 		install(o_version,update)
 		xbmc.executebuiltin("UpdateAddonRepos")
 		xbmc.executebuiltin("UpdateLocalAddons")
@@ -38,7 +38,7 @@ def check4update():
 def install(vers,url):
     import xbmc,xbmcgui,os,re,time
     from resources.lib.modules import downloader2
-    addon_folder = xbmc.translatePath('special://home/addons/plugin.video.vistatv/')
+    addon_folder = xbmc.translatePath('special://home/addons/plugin.video.slartibartfast/')
     path = xbmc.translatePath(os.path.join('special://home/addons','packages'))
     dp = xbmcgui.DialogProgress()
     dp.create("[COLOR red]VistaTV[/COLOR]","Installing Dependency Update v[COLOR red]%s[/COLOR]"%vers,'', 'Please Wait')

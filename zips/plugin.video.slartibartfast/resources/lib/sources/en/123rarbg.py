@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123rarbg.com']
-        self.base_link = 'http://123rarbg.com'
+        self.base_link = 'http://www0.123rarbg.com'
         self.search_link = '/search-movies/%s.html'
 
 

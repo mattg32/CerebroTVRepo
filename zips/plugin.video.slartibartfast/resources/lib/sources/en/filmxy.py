@@ -1,39 +1,35 @@
-# -*- coding: utf-8 -*-
+# NEEDS FIXING
 
-'''
-    Cerebro ShowBox Scraper
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 
-import re, urllib, urlparse, json, time
+import re,urllib,urlparse,json,base64
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
+from resources.lib.modules import directstream
 from resources.lib.modules import source_utils
-from resources.lib.modules import cfscrape
-
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['filmxy.me']
-        self.base_link = 'http://www.filmxy.me'
+        self.domains = ['filmxy.cc,filmxy.me']
+        self.base_link = 'http://www.filmxy.cc'
         self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
-        self.scraper = cfscrape.create_scraper()
+
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -44,67 +40,58 @@ class source:
             return
 
     def sources(self, url, hostDict, hostprDict):
-        self.sources = []
+        sources = []
         try:
             if url == None: return
             urldata = urlparse.parse_qs(url)
             urldata = dict((i, urldata[i][0]) for i in urldata)
             title = urldata['title'].replace(':', ' ').replace('-', ' ').lower()
-            year = urldata['year']
-            self.hostprDict = hostprDict
+            year  = urldata['year']
 
-            query = self.search_link % (self.base_link, title.lower().replace(' ', '%20'))
-            r = self.scraper.get(query).content
-            r = json.loads(r)
-            links = [(i['link'], i['title']['rendered']) for i in r if i]
-            links = [(i[0], i[1]) for i in links if cleantitle.get_simple(i[1].split('(')[0]) in cleantitle.get_simple(title)]
-            links = [i[0] for i in links if year in i[1]]
+            search_id = title.lower()
+            start_url = self.search_link % (self.base_link, search_id.replace(' ','%20'))
 
-            for i in links:
-                r = self.scraper.get(i).content
-                url = client.parseDOM(r, 'a', ret='href', attrs={'id':'main-down'})[0]
-
-                self.scrape_results(url)
-
-            return self.sources
+            headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
+            html = client.request(start_url,headers=headers)
+            Links = re.compile('"post","link":"(.+?)","title".+?"rendered":"(.+?)"',re.DOTALL).findall(html)
+            for link,name in Links:
+                link = link.replace('\\','')
+                name = name.replace('&#038;', '')
+                if title.lower() in name.lower(): 
+                    if year in name:
+                        holder = client.request(link,headers=headers)
+                        dpage = re.compile('id="main-down".+?href="(.+?)"',re.DOTALL).findall(holder)[0]
+                        sources = self.scrape_results(dpage, title, year)
+                        return sources
+            return sources
         except:
-            return self.sources
+            return sources
 
-
-    def scrape_results(self, url):
+    def scrape_results(self,url,title,year):
+        sources = []
         try:
+            headers={'User-Agent':'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'}
+            html = client.request(url,headers=headers)
+            
+            block720 = re.compile('class="links_720p"(.+?)</ul>',re.DOTALL).findall(html)
+            Links720 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block720)) 
+            for link in Links720:
+                host = link.split('//')[1].replace('www.','')
+                host = host.split('/')[0].lower()
+                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
+                    sources.append({'source':host,'quality':'720p','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
 
-            r = self.scraper.get(url).content
+            block1080 = re.compile('class="links_1080p"(.+?)</ul>',re.DOTALL).findall(html)
+            Links1080 = re.compile('href="(.+?)"',re.DOTALL).findall(str(block1080)) 
+            for link in Links1080:
+                host = link.split('//')[1].replace('www.','')
+                host = host.split('/')[0].lower()
+                if host not in ['upload.af', 'upload.mn', 'uploadx.org']:
+                    sources.append({'source':host,'quality':'1080p','language': 'en','url':link,'info':[],'direct':False,'debridonly':False})
 
-            links720 = client.parseDOM(r, 'div', attrs={'class': 'links_720p'})
-            links720 = client.parseDOM(links720, 'a', ret='href')
-            for link in links720:
-                valid, host = source_utils.is_host_valid(link, self.hostprDict)
-                print host
-                if host in self.hostprDict:
-                    debrid = True
-                else:
-                    debrid = False
-                self.sources.append(
-                    {'source': host, 'quality': '720p', 'language': 'en', 'url': link, 'info': [],
-                     'direct': False,
-                     'debridonly': debrid})
-
-            links1080 = client.parseDOM(r, 'div', attrs={'class': 'links_1080p'})
-            links1080 = client.parseDOM(links1080, 'a', ret='href')
-            for link in links1080:
-                valid, host = source_utils.is_host_valid(link, self.hostprDict)
-                print host
-                if host in self.hostprDict:
-                    debrid = True
-                else:
-                    debrid = False
-                self.sources.append(
-                    {'source': host, 'quality': '1080p', 'language': 'en', 'url': link, 'info': [],
-                     'direct': False,
-                     'debridonly': debrid})
-
-        except:pass
+            return sources   
+        except:
+            return sources
 
     def resolve(self, url):
         return url

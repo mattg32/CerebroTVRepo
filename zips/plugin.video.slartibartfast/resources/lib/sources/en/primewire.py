@@ -1,38 +1,32 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 
-import re,urllib,urlparse,base64
+import re,traceback,urllib,urlparse,base64,xbmc
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import proxy
+from resources.lib.modules import log_utils
 from resources.lib.modules import source_utils
 
 class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['primewire.ag','primewire.unblocked.vc']
+        self.domains = ['primewire.ag']
         self.base_link = 'http://www.primewire.ag'
-        self.base_link = 'https://primewire.unblocked.vc'
         self.key_link = '/index.php?search'
         self.moviesearch_link = '/index.php?search_keywords=%s&key=%s&search_section=1'
         self.tvsearch_link = '/index.php?search_keywords=%s&key=%s&search_section=2'
@@ -80,8 +74,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('Primewire - Exception: \n' + str(failure))
             return
-
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
@@ -126,8 +121,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('Primewire - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -156,8 +152,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('Primewire - Exception: \n' + str(failure))
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -187,16 +184,15 @@ class source:
                     quality = client.parseDOM(i, 'span', ret='class')[0]
                     quality,info = source_utils.get_release_quality(quality, url)
 
-                    sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'direct': False, 'debridonly': False})
+                    sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': url, 'info': info, 'direct': False, 'debridonly': False})
                 except:
                     pass
 
             return sources
         except:
+            failure = traceback.format_exc()
+            log_utils.log('Primewire - Exception: \n' + str(failure))
             return sources
-
 
     def resolve(self, url):
         return url
-
-

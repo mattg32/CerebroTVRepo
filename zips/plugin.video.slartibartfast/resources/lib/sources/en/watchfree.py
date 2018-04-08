@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['watchfree.to','watchfree.unblocked.pl']
-        self.base_link = 'https://watchfree.unblocked.pl'
+        self.base_link = 'https://watchfree.unblocked.mx/'
         self.moviesearch_link = '/?keyword=%s&search_section=1'
         self.tvsearch_link = '/?keyword=%s&search_section=2'
 

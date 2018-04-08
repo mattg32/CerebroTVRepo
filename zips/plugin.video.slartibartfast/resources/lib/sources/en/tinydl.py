@@ -29,8 +29,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['tinydl.com','phazeddl.me']
-        self.base_link = 'http://phazeddl.me'
+        self.domains = ['tinydl.com','phazeddl.me','phazeddl.tv']
+        self.base_link = 'http://phazeddl.tv'
         self.search_link = '/search/%s/feed/rss2/'
 
 

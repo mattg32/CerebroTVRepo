@@ -18,7 +18,7 @@ from resources.lib.modules import youtube
 from resources.lib.modules import views
 
 
-addon_id = 'plugin.video.vistatv'
+addon_id = 'plugin.video.slartibartfast'
 
 
 class indexer:
@@ -29,7 +29,7 @@ class indexer:
     def root(self):
         try:
             regex.clear()
-            url = 'https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/zips/to-be-cleaned-up-ed/super%20old%20stuff/9534958459845345/sdfdsfdsfdsfsdfsfdsf/1/2/lol/wtf/serverchecker.xml'
+            url = 'https://raw.githubusercontent.com/biglad/CerebroTVRepo/master/zips/home.xml'
             self.list = self.streamhub_list(url)
             for i in self.list: i.update({'content': 'addons'})
             self.addDirectory(self.list)
@@ -1216,8 +1216,8 @@ def setxxxpass():
 				xbmcgui.Dialog().notification('[COLOR red]Password Cannot Be Blank[/COLOR]','StreamHub')
 				setxxxpass()
 			else:
-				xbmcaddon.Addon('plugin.video.vistatv').setSetting('xxxpass',pw)
-				xbmcaddon.Addon('plugin.video.vistatv').setSetting('enablexxxpass','true')
+				xbmcaddon.Addon('plugin.video.slartibartfast').setSetting('xxxpass',pw)
+				xbmcaddon.Addon('plugin.video.slartibartfast').setSetting('enablexxxpass','true')
 				xbmcgui.Dialog().ok('[COLOR red]StreamHub[/COLOR]','Password has been set')
 				
 				

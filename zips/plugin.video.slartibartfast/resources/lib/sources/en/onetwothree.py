@@ -26,7 +26,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123movies.as']
-        self.base_link = 'https://123movies.as'
+        self.base_link = 'https://www1.123movies.as'
         self.source_link = 'https://gomostream.com'
         self.episode_path = '/episodes/%s-%sx%s/'
         self.movie_path = '/movies/%s-watch-online-free-123movies/'

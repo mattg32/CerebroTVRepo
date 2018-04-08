@@ -8,25 +8,25 @@
  # ----------------------------------------------------------------------------
 #######################################################################
 
-# #Cerebro ShowBox Scraper
-#Cerebro ShowBox Scraper
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
 # Addon Provider: MuadDib
 
-import re,urllib,urlparse
+import re,traceback,urllib,urlparse
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import debrid
 from resources.lib.modules import source_utils
+from resources.lib.modules import log_utils
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['iiddl.net']
-        self.base_link = 'http://iiddl.net'
-        self.search_link = '/search/%s'
-
+        self.domains = ['2ddl.io']
+        self.base_link = 'http://2ddl.io/'
+        self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -34,6 +34,8 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('2DDL - Exception: \n' + str(failure))
             return
 
 
@@ -43,8 +45,9 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('2DDL - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -56,15 +59,14 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('2DDL - Exception: \n' + str(failure))
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
             if url == None: return sources
-
-            if debrid.status() is False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
@@ -74,11 +76,11 @@ class source:
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
             query = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])
-            query = re.sub('(\\\|/| -|:|;|\*|\?|"|\'|<|>|\|)', ' ', query)
+            query = re.sub('(\\\|/| -|:|;|\*|\?|"|<|>|\|)', ' ', query).replace('\'', '')
 
             url = self.search_link % urllib.quote_plus(query)
             url = urlparse.urljoin(self.base_link, url)
-
+            log_utils.log('2DDL - sources - url: ' + str(url))
             html = client.request(url)
             url_list = re.compile('<h2><a href="([^"]+)"',re.DOTALL).findall(html)
 
@@ -94,7 +96,6 @@ class source:
                         if 'sh.st' in vid_url:
                             continue
                         if 'linx' in vid_url:
-                            log_utils.log('2DDL - sources - linx: ' + str(vid_url))
                             continue
                         if '.rar' not in vid_url:
                             if '.srt' not in vid_url:
@@ -103,8 +104,10 @@ class source:
                                 host = host.split('/')[0].lower()
                                 sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': vid_url, 'info': info, 'direct': False, 'debridonly': False})
             return sources
-        except Exception, argument:
-            return sources  
+        except:
+            failure = traceback.format_exc()
+            log_utils.log('2DDL - Exception: \n' + str(failure))
+            return sources
 
     def resolve(self, url):
         return url

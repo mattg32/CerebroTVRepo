@@ -8,16 +8,16 @@
  # ----------------------------------------------------------------------------
 #######################################################################
 
-# #Cerebro ShowBox Scraper
-#Cerebro ShowBox Scraper
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
 # Addon Provider: MuadDib
 
-
-import re,urllib,urlparse,json,base64
+import re,traceback,urllib,urlparse,json,base64
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import directstream
+from resources.lib.modules import log_utils
 from resources.lib.modules import source_utils
 
 class source:
@@ -25,9 +25,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['1080pmovie.com']
-        self.base_link = 'https://1080pmovie.com/'
+        self.base_link = 'https://1080pmovie.com'
         self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
-
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -35,6 +34,8 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('1080PMovies - Exception: \n' + str(failure))
             return
 
     def sources(self, url, hostDict, hostprDict):
@@ -61,14 +62,12 @@ class source:
                         end = client.request(new,headers=headers)
                         final_url = re.compile('<iframe src="(.+?)"',re.DOTALL).findall(end)[0]
                         valid, host = source_utils.is_host_valid(final_url, hostDict)
-                        #if "openload" in host: str(host) = "(PAIR) "+host
                         sources.append({'source':host,'quality':'1080p','language': 'en','url':final_url,'info':[],'direct':False,'debridonly':False})
-                        continue
             return sources
-        except Exception, argument:
+        except:
+            failure = traceback.format_exc()
+            log_utils.log('1080PMovies - Exception: \n' + str(failure))
             return sources
-
-
 
     def resolve(self, url):
         return directstream.googlepass(url)

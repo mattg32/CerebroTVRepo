@@ -1,38 +1,34 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+# FIXME: Now has movies. Should we scrape it for movies as well?
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
-
-
-import re,urllib,urlparse,json,base64
+import re,traceback,urllib,urlparse,json,base64
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import source_utils
 from resources.lib.modules import dom_parser
-#from resources.lib.modules import log_utils
+from resources.lib.modules import directstream
+from resources.lib.modules import log_utils
 
 class source:
     def __init__(self):
-        self.priority = 1
+        self.priority = 0
         self.language = ['en']
         self.domains = ['watch-series.co','watch-series.ru']
-        self.base_link = 'https://watch-series.co/'
+        self.base_link = 'https://watch-series.co'
         self.search_link = 'search.html?keyword=%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
@@ -41,6 +37,8 @@ class source:
             self.tvshowtitle = tvshowtitle
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('WatchSeries - Exception: \n' + str(failure))
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
@@ -58,38 +56,35 @@ class source:
             url = get_ep.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('WatchSeries - Exception: \n' + str(failure))
             return
 
     def sources(self, url, hostDict, hostprDict):
         try:
             sources = []
             if url == None: return sources
-        
+
             hostDict += ['akamaized.net', 'google.com', 'picasa.com', 'blogspot.com']
-            result = client.request(url)
-            
+            result = client.request(url, timeout=10)
+
             dom = dom_parser.parse_dom(result, 'a', req='data-video')
-            urls = [i.attrs['data-video'] if i.attrs['data-video'].startswith('https') else 'https:' + i.attrs['data-video'] for i in dom]            
-            
+            urls = [i.attrs['data-video'] if i.attrs['data-video'].startswith('https') else 'https:' + i.attrs['data-video'] for i in dom]
+
             for url in urls:
                 dom = []
                 if 'vidnode.net' in url:
-                    headers = {'Host': 'vidnode.net',
-                               'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36',
-                               'Upgrade-Insecure-Requests': '1',
-                               'Accept-Language': 'en-US,en;q=0.9'}
-                    result = client.request(url, headers=headers)
+                    result = client.request(url, timeout=10)
                     dom = dom_parser.parse_dom(result, 'source', req=['src','label'])
                     dom = [(i.attrs['src'] if i.attrs['src'].startswith('https') else 'https:' + i.attrs['src'], i.attrs['label']) for i in dom if i]
-                # OCloud currently down. Check again at a later date.
-                #elif 'ocloud.stream' in url:
-                #    result = client.request(url, headers=headers)
-                #    base = re.findall('<base href="([^"]+)">', result)[0]
-                #    hostDict += [base]
-                #    dom = dom_parser.parse_dom(result, 'a', req=['href','id'])
-                #    dom = [(i.attrs['href'].replace('./embed',base+'embed'), i.attrs['id']) for i in dom if i]
-                #    dom = [(re.findall("var\s*ifleID\s*=\s*'([^']+)", client.request(i[0]))[0], i[1]) for i in dom if i]                        
-                if dom:         
+                elif 'ocloud.stream' in url:
+                    result = client.request(url, timeout=10)
+                    base = re.findall('<base href="([^"]+)">', result)[0]
+                    hostDict += [base]
+                    dom = dom_parser.parse_dom(result, 'a', req=['href','id'])
+                    dom = [(i.attrs['href'].replace('./embed',base+'embed'), i.attrs['id']) for i in dom if i]
+                    dom = [(re.findall("var\s*ifleID\s*=\s*'([^']+)", client.request(i[0]))[0], i[1]) for i in dom if i]
+                if dom:
                     try:
                         for r in dom:
                             valid, hoster = source_utils.is_host_valid(r[0], hostDict)
@@ -99,8 +94,8 @@ class source:
                             urls, host, direct = source_utils.check_directstreams(r[0], hoster)
                             for x in urls:
                                 if direct: size = source_utils.get_size(x['url'])
-                                if size: sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False, 'info': size})         
-                                else: sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False})         
+                                if size: sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False, 'info': size})
+                                else: sources.append({'source': host, 'quality': quality, 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False})
                     except: pass
                 else:
                     valid, hoster = source_utils.is_host_valid(url, hostDict)
@@ -112,6 +107,8 @@ class source:
                         pass
             return sources
         except:
+            failure = traceback.format_exc()
+            log_utils.log('WatchSeries - Exception: \n' + str(failure))
             return sources
 
     def resolve(self, url):

@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123moviesex']
-        self.base_link = 'http://www1.123movies.net/'
+        self.base_link = 'http://123moviesonline.stream/'
         self.search_link = '/search-movies/%s.html'
 
 

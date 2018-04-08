@@ -1,40 +1,32 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
-
-
-import re,urllib,urlparse,json
+import re,traceback,urllib,urlparse,json
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
+from resources.lib.modules import log_utils
 from resources.lib.modules import proxy
-
 
 class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['itswatchseries.to','onwatchseries.to','mywatchseries.to','dwatchseries.to']
-        self.base_link = 'https://watchseries.bypassed.org/'
-        self.search_link = 'http://watchseries.bypassed.org/show/search-shows-json'
-        self.search_link_2 = 'http://watchseries.bypassed.org/search/%s'
-
+        self.domains = ['xwatchseries.to','onwatchseries.to','itswatchseries.to']
+        self.base_link = 'http://watchseries.unblocked.wtf'
+        self.search_link = 'http://watchseries.unblocked.wtf/show/search-shows-json'
+        self.search_link_2 = 'http://watchseries.unblocked.wtf/search/%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
@@ -46,6 +38,7 @@ class source:
             r = client.request(self.search_link, post=p, XHR=True)
             try: r = json.loads(r)
             except: r = None
+            r = None
 
             if r:
                 r = [(i['seo_url'], i['value'], i['label']) for i in r if 'value' in i and 'label' in i and 'seo_url' in i]
@@ -66,8 +59,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('XWatchSeries - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -98,8 +92,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('XWatchSeries - Exception: \n' + str(failure))
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -133,8 +128,9 @@ class source:
 
             return sources
         except:
+            failure = traceback.format_exc()
+            log_utils.log('XWatchSeries - Exception: \n' + str(failure))
             return sources
-
 
     def resolve(self, url):
         return url

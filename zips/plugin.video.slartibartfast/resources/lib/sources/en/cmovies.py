@@ -1,25 +1,19 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 
-import re,urllib,urlparse,json,base64,time
+import re,traceback,urllib,urlparse,json,base64,time,xbmc
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
@@ -33,7 +27,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['cmovieshd.net']
-        self.base_link = 'https://cmovieshd.net/'
+        self.base_link = 'http://cmovieshd.net/'
         self.search_link = 'search/?q=%s'
 
     def matchAlias(self, title, aliases):
@@ -51,6 +45,8 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('CMoviesHD - Exception: \n' + str(failure))
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
@@ -60,8 +56,9 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('CMoviesHD - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -72,6 +69,8 @@ class source:
             url = urllib.urlencode(url)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('CMoviesHD - Exception: \n' + str(failure))
             return
 
     def sources(self, url, hostDict, locDict):
@@ -88,14 +87,19 @@ class source:
             query = urlparse.urljoin(self.base_link, query)
             result = client.request(query) #, cookie=cookie)
             try:
-              
-                if 'episode' in data:            
+
+                if 'episode' in data:
                     r = client.parseDOM(result, 'div', attrs={'class': 'ml-item'})
                     r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a', ret='title'))
-                    r = [(i[0], i[1], re.findall('(.*?)\s+-\s+Season\s+(\d)', i[1])) for i in r]
+                    r = [(i[0], i[1], re.findall('(.*?)\s+-\s+Season\s+(\d+)', i[1])) for i in r]
                     r = [(i[0], i[1], i[2][0]) for i in r if len(i[2]) > 0]
                     url = [i[0] for i in r if self.matchAlias(i[2][0], aliases) and i[2][1] == data['season']][0]
+
                     url = '%swatch' % url
+                    result = client.request(url)
+
+                    url = re.findall('a href=\"(.+?)\" class=\"btn-eps first-ep \">Episode %02d' % int(data['episode']), result)[0]
+
                 else:
                     r = client.parseDOM(result, 'div', attrs={'class': 'ml-item'})
                     r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a', ret='title'))
@@ -114,13 +118,12 @@ class source:
                 url = client.request(url, output='geturl')
                 if url == None: raise Exception()
 
-            except:                           
+            except:
               return sources
-                
-            
-            url = url if 'http' in url else urlparseF.urljoin(self.base_link, url)
-            result = client.request(url)    
-            src = re.findall('src\s*=\s*"(.*streamdor.co/video/\d+)"', result)[0]
+
+            url = url if 'http' in url else urlparse.urljoin(self.base_link, url)
+            result = client.request(url)
+            src = re.findall('src\s*=\s*"(.*streamdor.co\/video\/\d+)"', result)[0]
             if src.startswith('//'):
                 src = 'http:'+src
             episodeId = re.findall('.*streamdor.co/video/(\d+)', src)[0]
@@ -128,8 +131,8 @@ class source:
             try:
                 p = re.findall(r'JuicyCodes.Run\(([^\)]+)', p, re.IGNORECASE)[0]
                 p = re.sub(r'\"\s*\+\s*\"','', p)
-                p = re.sub(r'[^A-Za-z0-9+\\/=]','', p)    
-                p = base64.b64decode(p)                
+                p = re.sub(r'[^A-Za-z0-9+\\/=]','', p)
+                p = base64.b64decode(p)
                 p = jsunpack.unpack(p)
                 p = unicode(p, 'utf-8')
 
@@ -151,25 +154,25 @@ class source:
                 if 'fileEmbed' in js and js['fileEmbed'] != '':
                     ss.append([js['fileEmbed'], quali])
                 if 'fileHLS' in js and js['fileHLS'] != '':
-                    ss.append(['https://hls.streamdor.co/%s%s'%(tok, js['fileHLS']), quali])  
+                    ss.append(['https://hls.streamdor.co/%s%s'%(tok, js['fileHLS']), quali])
             except:
                 return sources
 
-            for link in ss:               
+            for link in ss:
 
                 try:
                     if 'google' in url:
                         valid, hoster = source_utils.is_host_valid(url, hostDict)
                         urls, host, direct = source_utils.check_directstreams(url, hoster)
                         for x in urls: sources.append({'source': host, 'quality': x['quality'], 'language': 'en', 'url': x['url'], 'direct': direct, 'debridonly': False})
-             
+
                     else:
-                        try: 
+                        try:
                             valid, hoster = source_utils.is_host_valid(link[0], hostDict)
                             direct = False
                             if not valid:
-                                hoster = 'CDN'                        
-                                direct = True                                       
+                                hoster = 'CDN'
+                                direct = True
                             sources.append({'source': hoster, 'quality': link[1], 'language': 'en', 'url': link[0], 'direct': direct, 'debridonly': False})
                         except: pass
 
@@ -177,7 +180,9 @@ class source:
                     pass
 
             return sources
-        except Exception as e:
+        except:
+            failure = traceback.format_exc()
+            log_utils.log('CMoviesHD - Exception: \n' + str(failure))
             return sources
 
     def resolve(self, url):

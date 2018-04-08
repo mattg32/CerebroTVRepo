@@ -1,4 +1,6 @@
-﻿# -*- coding: utf-8 -*-
+﻿# NEEDS FIXING
+
+# -*- coding: utf-8 -*-
 
 '''
     Cerebro ShowBox Scraper
@@ -27,6 +29,7 @@ from resources.lib.modules import cache
 from resources.lib.modules import directstream
 from resources.lib.modules import jsunfuck
 from resources.lib.modules import source_utils
+from resources.lib.modules import cfscrape
 
 CODE = '''def retA():
     class Infix:
@@ -105,7 +108,7 @@ class source:
             title = cleantitle.normalize(title)
             search = '%s Season %01d' % (title, int(season))
             url = urlparse.urljoin(self.base_link, self.search_link % urllib.quote_plus(cleantitle.getsearch(search)))
-            r = client.request(url, headers=headers, timeout='15')
+            r = self.s.get(url, headers=headers).content
             r = client.parseDOM(r, 'div', attrs={'class': 'ml-item'})
             r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a', ret='title'))
             r = [(i[0], i[1], re.findall('(.*?)\s+-\s+Season\s+(\d)', i[1])) for i in r]
@@ -119,7 +122,7 @@ class source:
         try:
             title = cleantitle.normalize(title)
             url = urlparse.urljoin(self.base_link, self.search_link % urllib.quote_plus(cleantitle.getsearch(title)))
-            r = client.request(url, headers=headers, timeout='15')
+            r = self.s.get(url, headers=headers).content
             r = client.parseDOM(r, 'div', attrs={'class': 'ml-item'})
             r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a', ret='title'))
             r = [(i[0], i[1], re.findall('(\d+)', i[0])[0]) for i in r]
@@ -131,9 +134,17 @@ class source:
                     if self.matchAlias(i[1], aliases) and (year == y):
                         url = i[0]
                         break
+                    #results.append([i[0], i[1], re.findall('<div\s+class="jt-info">(\d{4})', info)[0]])
                 except:
                     url = None
                     pass
+
+            #try:
+            #    r = [(i[0], i[1], i[2][0]) for i in results if len(i[2]) > 0]
+            #    url = [i[0] for i in r if self.matchAlias(i[1], aliases) and (year == i[2])][0]
+            #except:
+            #    url = None
+            #    pass
 
             if (url == None):
                 url = [i[0] for i in results if self.matchAlias(i[1], aliases)][0]
@@ -150,8 +161,11 @@ class source:
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
             aliases = eval(data['aliases'])
-            headers = {}
-
+            mozhdr = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.9.0.3) Gecko/2008092417 Firefox/3.0.3'}
+            headers = mozhdr
+            headers['X-Requested-With'] = 'XMLHttpRequest'
+            
+            self.s = cfscrape.create_scraper()
             if 'tvshowtitle' in data:
                 episode = int(data['episode'])
                 url = self.searchShow(data['tvshowtitle'], data['season'], aliases, headers)
@@ -159,18 +173,14 @@ class source:
                 episode = 0
                 url = self.searchMovie(data['title'], data['year'], aliases, headers)
 
-            mid = re.findall('-(\d+)', url)[-1]
-
+            headers['Referer'] = url
+            ref_url = url
+            mid = re.findall('-(\d*)\.',url)[0]
+            data = {'id':mid}
+            r = self.s.post(url, headers=headers)
             try:
-                headers = {'Referer': url,
-                           'Accept-Encoding': 'gzip, deflate, br',
-                           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36',
-                           'Host': 'solarmoviez.ru',
-                           'Accept': 'application/json, text/javascript, */*; q=0.01'
-                }
-
                 u = urlparse.urljoin(self.base_link, self.server_link % mid)
-                r = client.request(u, headers=headers, XHR=True, close=False)
+                r = self.s.get(u, headers=mozhdr).content
                 r = json.loads(r)['html']
                 rl = client.parseDOM(r, 'div', attrs = {'class': 'pas-list'})
                 rh = client.parseDOM(r, 'div', attrs = {'class': 'pas-header'})
@@ -194,7 +204,7 @@ class source:
                             quali = source_utils.get_release_quality(eid[2])[0]
                             if 'embed' in types[eid[1]]:
                                 url = urlparse.urljoin(self.base_link, self.embed_link % (eid[0]))
-                                xml = client.request(url, XHR=True, headers=headers)
+                                xml = self.s.get(url, headers=headers).content
                                 url = json.loads(xml)['src']
                                 valid, hoster = source_utils.is_host_valid(url, hostDict)
                                 if not valid: continue
@@ -204,8 +214,7 @@ class source:
                                 continue
                             else:
                                 url = urlparse.urljoin(self.base_link, self.token_link % (eid[0], mid, t))
-                            headers['Cookie'] = 's-view-%s=true'%mid
-                            script = client.request(url, XHR=True, headers=headers, close=False)
+                            script = self.s.get(url, headers=headers).content
                             if '$_$' in script:
                                 params = self.uncensored1(script)
                             elif script.startswith('[]') and script.endswith('()'):
@@ -217,8 +226,12 @@ class source:
                             else:
                                 raise Exception()
                             u = urlparse.urljoin(self.base_link, self.source_link % (eid[0], params['x'], params['y']))
-                            r = client.request(u, XHR=True, headers=headers, close=False)
-                            
+                            length = 0
+                            count = 0
+                            while length == 0 and count < 11:
+                                r = self.s.get(u, headers=headers).text
+                                length = len(r)
+                                if length == 0: count += 1
                             uri = None
                             uri = json.loads(r)['playlist'][0]['sources']
                             try:
@@ -236,14 +249,17 @@ class source:
                                     continue
 
                                 valid, hoster = source_utils.is_host_valid(url, hostDict)
+                                #urls, host, direct = source_utils.check_directstreams(url, hoster)
                                 q = quali                        
                                 if valid:
+                                    #for z in urls:
                                     if hoster == 'gvideo':
                                         direct = True
                                         try:
                                             q = directstream.googletag(url)[0]['quality']
                                         except:
                                             pass
+                                        url = directstream.google(url, ref=ref_url)
                                     else: direct = False
                                     sources.append({'source': hoster, 'quality': q, 'language': 'en', 'url': url, 'direct': direct, 'debridonly': False})                             
                                 else:
@@ -259,11 +275,15 @@ class source:
 
     def resolve(self, url):
         try:
-           if 'google' in url and not 'googleapis' in url:
-               return directstream.googlepass(url)
-           else:
-               return url
-        except:
+            if not url.startswith('http'):
+                url = 'http:' + url
+            for i in range(3):
+                if 'google' in url and not 'googleapis' in url:
+                    url = directstream.googlepass(url)
+                if url:
+                    break
+            return url
+        except Exception:
             return
 
     def uncensored(a, b):

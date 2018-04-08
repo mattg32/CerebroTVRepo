@@ -1,25 +1,19 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
+#######################################################################
+ # ----------------------------------------------------------------------------
+ # "THE BEER-WARE LICENSE" (Revision 42):
+ # @tantrumdev wrote this file.  As long as you retain this notice you
+ # can do whatever you want with this stuff. If we meet some day, and you think
+ # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
+ # ----------------------------------------------------------------------------
+#######################################################################
 
-'''
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
+# Addon Name: Placenta
+# Addon id: plugin.video.placenta
+# Addon Provider: MuadDib
 
 
-import re,urllib,urlparse,json
+import re,traceback,urllib,urlparse,json
 
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
@@ -34,7 +28,7 @@ class source:
         self.language = ['en']
         self.genre_filter = ['animation', 'anime']
         self.domains = ['gogoanimemobile.com', 'gogoanimemobile.net', 'gogoanime.io']
-        self.base_link = 'https://gogoanime.se/'
+        self.base_link = 'http://ww1.gogoanime.io'
         self.search_link = '/search.html?keyword=%s'
         self.episode_link = '/%s-episode-%s'
 
@@ -64,8 +58,9 @@ class source:
             url = url.encode('utf-8')
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('GoGoAnime - Exception: \n' + str(failure))
             return
-
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
         try:
@@ -78,8 +73,9 @@ class source:
             url = self.episode_link % (url, num)
             return url
         except:
+            failure = traceback.format_exc()
+            log_utils.log('GoGoAnime - Exception: \n' + str(failure))
             return
-
 
     def sources(self, url, hostDict, hostprDict):
         try:
@@ -108,8 +104,9 @@ class source:
 
             return sources
         except:
+            failure = traceback.format_exc()
+            log_utils.log('GoGoAnime - Exception: \n' + str(failure))
             return sources
-
 
     def resolve(self, url):
         return directstream.googlepass(url)
