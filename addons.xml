@@ -10,6 +10,7 @@
 		<import addon="script.video.F4mProxy"/>
 		<import addon="script.module.slartibartfast"/>
 		<import addon="script.module.slartibartfastiptv"/>
+		<import addon="script.cerebro.pairwith.laucnher"/>
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="default.py">
 		<provides>video</provides>
@@ -125,7 +126,7 @@
   </extension>
 </addon>
 
-<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="1.2.6" provider-name="VistaTV">
+<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="1.2.8" provider-name="VistaTV">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
