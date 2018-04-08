@@ -125,7 +125,7 @@
   </extension>
 </addon>
 
-<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="1.2.5" provider-name="VistaTV">
+<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="1.2.6" provider-name="VistaTV">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
