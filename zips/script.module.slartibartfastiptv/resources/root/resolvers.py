@@ -7,22 +7,14 @@ __addon__ = xbmcaddon.Addon()
 __addonname__ = __addon__.getAddonInfo('name')
 __icon__ = __addon__.getAddonInfo('icon')
 
-def d():
-    import requests,base64
-    try:
-        requests.get(base64.b64decode('aHR0cDovL2FmZmlsaWF0ZS5lbnRpcmV3ZWIuY29tL3NjcmlwdHMvY3owNm5mP2E9Y2VyZWJyb3R2JmFtcDtiPWM3ZmJiZDkzJmFtcDtkZXN0dXJsPWh0dHAlM0ElMkYlMkZtdHZiLmNvLnVrJTJGcCUyRg=='),headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'},verify=False,timeout=4).text
-    except:
-        pass
-#d()
 
 
-
-def resolve(url,disc):
+def resolve(url):
         import requests
         if 'tvcatchup' in url:
             open = OPEN_URL(url)
             url  = re.compile("file: '(.+?)'").findall(open)[0]
-            url  = url  + '|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'
+            url  = url  + '|User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
         elif 'tvplayer' in url:
             url  = playtvplayer(url)
         elif 'sdwnet' in url:
@@ -36,12 +28,11 @@ def resolve(url,disc):
             link = link.encode('ascii', 'ignore')
             url  = regex_from_to(link,'source: "','"')
             if not url.endswith=='.ts':
-                url = url+'|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'
+                url = url+'|User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
             else:
                 url    = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&url=%s'%url
         elif 'mpd://' in url:
-            try: url = mobdroresolve(url)
-            except: exit()
+            url = mobdroresolve(url)
         elif 'ustreamix' in url:
             url = ustreamixresolve(url)
         elif 'ibrod' in url:
@@ -50,13 +41,13 @@ def resolve(url,disc):
             url  = (url).replace('liveonlinetv247:','')
             link = 'http://www.liveonlinetv247.info/embed/%s.php?width=650&height=480'%url
             open = OPEN_URL(link)
-            url  = regex_from_to(open,'source src="','"') + '|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0'
+            url  = regex_from_to(open,'source src="','"') + '|User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36'
         elif 'arconaitv' in url:
             ref  = url
             open = OPEN_URL(url)
             url  = re.compile('source src="(.*?)"',re.DOTALL).findall(open)[0]
             url  = (url).replace('\/','/')
-            url  = url + '|Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0&Referer='+ref
+            url  = url + '|User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&Referer='+ref
         elif 'swift:' in url:
             import requests
             url = (url).replace('swift:','')
@@ -156,15 +147,11 @@ def ustreamixresolve(url):
     hdr['Referer'] = url
     tokpg = requests.get(tokurl,headers=hdr,verify=False).text
     token = re.findall('jdtk="(.*?)"',tokpg)[0]
-    url   = strurl+token+'|referer=&Mozilla/5.0 (Windows NT 10.0; WOW64; rv:53.0) Gecko/20100101 Firefox/53.0&&X-Requested-With: ShockwaveFlash/25.0.0.171'
+    url   = strurl+token+'|referer=&User-Agent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36&&X-Requested-With: ShockwaveFlash/25.0.0.171'
     return url
     
     
 def ping(host):
-    try: 
-        xbmc.executebuiltin('PlayerControl(stop)') 
-        xbmc.Player().stop()
-    except: pass
     """
     Returns True if host responds to a ping request
     """
@@ -175,7 +162,6 @@ def ping(host):
     ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
 
     # Ping
-    xbmc.sleep(500)
     return os.system("ping " + ping_str + " " + host) == 0
     
     
@@ -188,32 +174,31 @@ def pickserver():
 
 
 def mobdroresolve(url):
-    import time,md5
+    xbmc.executebuiltin('PlayerControl(stop)') 
+    #xbmc.executebuiltin("Notification([COLOR=gold]VistaTV[/COLOR],Checking For Active Server,3000,"+__icon__+")")
+    import random,time,md5
     from base64 import b64encode
-    try: 
-        xbmc.executebuiltin('PlayerControl(stop)') 
-        xbmc.Player().stop()
-    except: pass
-    xbmc.sleep(1500)
-    server = pickserver()
-    try:    
-        if not ping(server):
-            xbmc.executebuiltin("Notification([COLOR=gold]Cerebro TV[/COLOR],Unable to Connect?? Try Again OR Enable VPN!!!!!,15000,"+__icon__+")")
-            getserver = "0.0.0.0" 
-            exit()
-    except: 
-        exit()
-    xbmc.sleep(500)
-
     url  = (url).replace('mpd://','')
-    #user_agent = 'Mozilla%2F5.0%20%28Linux%3B%20Android%205.1.1%3B%20Nexus%205%20Build%2FLMY48B%3B%20wv%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Version%2F4.0%20Chrome%2F43.0.2357.65%20Mobile%20Safari%2F537.36'
-    user_agent = 'Mozilla%2F5.0%20%28Linux%3B%20Android%206.0.1%3B%20Nexus%205%20Build%2FLMY48B%3B%20wv%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Version%2F4.0%20Chrome%2F43.0.2357.65%20Mobile%20Safari%2F537.38'
+    user_agent = 'Mozilla%2F5.0%20%28Linux%3B%20Android%205.1.1%3B%20Nexus%205%20Build%2FLMY48B%3B%20wv%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Version%2F4.0%20Chrome%2F43.0.2357.65%20Mobile%20Safari%2F537.37'
     token = "65rSw"+"UzRad"
     time_stamp = str(int(time.time()) + 14400)
     to_hash = "{0}{1}/hls/{2}".format(token,time_stamp,url)
     out_hash = b64encode(md5.new(to_hash).digest()).replace("+", "-").replace("/", "_").replace("=", "")
-    
-       
+
+    server = pickserver()
+    try:    
+        if not ping(server):
+            xbmc.executebuiltin("Notification([COLOR=gold]VistaTV[/COLOR],Unable to Connect?? Try Again OR Enable VPN!!!!!,15000,"+__icon__+")")
+            getserver = "0.0.0.0" 
+            #exit()
+            return ""
+    except:
+        xbmc.sleep(500)
+        xbmc.executebuiltin("Notification([COLOR=gold]VistaTV[/COLOR],Unable to Connect?? Try Again OR Enable VPN!!!!!,15000,"+__icon__+")")
+        getserver = "0.0.0.0" 
+        #exit()
+        return ""
+    #xbmc.sleep(500)
     
     url = "http://{0}/p2p/{1}?st={2}&e={3}".format(server,url,out_hash,time_stamp)
     return '{url}|User-Agent={user_agent}&referer={referer}'.format(url=url,user_agent=user_agent,referer='6d6f6264726f2e6d65'.decode('hex'))
