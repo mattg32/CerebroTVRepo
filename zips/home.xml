@@ -14,6 +14,6 @@
 
 <plugin>
 <name>[COLOR ffff0000][B]L[/COLOR][COLOR white]ive Tv[/COLOR][/B]</name>
-<link>plugin://script.module.slartibartfastlive</link>
+<link>plugin://script.module.slartibartfastiptv</link>
 <thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
 </plugin>
