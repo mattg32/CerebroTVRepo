@@ -20,7 +20,7 @@ def play(url,name,icon,description,pdialogue=None):
 		
 		url = url.strip()
 
-		url = resolvers.resolve(url,description)
+		url = resolvers.resolve(url)
 
 		liz = xbmcgui.ListItem(name, iconImage=iconimage, thumbnailImage=iconimage)
 		liz.setInfo(type='Video', infoLabels={'Title':name})

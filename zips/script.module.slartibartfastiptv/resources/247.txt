@@ -1,3 +1,4 @@
+CAT=247
 The Fresh Prince of Bel-Air:mpd://0666f0acdeed38d4cd9084ade1739498.m3u8
 American Dad:mpd://523af537946b79c4f8369ed39ba78605.m3u8
 Family Guy:mpd://3d4044d65abdda407a92991f1300ec97.m3u8
