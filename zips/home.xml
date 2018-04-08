@@ -1,0 +1,19 @@
+<plugin>
+<title>[COLOR ffff0000][B]M[/COLOR][COLOR white]ovies[/COLOR][/B]</title>
+<link>plugin://plugin.video.slartibartfast/?action=movieNavigator</link>
+<thumbnail>https://s12.postimg.org/s2xzraxql/movies.png</thumbnail>
+</plugin>
+ 
+  
+<plugin>
+<title>[COLOR ffff0000][B]TV[/COLOR][COLOR white] Shows[/COLOR][/B]</title>
+<link>plugin://plugin.video.slartibartfast/?action=tvNavigator</link>
+<thumbnail>https://s12.postimg.org/ozx9nxirx/tvshows.png</thumbnail>
+</plugin>
+ 
+
+<plugin>
+<name>[COLOR ffff0000][B]L[/COLOR][COLOR white]ive Tv[/COLOR][/B]</name>
+<link>plugin://script.module.slartibartfastlive</link>
+<thumbnail>https://s12.postimg.org/pznkjmxxp/livetv.png</thumbnail>
+</plugin>
