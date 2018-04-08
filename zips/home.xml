@@ -1,4 +1,16 @@
 <plugin>
+<title>[COLOR ffff0000][B]GO PREMIUM!!! [/COLOR][COLOR white]EPG, More IPTV, Loads more sports!!!!!, Retro Games & More[/COLOR][/B]</title>
+<link>#</link>
+<thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
+</plugin>
+
+<plugin>
+<title> </title>
+<link>#</link>
+<thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
+</plugin>
+
+<plugin>
 <title>[COLOR ffff0000][B]M[/COLOR][COLOR white]ovies[/COLOR][/B]</title>
 <link>plugin://plugin.video.slartibartfast/?action=movieNavigator</link>
 <thumbnail>https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png</thumbnail>
