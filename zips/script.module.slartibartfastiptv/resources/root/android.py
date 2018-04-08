@@ -13,7 +13,7 @@ def cat():
 	#addDir('[COLOR white][B]Mobdro 24/7 Movies[/COLOR][/B]','mobdro247Movies',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
 	#addDir('[COLOR white][B]Mobdro 24/7 Kids[/COLOR][/B]','mobdro247Kids',4,'http://apk.co/images/mobdro-2014-freemium.png',fanart,icon)
 	#addDir('[COLOR white][B]Mobile TV[/COLOR][/B]','mobiletv',4,'https://4.bp.blogspot.com/-mAW-a99Dvlw/WO9Mf16-k6I/AAAAAAAAXTg/z_lXe9-JV2UA3xwrFTkfvSBvmXcXI0imwCLcB/s1600/unnamed.jpg',fanart,'')
-	addDir('[COLOR white][B]Pak India Streams[/COLOR][/B]','pakindiasport',4,'http://www.madhyamam.com/en/sites/default/files/india-pak.jpg',fanart,icon)
+	addDir('[COLOR white][B]Pak India Streams[/COLOR][/B] [I](May be blocked in UK if not working use a VPN)[/I]','pakindiasport',4,'http://www.madhyamam.com/en/sites/default/files/india-pak.jpg',fanart,icon)
 	#addDir('[COLOR white][B]Swift Streams[/COLOR][/B]','snappystreams',4,'https://image.winudf.com/v2/image/Y29tLnN3aWZ0LnN0cmVhbV9zcmNqdHBicg/icon.png?w=170&fakeurl=1&type=.png',fanart,'')
 	#addDir('[COLOR white][B]TV Online Plus+[/COLOR][/B]','tvonlineplus',4,'https://1.bp.blogspot.com/-I_th1gsuna8/WRsJAg3SqMI/AAAAAAAAGdk/J-YznRwYMaMB_Y9ZINmhQzyvopkAbtA1wCLcB/s200/18424147_301931813588370_8617351845985017033_n.jpg',fanart,'')
 
