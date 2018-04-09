@@ -291,7 +291,7 @@ elif mode==4000:
 elif mode==9999:
 	import xbmcgui,xbmcplugin
 	from resources.root import resolvers
-	url = resolvers.resolve(url,description)
+	url = resolvers.resolve(url)
 	liz = xbmcgui.ListItem(name, iconImage=iconimage, thumbnailImage=iconimage)
 	liz.setInfo(type='Video', infoLabels='')
 	liz.setProperty("IsPlayable","true")
