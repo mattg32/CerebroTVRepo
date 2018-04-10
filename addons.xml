@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<addon id="plugin.video.adultswim"
+       name="Adult Swim"
+       version="1.0.6"
+       provider-name="jsergio">
+  <requires>
+    <import addon="xbmc.python" version="2.20.0"/>
+    <import addon="script.module.t1mlib" version="1.0.18"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Adult Swim</summary>
+    <description lang="en_GB">Watch free episodes from adultswim.com</description>
+    <disclaimer lang="en_GB">Feel free to use this script.</disclaimer>
+    <platform>all</platform>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <website>www.adultswim.com</website>
+    <source>https://github.com/jsergio123/plugin.video.adultswim</source>
+  </extension>
+</addon>
+
 <addon id="plugin.video.slartibartfast" name="Slartibartfast" version="1.1.4" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
@@ -142,6 +165,25 @@
 	<disclaimer lang="en">The author does not host or own any content found within this Addon. The Author is not connected to or in any other way affiliated with Kodi, Team Kodi, or the XBMC Foundation.</disclaimer>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="script.module.t1mlib" name="t1m Library Routines" provider-name="t1m" version="1.0.18">
+  <requires>
+    <import addon="xbmc.python" version="2.20.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib"  />
+  <extension point="xbmc.addon.metadata">
+        <description lan="en">t1m Library Routines</description>
+        <summary lang="en">t1m Library Routines</summary>
+        <disclaimer lang="en"></disclaimer>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <platform>all</platform>
+        <email></email>
+        <website></website>
+        <forum>http://forum.kodi.tv/showthread.php?tid=247163</forum>
+        <source>https://github.com/learningit/Kodi-plugins-source/tree/master/script.module.t1mlib</source>
+        <language></language>
+   </extension>
 </addon>
 
 <addon id="script.vistatv-wizard"
