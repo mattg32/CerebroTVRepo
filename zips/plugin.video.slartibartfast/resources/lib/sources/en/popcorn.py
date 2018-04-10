@@ -20,7 +20,7 @@ from resources.lib.modules import log_utils
 
 class source:
     def __init__(self):
-        self.priority = 0
+        self.priority = 1
         self.language = ['en']
         self.domains = ['hdpopcorns.com']
         self.base_link = 'http://www.hdpopcorns.com'

@@ -26,7 +26,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['vodly.us', 'vodly.unblocked.tv']
-        self.base_link = 'http://vodly.us'
+        self.base_link = 'http://vodly.us/'
         self.search_link = '%s/search?q=vodly.us+%s+%s'
         self.goog = 'https://www.google.co.uk'
 

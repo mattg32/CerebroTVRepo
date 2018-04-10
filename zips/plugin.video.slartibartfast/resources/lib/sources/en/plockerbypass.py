@@ -25,7 +25,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['putlockertv.to','putlocker.se']
-        self.base_link = 'http://www2.putlockertv.ist/'
+        self.base_link = 'http://plocker.unblocked.lol/'
         self.movie_search_path = ('search?keyword=%s')
         self.episode_search_path = ('/filter?keyword=%s&sort=post_date:Adesc&type[]=series')
         self.ajax_search_path = '/ajax/film/search?ts=%s&_=%s&sort=year:desc&keyword=%s'
