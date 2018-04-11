@@ -77,7 +77,7 @@ class navigator:
         self.addDirectoryItem(32017, 'tvshows&url=trending', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png')
         self.addDirectoryItem(32018, 'tvshows&url=popular', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32011, 'tvGenres', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
-        #self.addDirectoryItem(32016, 'tvNetworks', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
+        self.addDirectoryItem(32016, 'tvNetworks', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32015, 'tvCertificates', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
         self.addDirectoryItem(32024, 'tvshows&url=airing', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultTVShows.png')
         self.addDirectoryItem('New Episodes', 'calendar&url=added', 'https://github.com/biglad/CerebroTVRepo/raw/master/zips/icon.png', 'DefaultRecentlyAddedEpisodes.png', queue=True)
