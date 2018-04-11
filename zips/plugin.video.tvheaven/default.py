@@ -36,7 +36,11 @@ if url_ok("https://watchepisodeseries.unblocked.mx"):
 elif url_ok("http://www.watchepisodeseries.com"):
 	CurrentServer ="http://www.watchepisodeseries.com/"	
 elif url_ok("https://watchepisodeseries.bypassed.org"):
-	CurrentServer ="https://watchepisodeseries.bypassed.org/"	
+	CurrentServer ="https://watchepisodeseries.bypassed.org/"
+elif url_ok("http://watchepisodeseries.unblocker.cc"):
+	CurrentServer ="http://watchepisodeseries.unblocker.cc/"
+elif url_ok("http://watchepisodeseries.unblockall.org"):
+	CurrentServer ="http://watchepisodeseries.unblockall.org/"		
 else:
 	CurrentServer ="https://watchepisodeseries.bypassed.org/"
 	
