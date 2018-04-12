@@ -32,18 +32,18 @@ def url_ok(url):
     return r.status_code == 200
 
 if url_ok("https://watchepisodeseries.unblocked.mx"):
-	CurrentServer ="https://watchepisodeseries.unblocked.mx/"
+    CurrentServer ="http://watchepisodeseries.unblocked.mx/"
 elif url_ok("http://www.watchepisodeseries.com"):
-	CurrentServer ="http://www.watchepisodeseries.com/"	
-elif url_ok("https://watchepisodeseries.bypassed.org"):
-	CurrentServer ="https://watchepisodeseries.bypassed.org/"
+    CurrentServer ="http://www.watchepisodeseries.com/" 
+elif url_ok("http://watchepisodeseries.bypassed.org"):
+    CurrentServer ="http://watchepisodeseries.bypassed.org/"
 elif url_ok("http://watchepisodeseries.unblocker.cc"):
-	CurrentServer ="http://watchepisodeseries.unblocker.cc/"
+    CurrentServer ="http://watchepisodeseries.unblocker.cc/"
 elif url_ok("http://watchepisodeseries.unblockall.org"):
-	CurrentServer ="http://watchepisodeseries.unblockall.org/"		
+    CurrentServer ="http://watchepisodeseries.unblockall.org/"      
 else:
-	CurrentServer ="https://watchepisodeseries.bypassed.org/"
-	
+    CurrentServer ="https://watchepisodeseries.bypassed.org/"
+    
 Altserver = CurrentServer
 
 def CATEGORIES():
@@ -53,6 +53,9 @@ def CATEGORIES():
         addDir('Popular TV Shows',Altserver+'home/popular-series',3,art+'popular.png',fanart)
         addDir('TV Show Genres',Altserver+'home/series',7,art+'genres.png',fanart)
         addDir('Search For A Show','url',5,art+'search.png',fanart)
+        addDir(' ','',200,'',fanart)
+        addDir('Connected to:','',200,'',fanart)
+        addDir(Altserver,'',200,'',fanart)
         #addDir('[COLOR gold][B]Vidics Site Scarper[/B][/COLOR]','Link',9899,'','')
         xbmc.executebuiltin('Container.SetViewMode(50)')
 
@@ -148,6 +151,9 @@ def GETSOURCES(name,url,iconimage):
         link=open_url(url)
         link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
         match=re.compile('ico"></div><a href="(.+?)">(.+?)\.(.+?)</a>').findall(link)
+        if "http:https://" in iconimage:
+            iconimage = iconimage.split("http:")
+            iconimage = iconimage[1]
         if len(match)<1:
                 notification('TV Heaven','No Compatible Streams Found','3000', icon)
         else:
@@ -158,6 +164,9 @@ def GETSOURCES(name,url,iconimage):
 def GETSEASONS(name,url,iconimage):
         addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
         link=open_url(url)
+        if "http:https://" in iconimage:
+            iconimage = iconimage.split("http:")
+            iconimage = iconimage[1]
         match=re.compile('href="(.+?)">.+?<div class="season">(.+?)</div>.+?<div class="episode">(.+?)</div>.+?<div class="name">(.+?)</div>.+?<div class="date">(.+?)</div>',re.DOTALL).findall(link)[1:]
         for url,season,episode,title,dte in match:
                 dte=dte.replace('\r\n','').replace(' ','').replace('-','/')
@@ -179,6 +188,12 @@ def PLAY(name,url,iconimage,description):
         link=open_url(url)
         url=re.compile('<a rel="nofollow" target="_blank" href="(.+?)"').findall(link)
         #url = "http:"+url
+        if "http:https://" in url:
+            url = url.split("http:")
+            url = url[1]
+        if "http:https://" in iconimage:
+            iconimage = iconimage.split("http:")
+            iconimage = iconimage[1]
         for url in url:
                 try:
                         if name in url:
@@ -223,7 +238,7 @@ def addDir(name,url,mode,iconimage,fanart,description=''):
         if "https:" in url: 
             url = url.split("//")
             url = url[1]
-        if "http:" not in url: url = "http:"+url
+        if "http:" not in url: url = "http:"+url    
         if "http://" not in url: 
             url = url.split("http:")
             url = url[1]
@@ -231,6 +246,10 @@ def addDir(name,url,mode,iconimage,fanart,description=''):
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         if addon_id not in iconimage and "http:" not in iconimage: iconimage = "http:"+iconimage
+        elif addon_id not in iconimage and "https:" not in iconimage: iconimage = "https:"+iconimage
+        if "http:https://" in iconimage:
+            iconimage = iconimage.split("http:")
+            iconimage = iconimage[1]
         xbmc.log(iconimage,2)
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
         liz.setProperty('fanart_image', iconimage)
@@ -241,6 +260,9 @@ def addDir(name,url,mode,iconimage,fanart,description=''):
 def addLink(name,url,mode,iconimage,fanart,description=''):
         if "http:" not in url: url = "http:"+url
         if addon_id not in iconimage and "http:" not in iconimage: iconimage = "http:"+iconimage
+        if "http:https://" in iconimage:
+            iconimage = iconimage.split("http:")
+            iconimage = iconimage[1]
         u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&description="+str(description)+"&iconimage="+urllib.quote_plus(iconimage)
         ok=True
         liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
@@ -289,6 +311,7 @@ elif mode==6: GETSOURCES(name,url,iconimage)
 elif mode==7: GETGENRES(url)
 elif mode==8: GENRESERIES(url)
 elif mode==100: PLAY(name,url,iconimage,description)
+elif mode==200: CATEGORIES()
 elif mode==9898: xbmc.executebuiltin('RunAddon(script.cerebro.pairwith.laucnher)')
 elif mode==9899: xbmc.executebuiltin('RunAddon(plugin.video.Showbox)')
 
