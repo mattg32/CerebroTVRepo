@@ -73,7 +73,7 @@ def GETGENRES(url):
 
                 
 def GENRESERIES(url):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
         link=open_url(url)
         link=link.replace("'",'"')
         match=re.compile('<a href="(.+?)" class="wsb-image" style="background-image: url\("(.+?)"\)"></a>').findall(link)
@@ -105,7 +105,7 @@ def SEARCH():
                         addDir(name,url,4,iconimage,fanart,tempplotinfo)
       
 def NEW_POPSERIES(url):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
         link=open_url(url)
         link=link.replace("'",'"')
         link=link.replace('\n','').replace('  ','').replace("('",'"').replace("')",'')
@@ -146,7 +146,7 @@ def GETSOURCES(name,url,iconimage):
         xbmc.log(url,2)
         #if "https:" in url: url=url
         #elif "http:" not in url: url = "http:"+url
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
         sec=name
         link=open_url(url)
         link=link.replace('\n','').replace('\r','').replace('\t','').replace('  ','')
@@ -162,7 +162,7 @@ def GETSOURCES(name,url,iconimage):
                         addLink(host,url,100,iconimage,iconimage,tempplotinfo)
 
 def GETSEASONS(name,url,iconimage):
-        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,iconimage,iconimage)
+        addLink('[COLOR green][B]Click Here To Pair (Do This Every 4 Hours)[/B][/COLOR]','Link',9898,'','')
         link=open_url(url)
         if "http:https://" in iconimage:
             iconimage = iconimage.split("http:")
