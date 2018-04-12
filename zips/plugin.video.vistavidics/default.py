@@ -55,9 +55,11 @@ def url_ok(url):
 if url_ok("https://vidics.unblocked.mx"):
 	strdomain ="https://vidics.unblocked.mx/"
 elif url_ok("https://www.vidics.to"):
-	strdomain ="https://www.vidics.to"	
+	strdomain ="https://www.vidics.to/"	
+elif url_ok("https://www.vidics.ch"):
+	strdomain ="https://www.vidics.ch/"	
 else:
-	builtin = 'XBMC.Notification(NO CONNECTION TO VIDICS, TRY A VPN ,7000,'+__icon__+')'
+	builtin = 'XBMC.Notification(NO CONNECTION TO VIDICS SITE, TRY A VPN!!! ,7000,'+__icon__+')'
 	xbmc.executebuiltin(builtin)
 	exit()
 	
