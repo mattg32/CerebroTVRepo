@@ -293,7 +293,7 @@ def DeleteFav(name,url):
     db.close()
         
 def HOME():
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         addDir('Search Movies','search',9,__icon__)
         addDir('Search TV Shows','search',10,__icon__)
         addDir('Search Actor, Actress, Producer & Director','search',15,__icon__)
@@ -405,7 +405,7 @@ def Mirrors(url,name,image=""):
     except: pass
   soup = BeautifulSoup(link)
   listcontent=soup.findAll('a',{"href":re.compile("/Link/")})
-  addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+  addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
   #listcontent.sort() 
   for item in listcontent:
             vname=item.contents[0]
@@ -1358,7 +1358,7 @@ def GenreList(catname,mode):
                     addDir(vname.strip(),strdomain+vurl,mode,"")
                     
 def ProfileMovie(url,typename):
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         link = GetContent(url)
         newlink = ''.join(link.splitlines()).replace('\t','')
         listcontent=re.compile('<h3 class="career_type_title" ?[^>]*>'+typename+'(.+?)<tr>').findall(newlink)
@@ -1374,7 +1374,7 @@ def ProfileMovie(url,typename):
                     addDirContext(vname.strip(),strdomain+vurl,13,"",plot="",vidtype="movie")
                     
 def ActorProfile(url):
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         link = GetContent(url)
         newlink = ''.join(link.splitlines()).replace('\t','')
         listcontent=re.compile('<h3 class="career_type_title" id="(.+?)" ?[^>]*>(.+?)</h3>').findall(newlink)
@@ -1393,7 +1393,7 @@ def SearchChannelresults(url,searchtext):
         link = GetContent(url)
         link = ''.join(link.splitlines()).replace('\'','"')
         vidlist=re.compile('<div class="thumb-container big-thumb">        <a href="(.+?)">          <img alt="(.+?)" class="thumb-design" src="(.+?)" />').findall(link)
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         for vurl,vname,vimg in vidlist:
             vurl = vurl.split("/videos/")[0]
             addDir(vname.lower().replace("<em>"+searchtext+"</em>",searchtext),strdomain+vurl+"/videos",7,strdomain+""+vimg)
@@ -1449,7 +1449,7 @@ def Episodes(url,name):
         metaname2 = metaname.replace("%20"," ")
         metaname2 = metaname2.replace("_"," ")
         metaname2 = metaname2.replace("-"," ")
-        addDir('[COLOR gold]'+metaname2+'[/COLOR] : [COLOR lightblue]'+name+'[/COLOR]','Cerebro',9898,vimg)
+        addDir('[COLOR gold]'+metaname2+'[/COLOR] : [COLOR lightblue]'+name+'[/COLOR]','VistaTV',9898,vimg)
         seasoncount = name.replace("Season ","")
         ####xbmc.log(seasoncount,2)
         if int(seasoncount) > 1: 
@@ -1460,7 +1460,7 @@ def Episodes(url,name):
          #    epcunter=1
         else: epcunter=0
         #if epcunter == 1: epcunter = 0
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         for listcontent2 in listcontent:
             if (listcontent2.find(">"+name+"</a></h3>") > -1):
                 listcontent2=re.compile('>'+name+'</a></h3>(.+?)</div>').findall(listcontent2)[0]
@@ -1583,8 +1583,8 @@ def Seasons(url):
         metaname2 = metaname.replace("-"," ")
         metaname2 = metaname2.replace("_"," ")   
         metaname2 = metaname2.replace("&macr;"," ")      
-        addDir('[COLOR gold]'+metaname2.title()+'[/COLOR]','Cerebro',9898,__icon__)     
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addDir('[COLOR gold]'+metaname2.title()+'[/COLOR]','VistaTV',9898,__icon__)     
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         for seas in ssoninfo:
                 epsodlist=re.compile('<a [^>]*href=["\']?([^>^"^\']+)["\']?[^>]*>(.+?)</a>').findall(seas)[0]
                 addDir(epsodlist[1]+"",url,8,str(vimg))
@@ -1617,7 +1617,7 @@ def INDEX(url,modenum,curmode,vidtype,ctitle):
         listcontent=re.compile('<div itemscope [^>]*class="searchResult">(.+?)}</div></div></div>').findall(vcontent[0])
         ##xbmc.log(str(url),2)
         vpot=""
-        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','Cerebro',9898,__icon__)
+        addLink('[COLOR green]Click Here to Pair[/COLOR] - (Do this once every 4 hours)','VistaTV',9898,__icon__)
         for moveieinfo in listcontent:
             vtitle,vurl,vimg,vtmp1,vtmp2=re.compile('<a title="Watch(.+?)online free." href="(.+?)"><img itemprop="image" src="(.+?)" title="(.+?)" alt="(.+?)" /></a>').findall(moveieinfo)[0]
             vtitle=RemoveHTML(vtitle)
@@ -2581,7 +2581,7 @@ def addDirContext(name,url,mode,iconimage,plot="",vidtype="", cm=[]):
                 ctitle = ctitle.replace("_","%20").title()
                 if ctitle=="X%20Files": ctitle = "The%20X-Files"
                 ####xbmc.log("Show Icon? "+ctitle,2)
-                if ("vidics" not in ctitle) or ("Cerebro" not in ctitle):
+                if ("vidics" not in ctitle) or ("VistaTV" not in ctitle):
                     if ctitle=="Monsters%20Vs%20Aliens%20(2013)": ctitle = "Monsters%20Vs%20Aliens"
                     response = urllib2.urlopen('http://thetvdb.com/api/GetSeries.php?seriesname='+str(ctitle)).read()
                     response=response.split('<Overview>', 1)[1]
@@ -2634,7 +2634,7 @@ def addLink(name,url,mode,iconimage,movieinfo=""):
                 name2 = name2.split('[/COLOR]', 1)[0]
             except: pass
             
-            response="Select a host to start watching . Hosts that need pairing are best quality and less buffering | Cerebro TV VoD | Find Us On Facebook!"
+            response="Select a host to start watching . Hosts that need pairing are best quality and less buffering | VistaTV | Find Us On Facebook!"
         #else:
         wname = iconimage.replace('/', '--')
         wname = wname.replace(':', '__')
@@ -2642,7 +2642,7 @@ def addLink(name,url,mode,iconimage,movieinfo=""):
         ok=True
         #TheTvDb().search_Tv%20Shows("The20%Punisher")
         if "Click Here to Pair" in name:
-            plot = "[COLOR green]For best results pair now, more HD content, less buffering. Brought to you by Cerebro TV[/COLOR]"
+            plot = "[COLOR green]For best results pair now, more HD content, less buffering. Brought to you by VistaTV[/COLOR]"
         else:
             plot = str(response)
         ####xbmc.log("Show Icon? "+iconimage,2)
@@ -2684,11 +2684,11 @@ def addDir(name,url,mode,iconimage,plot=""):
         response="empty"
         #metaname2="empty"
         if url == "search":
-            url ="Cerebro/Show/Cerebro"
-        if url == "Cerebro":
-            url ="Cerebro/Show/Cerebro"
+            url ="VistaTV/Show/VistaTV"
+        if url == "VistaTV":
+            url ="VistaTV/Show/VistaTV"
         if  url == " ":
-            url ="Cerebro/Show/Cerebro"
+            url ="VistaTV/Show/VistaTV"
         #plot="Pair now for best results!!"
         try:
             metaname=str(url).split('Show/', 1)[1]
@@ -2701,17 +2701,17 @@ def addDir(name,url,mode,iconimage,plot=""):
         if metaname=="X%20Files": metaname = "The%20X-Files"
         if metaname=="Supergirl 1": metaname = "Supergirl"
         metaname=metaname.replace("%20"," ")
-        if "Cerebro" in url:
+        if "VistaTV" in url:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             response=""
         elif "DONT SHOW" in metaname:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             response=""
         elif "Empty" in metaname:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             metaname="VistaTV"
             response=""
         else:
@@ -2743,11 +2743,11 @@ def addDir2(name,url,mode,iconimage,plot):
         response="empty"
         #metaname2="empty"
         if url == "search":
-            url ="Cerebro/Show/Cerebro"
-        if url == "Cerebro":
-            url ="Cerebro/Show/Cerebro"
+            url ="VistaTV/Show/VistaTV"
+        if url == "VistaTV":
+            url ="VistaTV/Show/VistaTV"
         if  url == " ":
-            url ="Cerebro/Show/Cerebro"
+            url ="VistaTV/Show/VistaTV"
         #plot="Pair now for best results!!"
         try:
             metaname=str(url).split('Show/', 1)[1]
@@ -2760,17 +2760,17 @@ def addDir2(name,url,mode,iconimage,plot):
         if metaname=="X%20Files": metaname = "The%20X-Files"
         if metaname=="Supergirl 1": metaname = "Supergirl"
         metaname=metaname.replace("%20"," ")
-        if "Cerebro" in url:
+        if "VistaTV" in url:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             response=""
         elif "DONT SHOW" in metaname:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             response=""
         elif "Empty" in metaname:
             ####xbmc.log("URL "+url,2)
-            metaname2="Cerebro Pairing System.  Do this for best quality playback & less buffering... Brought to you by CereroTV!"
+            metaname2="VistaTV Pairing System.  Do this for best quality playback & less buffering... Brought to you by VistaTV!"
             metaname="VistaTV"
             response=""
         else:
