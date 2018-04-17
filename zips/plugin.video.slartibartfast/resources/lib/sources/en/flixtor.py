@@ -33,7 +33,7 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domains = ['flixtor.to']
-        self.base_link = 'https://flixtor.to'
+        self.base_link = 'https://flixtor.to/'
         self.search_link = '/ajax/psearch?q=%s'
        
 

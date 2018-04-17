@@ -33,9 +33,9 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['dizigold.net', 'dizigold1.com']
-        self.base_link = 'http://www.dizigold2.com'
-        self.player_link = 'http://player.dizigold2.com/?id=%s&s=1&dil=%s'
+        self.domains = ['dizigold.net', 'dizigold1.com','dizigold5']
+        self.base_link = 'http://www.dizigold5.com'
+        self.player_link = 'http://www.dizigold5.com/?id=%s&s=1&dil=%s'
 
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):

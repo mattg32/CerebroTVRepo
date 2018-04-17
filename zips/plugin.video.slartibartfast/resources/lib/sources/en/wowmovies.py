@@ -29,8 +29,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['wowmovies.io']
-        self.base_link = 'http://wowmovies.io'
-        self.search_link = ('?s=%s')
+        self.base_link = 'http://wowmovies.io/wow-movies/'
+        self.search_link = ('/?s=%s')
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

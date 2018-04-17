@@ -25,7 +25,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['crazy4tv.com', 'crazy4ad.in']
-        self.base_link = 'http://crazy4tv.com'
+        self.base_link = 'http://crazy4tv.com/'
         self.search_link = '/search/%s/feed/rss2/'
 
 

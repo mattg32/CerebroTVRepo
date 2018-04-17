@@ -27,7 +27,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['cooltvseries.com']
-        self.base_link = 'https://cooltvseries.com'
+        self.base_link = 'https://cooltvseries.com/'
         self.show_link = '%s/%s/season-%s/'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):

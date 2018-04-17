@@ -33,7 +33,7 @@ class source:
         self.language = ['en']
         self.domains = ['freemoviesz.to']
         self.base_link = 'https://freemoviesz.to/'
-        self.search_link = 'search?q=%s'
+        self.search_link = '/search?q=%s'
         self.token_link = 'https://embed.streamdor.co/token.php?v=5'
         self.source_link = 'https://api.streamdor.co/sources'
 

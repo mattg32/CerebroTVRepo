@@ -23,8 +23,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['freemoviedownloads6.com']
-        self.base_link = 'http://freemoviedownloads6.com'
-        self.search_link = '%s/search?q=freemoviedownloads6.com+%s+%s'
+        self.base_link = 'http://freemoviedownloads6.com/'
+        self.search_link = '/%s/search?q=freemoviedownloads6.com+%s+%s'
         self.goog = 'https://www.google.co.uk'
 
     def movie(self, imdb, title, localtitle, aliases, year):

@@ -20,7 +20,7 @@ class source:
         self.priority = 0
         self.language = ['en']
         self.domain = 'filepursuit.com'
-        self.search_link = 'https://filepursuit.com/search2/'
+        self.search_link = 'https://filepursuit.com/search/'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

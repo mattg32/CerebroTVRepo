@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['bobbyhd.com']
-        self.base_link = 'http://webapp.bobbyhd.com'
+        self.base_link = 'http://bobbyhd.com/'
         self.search_link = '/search.php?keyword=%s'
         self.player_link = '/player.php?alias=%s'
 

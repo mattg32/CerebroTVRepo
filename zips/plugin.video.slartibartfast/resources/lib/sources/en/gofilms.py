@@ -31,7 +31,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123movieshub.sc/']
-        self.base_link = 'https://123movieshub.sc/123movies/'
+        self.base_link = 'https://123movieshub.sc/123movies-free/'
         self.search_link = '%s/wp-json/wp/v2/posts?search=%s'
 
 

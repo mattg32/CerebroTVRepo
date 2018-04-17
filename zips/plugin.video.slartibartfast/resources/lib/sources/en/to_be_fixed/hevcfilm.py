@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    #Cerebro ShowBox Scraper
+    Cerebro ShowBox Scraper
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,8 +30,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['300mbmoviesdl.com', 'hevcbluray.info']
-        self.base_link = 'https://hevcbluray.info/'
-        self.search_link = '/?s=%s'
+        self.base_link = 'http://hevcbluray.info'
+        self.search_link = '/search/%s/feed/rss2/'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -54,7 +54,7 @@ class source:
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])
 
             title = data['tvshowtitle'] if 'tvshowtitle' in data else data['title']
-            title = title.lower()
+
             hdlr = 'S%02dE%02d' % (int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else data['year']
 
             query = '%s S%02dE%02d' % (data['tvshowtitle'], int(data['season']), int(data['episode'])) if 'tvshowtitle' in data else '%s %s' % (data['title'], data['year'])

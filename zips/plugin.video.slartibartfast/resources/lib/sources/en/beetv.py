@@ -27,8 +27,8 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domain = 'beetv.to/'
-        self.base_link = 'http://beetv.to/'
+        self.domain = 'beetv.to'
+        self.base_link = 'http://myputlocker.me/'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:

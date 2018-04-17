@@ -31,8 +31,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123moviesex']
-        self.base_link = 'https://123movies.bypassed.org/'
-        self.search_link = '/search-movies/%s.html'
+        self.base_link = 'https://onionplay.org/'
+        self.search_link = '/?s=%s'
 
 
     def movie(self, imdb, title, localtitle, aliases, year):

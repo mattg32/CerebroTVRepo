@@ -56,7 +56,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['hdonline.is']
-        self.base_link = 'https://hdonline.is/'
+        self.base_link = 'https://hdonline.is/hdo/'
         self.search_link = '/search/%s'
         self.info_link = '/ajax/movie_info/%s.html?is_login=false'
         self.server_link = '/ajax/movie/episodes/%s'

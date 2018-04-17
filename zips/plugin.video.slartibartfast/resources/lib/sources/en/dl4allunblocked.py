@@ -33,7 +33,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['dl4all.unblocked.vc', 'www.dl4all.ws']
-        self.base_link = 'http://www.dl4all.ws/'
+        self.base_link = 'https://dl4all.unblocked.mx/'
         self.search_link ='/oll/tag/%s.html'
         self.search_link2 = '/app/tag/%s.html'
 

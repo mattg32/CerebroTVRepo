@@ -23,8 +23,8 @@ class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
-        self.domains = ['www.bnwmovies.com']
-        self.base_link = 'http://www.bnwmovies.com'
+        self.domains = ['bnwmovies.com']
+        self.base_link = 'http://www.bnwmovies.com/'
         self.search_link = '%s/search?q=bnwmovies.com+%s+%s'
         self.goog = 'https://www.google.co.uk'
 

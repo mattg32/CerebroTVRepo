@@ -26,8 +26,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['breakfreemovies.biz']
-        self._base_link = 'https://www.breakfreemovies.biz/'
+        self.domains = ['breakfreemovies.biz','greenlie.org']
+        self._base_link = 'https://www.greenlie.org'
         self.search_link = '/movies.php?list=search&search=%s'
 
     @property

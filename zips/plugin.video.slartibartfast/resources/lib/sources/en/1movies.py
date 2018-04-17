@@ -36,8 +36,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['1movies.tv','1movies.to']
-        self.base_link = 'https://1movies.to'
+        self.domains = ['1movies.se','1movies.tv','1movies.to']
+        self.base_link = 'https://1movies.se'
         self.search_link = '/search_all/%s'
         self.player_link = '/ajax/movie/load_player_v3'
 

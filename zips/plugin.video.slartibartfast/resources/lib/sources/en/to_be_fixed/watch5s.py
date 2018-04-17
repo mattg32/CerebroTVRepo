@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-    #Cerebro ShowBox Scraper
+    Cerebro ShowBox Scraper
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['watch5s.to', 'watch5s.is', 'watch5s.rs']
-        self.base_link = 'https://watch5s.is/'
+        self.base_link = 'https://watch5s.is'
         self.search_link = '/search?q=%s'
         self.token_link = 'https://embed.streamdor.co/token.php?episode=%s'
         self.source_link = 'https://embed.streamdor.co/api/video/%s'

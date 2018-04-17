@@ -27,8 +27,8 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.genre_filter = ['animation', 'anime']
-        self.domains = ['gogoanimemobile.com', 'gogoanimemobile.net', 'gogoanime.io']
-        self.base_link = 'http://ww1.gogoanime.io'
+        self.domains = ['gogoanimemobile.com', 'gogoanimemobile.net', 'gogoanime.io','www1.gogoanime.se']
+        self.base_link = 'https://www1.gogoanime.se/'
         self.search_link = '/search.html?keyword=%s'
         self.episode_link = '/%s-episode-%s'
 

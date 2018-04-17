@@ -22,7 +22,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['bobmovies.net']
-        self.base_link = 'https://bobmovies.net'
+        self.base_link = 'https://bobmovies.net/'
         self.search_link = '%s/search?q=bobmovies.net+%s+%s'
         self.goog = 'https://www.google.co.uk'
 

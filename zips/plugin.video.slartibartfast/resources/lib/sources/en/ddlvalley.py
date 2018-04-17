@@ -34,8 +34,8 @@ class source:
         self.language = ['en']
         self.domains = ['ddlvalley.me','ddlvalley.unblocked.vc']
         self.base_link = 'http://www.ddlvalley.me/'
-        self.search_link = 'search/%s/'
-        self.search_link1 = '?s=%s'
+        self.search_link = '/search/%s/'
+        self.search_link1 = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:

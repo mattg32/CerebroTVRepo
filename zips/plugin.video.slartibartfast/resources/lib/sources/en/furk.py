@@ -28,7 +28,7 @@ class source:
         self.accepted_extensions = ['mkv','mp4','avi', 'm4v', 'mpg', 'mpeg', 'webm']
         self.priority = 0
         self.language = ['en']
-        self.domain = 'furk.net/'
+        self.domain = 'furk.net'
         self.meta_search_link = "/api/plugins/metasearch?api_key=%s&q=%s&cached=yes&moderated=yes" \
                                 "&match=all&sort=cached&type=video&offset=0&limit=%s"
         self.base_link = 'https://www.furk.net/'
