@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="repository.maverickrepo" name="[COLOR lime]MaverickTV Repo[/COLOR]" version="2.9" provider-name="Maverick TV">
+<addon id="repository.maverickrepo" name="[COLOR lime]MaverickTV Repo[/COLOR]" version="3.1" provider-name="Maverick TV">
 <extension point="xbmc.addon.repository" name="[COLOR lime]MaverickTV Repo[/COLOR]">
 	<dir>
 		<info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>	
@@ -7,22 +7,27 @@
 		<datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
 	</dir>
 	<dir>
-		<info compressed="false">http://mavericktv.net/modrepo/addons.xml</info>
-		<checksum>http://mavericktv.net/modrepo/addons.xml.md5</checksum>
-		<datadir zip="true">http://mavericktv.net/modrepo/plugins/</datadir>
+		<info compressed="false">https://raw.githubusercontent.com/duncanh52/modrepo/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/duncanh52/modrepo/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/duncanh52/modrepo/master/plugins/</datadir>
 	</dir>
+	<dir>
+        <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+    </dir>
 	<dir>
         <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
         <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
         <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
     </dir>
 
-		<info compressed="false">http://mavericktv.net/mavrepo/plugins/addons.xml</info>
-		<checksum>http://mavericktv.net/mavrepo/plugins/addons.xml.md5</checksum>
-		<datadir zip="true">http://mavericktv.net/mavrepo/plugins/</datadir>
+		<info compressed="false">https://raw.githubusercontent.com/duncanh52/plugins/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/duncanh52/plugins/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/duncanh52/plugins/master/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>The MaverickTV Repository v2.9</summary>
+		<summary>The MaverickTV Repository v3.1</summary>
 		<description>The MaverickTV Repository for add-on and dependencies</description>
 		<platform>all</platform>
 	</extension>

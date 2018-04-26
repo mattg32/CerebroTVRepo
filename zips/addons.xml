@@ -260,6 +260,66 @@
 		 </extension>
 	</addon>
 
+    <addon id="repository.cdrepo" name="[COLOR steelblue]CellarDoorTV [COLOR white]Repo[/COLOR]" version="1.6" provider-name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Builds[/COLOR]">
+        <requires>
+            <import addon="xbmc.addon" version="12.0.0"/>
+        </requires>
+        <extension point="xbmc.addon.repository" name="[COLOR forestgreen][B]C[/COLOR][COLOR gold]D[/COLOR][COLOR ghostwhite]T[/COLOR][COLOR mediumblue]V[/B][/COLOR] [COLOR ghostwhite]Repo">
+            <dir>
+			<info compressed="false">https://raw.githubusercontent.com/CellarDoorTV/repo/master/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/CellarDoorTV/repo/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/CellarDoorTV/repo/master/</datadir>
+            <hashes>false</hashes>
+			</dir>
+            <dir>
+                <info compressed="false">http://raw.github.com/frenchdj/frenchdj.repository/master/addons.xml</info>
+                <checksum>http://raw.github.com/frenchdj/frenchdj.repository/master/addons.xml.md5</checksum>
+                <datadir zip="true">http://raw.github.com/frenchdj/frenchdj.repository/master/repo/</datadir>
+            </dir>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+            </dir>
+            <dir>
+                <info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
+            </dir>
+			<dir>
+                <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+                <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+                <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+            </dir>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+		<summary lang="en">CellarDoorTV Repository</summary>
+		<description lang="en">[COLOR gold]The Future Of Home Entertainment[/COLOR][CR]Kodi Repository for [COLOR steelblue]CellarDoorTV[/COLOR][CR][COLOR steelblue]CellarDoorTV[/COLOR] [COLOR white]Repo[/COLOR] allows you to install our CDTV Wizard and get access to the latest CDTV Custom Builds and more.</description>
+		<platform>all</platform>
+    <assets>
+        <icon>icon.gif</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+	</extension>
+</addon>
+
+<addon id="repository.cherrytv" name="[I][COLOR=blue]CHERRY[/COLOR] [COLOR=red]TV[/COLOR][/I] Repository" provider-name="KODI CHERRY" version="1.3.0">
+  <extension point="xbmc.addon.repository">
+    <info>http://cherrytv.webd.pl/CHERRY/addons.xml</info>
+    <checksum>http://cherrytv.webd.pl/CHERRY/addons.xml.md5</checksum>
+    <datadir zip="true">http://cherrytv.webd.pl/CHERRY/</datadir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">CHERRY TV Repository</summary>
+    <description lang="en">"CHERRY TV"  podlega prawom własności intelektualnej należącym do KODI CHERRY.CHERRY TV nie udostepnia telewizji online,korzysta jedynie z kont premium udostepnionych w sieci.Zabrania się sprzedażny i rozpowszechniania.</description>
+	<disclaimer lang="en">Kodi jest programem darmowym. Wtyczki, które są zawarte w projekcie CHERRY TV  są również darmowe i powszechnie dostępne w internecie dla każdego.
+CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani żadnych treści audio/wideo. CHERRY TV nie udostepnia telewizji online,korzysta jedynie z kont premium udostepnionych w sieci.Jest jedynie zbiorem wtyczek. Projekt ten ma jedynie ułatwić użytkownikowi ustawianie programu Kodiczy instalacje wtyczek . Jeżeli dana wtyczka nie działa zgodnie z założeniem należny kontaktować się z jej autorem. Jeżeli stan taki się utrzymuje dłużnej może zostać taka wtyczka usunięta oraz będzie szukana alternatywa.
+</disclaimer>
+    <website>https://www.youtube.com/channel/UCrt7prcqcMO0k90xxh9snoA</website>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="repository.Cypherslocker" name="[COLOR cornflowerblue]Cyphers locker[/COLOR]" version="1.0.2" provider-name="Project Cypher">
 	<extension point="xbmc.addon.repository" name="TheMegaRepo">
 		<info compressed="false">https://github.com/CypherMediaGIT/CypherRepo/raw/master/cypherrepo/plugins/addons.xml</info>
@@ -273,7 +333,19 @@
 	</extension>
 </addon>
 
-<addon id="repository.elementum" name="Elementum Repository" version="0.0.44" provider-name="elgatito"><requires></requires><extension point="xbmc.addon.repository" name="Elementum Repository"><info compressed="false">http://localhost:65220/repository/elgatito/plugin.video.elementum/addons.xml</info><checksum>http://localhost:65220/repository/elgatito/plugin.video.elementum/addons.xml.md5</checksum><datadir zip="true">http://localhost:65220/repository/elgatito/</datadir></extension><extension point="xbmc.addon.metadata"><platform>all</platform><summary lang="en">GitHub repository for Elementum updates</summary></extension></addon>
+<addon id="repository.elementum" name="Elementum Repository" version="0.0.44" provider-name="elgatito">
+<requires>
+</requires>
+<extension point="xbmc.addon.repository" name="Elementum Repository">
+<info compressed="false">http://localhost:65220/repository/elgatito/plugin.video.elementum/addons.xml</info>
+<checksum>http://localhost:65220/repository/elgatito/plugin.video.elementum/addons.xml.md5</checksum>
+<datadir zip="true">http://localhost:65220/repository/elgatito/</datadir>
+</extension>
+<extension point="xbmc.addon.metadata">
+<platform>all</platform>
+<summary lang="en">GitHub repository for Elementum updates</summary>
+</extension>
+</addon>
 
 <addon id="repository.illuminati" name="[COLORmaroon]Illu[COLORslategray]min[COLORdarkblue]ati[/COLOR]" version="1.2.1" provider-name="Illuminati Temple">
         <requires>
@@ -300,6 +372,39 @@
 		<summary lang="en">Home of 3rd party addons</summary>
 		<description lang="en">The developers do not own any content found within these addons. They are in no way affiliated with Kodi or XBMC.</description>
             <platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.kodi4vn" name="Kodi4VN's REPO" version="1.3" provider-name="ThongLD">
+	<extension point="xbmc.addon.repository" name="ThongLD's Addon Repository">
+		<info compressed="false">http://thong.viettv24.com/kodi4vn/addons.xml</info>
+		<checksum>http://thong.viettv24.com/kodi4vn/addons.xml.md5</checksum>
+		<datadir zip="true">http://thong.viettv24.com/kodi4vn/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Install Kodi4VN Addons</summary>
+		<description>Download and install addons from Kodi4VN's Repo: Best addons for Vietnamesse</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.loop" name="[COLORlime]Loop[/COLOR] Repository" version="2.0.0" provider-name="Loop">
+	<extension point="xbmc.addon.repository" name="Loop Repository">
+	<dir>
+		<info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+	</dir>
+	<dir>
+		<info compressed="false">https://loopaddon.uk/zips/addons.xml</info>
+		<checksum>https://loopaddon.uk/zips/addons.xml.md5</checksum>
+		<datadir zip="true">https://loopaddon.uk/zips/</datadir>
+	</dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary></summary>
+		<description></description>
+		<platform>all</platform>
 	</extension>
 </addon>
 
@@ -330,7 +435,7 @@
 	</extension>
 </addon>
 
-<addon id="repository.maverickrepo" name="[COLOR lime]MaverickTV Repo[/COLOR]" version="2.9" provider-name="Maverick TV">
+<addon id="repository.maverickrepo" name="[COLOR lime]MaverickTV Repo[/COLOR]" version="3.1" provider-name="Maverick TV">
 <extension point="xbmc.addon.repository" name="[COLOR lime]MaverickTV Repo[/COLOR]">
 	<dir>
 		<info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
@@ -338,22 +443,27 @@
 		<datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
 	</dir>
 	<dir>
-		<info compressed="false">http://mavericktv.net/modrepo/addons.xml</info>
-		<checksum>http://mavericktv.net/modrepo/addons.xml.md5</checksum>
-		<datadir zip="true">http://mavericktv.net/modrepo/plugins/</datadir>
+		<info compressed="false">https://raw.githubusercontent.com/duncanh52/modrepo/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/duncanh52/modrepo/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/duncanh52/modrepo/master/plugins/</datadir>
 	</dir>
+	<dir>
+        <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+    </dir>
 	<dir>
         <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
         <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
         <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
     </dir>
 
-		<info compressed="false">http://mavericktv.net/mavrepo/plugins/addons.xml</info>
-		<checksum>http://mavericktv.net/mavrepo/plugins/addons.xml.md5</checksum>
-		<datadir zip="true">http://mavericktv.net/mavrepo/plugins/</datadir>
+		<info compressed="false">https://raw.githubusercontent.com/duncanh52/plugins/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/duncanh52/plugins/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/duncanh52/plugins/master/</datadir>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<summary>The MaverickTV Repository v2.9</summary>
+		<summary>The MaverickTV Repository v3.1</summary>
 		<description>The MaverickTV Repository for add-on and dependencies</description>
 		<platform>all</platform>
 	</extension>
@@ -373,6 +483,20 @@
 	<extension point="xbmc.addon.metadata">
 		<summary>Repo for PhoenixReborn Addons</summary>
 		<description>Download and install addons by PhoenixReborn.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.plexus-streams" name="Plexus-Streams Repository" version="1.0.0" provider-name="D4FC">
+	<extension point="xbmc.addon.repository" name="Plexus-Streams Repository">
+		<info compressed="false">https://bitbucket.org/plexus-streams/plexus-streams/raw/releases/addons.xml</info>
+		<checksum>https://bitbucket.org/plexus-streams/plexus-streams/raw/releases/addons.xml.md5</checksum>
+		<datadir zip="true">https://bitbucket.org/plexus-streams/plexus-streams/raw/releases/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Plexus-Streams Repository</summary>
+		<description>Plexus-Streams Repository</description>
+		<disclaimer></disclaimer>
 		<platform>all</platform>
 	</extension>
 </addon>
@@ -422,6 +546,26 @@
             <summary>PureRepo Repo</summary>
             <description>PureRepo Repo</description>
             <platform>all</platform>
+    </extension>
+</addon>
+
+<addon id="repository.Rockcrusher" name="[COLOR red]Rockcrusher Repository[/COLOR]" version="1.9" provider-name="Rockcrusher">
+	<extension point="xbmc.addon.repository" name="[COLOR red]Rockcrusher Repository[/COLOR]">
+        <info compressed="false">http://Rockodi.com/addons.xml</info>
+        <checksum>http://Rockodi.com/addons.xml.md5</checksum>
+        <datadir zip="true">http://Rockodi.com/</datadir>
+	<dir>
+        <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+    </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Rockcrusher Addons</summary>
+        <description>Rockcrusher Repository</description>
+        <disclaimer lang="en">Author does not host or distribute any of the content displayed by this addon. Author does not have any affiliation with the content provider.
+        </disclaimer>
+        <platform>all</platform>
     </extension>
 </addon>
 
@@ -557,6 +701,31 @@
 	<extension point="xbmc.addon.metadata">
 		<summary>The Best Third Party Addons for KODI</summary>
 		<description>The Best Third Party Addons for Vietnamese</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="repository.vista" name="VistaTVs Addon Repo" version="1.0" provider-name="Biglad">
+	<extension point="xbmc.addon.repository" name="VistaTVs Addon Repo">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/zips/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/totalrevolution/python-koding/master/zips/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/addons.xml</info>
+			<checksum>https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://github.com/tvaddonsco/tva-resolvers-repo/raw/master/zips/</datadir>
+	    </dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary></summary>
+		<description>Cerebro TV Repo</description>
 		<platform>all</platform>
 	</extension>
 </addon>
