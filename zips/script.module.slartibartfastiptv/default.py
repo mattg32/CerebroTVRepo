@@ -1,6 +1,6 @@
 import re,os,xbmc
 
-addon_id   = 'script.module.streamhublive'
+addon_id   = 'script.module.slartibartfastiptv'
 
 icon       = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
 fanart     = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
@@ -8,7 +8,7 @@ logfile    = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id
 
 def home():
 	addDir('[COLOR white][B]UK IPTV[/COLOR][/B] (If out use UK enable VPN)','url',1000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
-	addDir('[COLOR white][B]Mobdro & Pak India Streams[/COLOR][/B]','url',4000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
+	addDir('[COLOR white][B]NONE GEO LOCKED IPTV[/COLOR][/B]','url',4000,'https://github.com/biglad/PersonalDataVistaTV/raw/master/images/icon.png',fanart,'')
 	
 def log(text):
 	file = open(logfile,"w+")
