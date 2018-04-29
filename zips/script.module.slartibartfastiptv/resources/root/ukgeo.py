@@ -8,7 +8,7 @@ fanart     = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id
 def cat():
 	#iplayer()
 	addDir('[COLOR white][B]BBC iPlayer[/COLOR][/B]','iplayer',1,'https://pbs.twimg.com/profile_images/851480480700669952/5ttz9hg1.jpg',fanart,'')
-	#addDir('[COLOR white][B]ITV Player[/COLOR][/B]','itv',1,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
+	addDir('[COLOR white][B]ITV Player[/COLOR][/B]','itv',1,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
 	#addDir('[COLOR white][B]Tv Catchup[/COLOR][/B]','tvcatchup',1,'http://www.tvcatchup.com/tvcatchup-sm.jpg',fanart,'')
 	addDir('[COLOR white][B]Tv Player[/COLOR][/B]','tvplayer',1,'http://www.broadbandtvnews.com/wp-content/uploads/2017/04/TVPlayer.png',fanart,'')
 
@@ -84,14 +84,7 @@ def iplayer():
 	
 	
 def itv():
-        addDir('ITV 1','http://itv1liveios-i.akamaihd.net/hls/live/203437/itvlive/ITV1MN/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-        addDir('ITV 2','http://itv2liveios-i.akamaihd.net/hls/live/203495/itvlive/ITV2MN/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-        addDir('ITV 3','http://itv3liveios-i.akamaihd.net/hls/live/207262/itvlive/ITV3MN/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-        addDir('ITV 4','http://itv4liveios-i.akamaihd.net/hls/live/207266/itvlive/ITV4MN/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-        addDir('ITV Be','http://itvbeliveios-i.akamaihd.net/hls/live/219078/itvlive/ITVBE/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-        addDir('CITV','http://citvliveios-i.akamaihd.net/hls/live/207267/itvlive/CITVMN/master_Main1800.m3u8',9999,'http://blog.careco.co.uk/wp-content/uploads/2015/08/x__i0KC0.png',fanart,'')
-		
-		
+        xbmc.executebuiltin('ActivateWindow(10025,"plugin://plugin.video.itv/?iconimage=C%3a%5cUsers%5cbigla%5cAppData%5cRoaming%5cKodi%5caddons%5cplugin.video.itv%5cicon.png&mode=206&name=Live&url=Live",return)')
 		
 		
 		

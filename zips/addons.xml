@@ -73,7 +73,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="1.1.7" provider-name="VistaTV">
+<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="1.1.8" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.pyxbmct" />
@@ -84,6 +84,7 @@
 		<import addon="script.module.slartibartfast"/>
 		<import addon="script.module.slartibartfastiptv"/>
 		<import addon="script.cerebro.pairwith.laucnher"/>
+		<import addon="plugin.video.itv"/>
 	</requires>
 	<extension point="xbmc.python.pluginsource" library="default.py">
 		<provides>video</provides>
@@ -854,7 +855,7 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
   </extension>
 </addon>
 
-<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="2.0.5" provider-name="VistaTV">
+<addon id="script.module.slartibartfastiptv" name="Slartibartfast IPTV Module" version="2.0.6" provider-name="VistaTV">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
 	<import addon="script.module.requests" />
