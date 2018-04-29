@@ -307,9 +307,9 @@ def HOME():
         addDir('7 Day TV Schedule','TV Schedule',20,__icon__)
         addDir('Top Movies',strdomain+'/top/films.html',5,__icon__)
         addDir('Top TV Shows',strdomain+'/top/tvshows.html',6,__icon__)
-        addDir('Movies 2010-2017',strdomain+'/Category-Movies/Genre-Any/2010-2017/Letter-Any/LatestFirst/1.htm',26,__icon__)
+        addDir('Movies 2010-2018',strdomain+'/Category-Movies/Genre-Any/2010-2018/Letter-Any/LatestFirst/1.htm',26,__icon__)
         addDir('Movies 2000-2010',strdomain+'/Category-Movies/Genre-Any/2000-2010/Letter-Any/LatestFirst/1.htm',26,__icon__)
-        addDir('TV Shows 2010-2017',strdomain+'/Category-TvShows/Genre-Any/2010-2017/Letter-Any/LatestFirst/1.htm',27,__icon__)
+        addDir('TV Shows 2010-2018',strdomain+'/Category-TvShows/Genre-Any/2010-2018/Letter-Any/LatestFirst/1.htm',27,__icon__)
         addDir('TV Shows 2000-2010',strdomain+'/Category-TvShows/Genre-Any/2000-2010/Letter-Any/LatestFirst/1.htm',27,__icon__)
         addDir('TV Shows (Comedy) 1980-1990',strdomain+'/Category-TvShows/Genre-comedy/1980-1990/Letter-Any/LatestFirst/1.htm',27,__icon__)
 def LangOption():
