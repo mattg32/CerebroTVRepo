@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['watchepisodeseries.unblocked.vc']
-        self.base_link = 'http://watchepisodeseries.unblockall.org/'
+        self.base_link = 'https://watchepisodeseries.bypassed.bz/'
         self.search_link = 'home/search?q=%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
