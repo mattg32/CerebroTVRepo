@@ -18,9 +18,39 @@ ipaddy = "0.0.0.0"
 dialog = xbmcgui.Dialog()
 dp = xbmcgui.DialogProgress()
 
+def ping(host):
+    """
+    Returns True if host responds to a ping request
+    """
+    import os, platform
+
+    # Ping parameters as function of OS
+    ping_str = "-n 1" if  platform.system().lower()=="windows" else "-c 1"
+
+    # Ping
+    return os.system("ping " + ping_str + " " + host) == 0
+    
+    
+if not ping("google.com"):
+    dialog = xbmcgui.Dialog()
+    dialog.ok("[COLOR=red][B]VistaTV[/COLOR][/B]", "No Internet Connection Found!", "Press OK to exit",'Please Check Your Connection.')
+    os._exit(1)
+    exit()
+    
+from uuid import getnode as get_mac
+mac = get_mac()
+macid = ':'.join(("%012X" % mac)[i:i+2] for i in range(0, 12, 2))
+#xbmc.log(macid,2)  
 
 def codecheck(userid):
-    response = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/auth2.php?id='+str(userid)+'&ip=0.0.0.0').read()
+    response = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/auth2.php?id='+str(userid)).read()
+    if response == "OK":
+        return True
+    else:
+        return False
+      
+def checkmac():
+    response = urllib2.urlopen('http://vistatv.co.uk/TV-DATA/auth2.php?mac='+macid).read()
     if response == "OK":
         return True
     else:
@@ -58,6 +88,8 @@ if myplatform == 'android': # Android
     IDPATH      = '/storage/emulated/0/Download/vistatv/'
 elif myplatform == 'windows':   
     IDPATH      = 'C:\\vistatv\\'  
+    
+else: IDPATH    = xbmc.translatePath('special://home/')
 
 
 PART1  = "https://github.com/biglad/PersonalDataVistaTV/raw/master/zips/install1.zip"
@@ -92,12 +124,13 @@ except:
     data300="CODE NOT FOUND CHECKING FOR BACKUP"
 dp.create("Staring Vista TV's Wizard","",str(data300), ' ')
 xbmc.sleep(5000)
-    
-try:
-    with open(idbackup, 'r') as myfile:
-        data300=str(myfile.read())
-except: 
-    data300="OH DEAR I NEED A NEW CODE!!!!!"
+if not checkmac():    
+    try:
+        with open(idbackup, 'r') as myfile:
+            data300=str(myfile.read())
+    except: 
+        data300="OH DEAR I NEED A NEW CODE!!!!!"
+else : data300 = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/auth2.php?idfrommac=yes&mac='+macid).read()
 dp.close()
 dp.create("Staring Vista TV's Wizard","BACKUP CODE",str(data300), ' ')
 
@@ -188,8 +221,9 @@ def function3():
     exit()
     
 def function4():
-    userid = data300
+
     if not SkipCheck == 1:
+        userid = data300
         if codecheck(userid):
             DoStart = 1
         else:
@@ -197,10 +231,18 @@ def function4():
     else: 
         DoStart = 1
         
+    if checkmac():
+        GetID = urllib2.urlopen('http://cerebrotv.co.uk/TV-DATA/auth2.php?idfrommac=yes&mac='+macid).read()
+        data300 = str(GetID)
+        userid = data300
+        DoStart = 1
+    
     if data300=="CODE NOT FOUND CHECKING FOR BACKUP":
         DoStart = 0
     if data300=="OH DEAR I NEED A NEW CODE!!!!!":
         DoStart = 0
+        
+
 
     if DoStart ==0:            
         dialog.ok("[COLOR=red][B]VistaTV Auth System[/COLOR][/B]", "You will now be asked for your [COLOR=red]Authentication Code[/COLOR]", "If you dont have one please visit","www.vistatv.uk")
@@ -243,7 +285,7 @@ def function4():
             fo.write(userid);
             fo.close()
             DoStart = 1
-            exit()
+            #exit()
         else:
             fo = open(iddata, "w")
             fo.write(userid);
@@ -253,7 +295,7 @@ def function4():
             fo.close()
             DoStart = 1
             install()
-            exit()
+            #exit()
     addondir= xbmc.translatePath('special://home/addons')
     datadir = xbmc.translatePath('special://userdata/userdata')
     ## todo wipde all addons & user data
@@ -312,4 +354,7 @@ def function6():
 if SkipCheck == 1:
     function4()
 else:
-    menuoptions()
+	if checkmac():
+		function4()
+	else:
+		menuoptions()
