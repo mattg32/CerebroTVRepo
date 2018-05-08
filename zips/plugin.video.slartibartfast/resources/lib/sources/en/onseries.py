@@ -20,13 +20,26 @@ from resources.lib.modules import log_utils
 from resources.lib.modules import proxy
 
 class source:
+    def url_ok(url):
+        r = requests.head(url)
+        return r.status_code == 200
+    def HostChcker():
+        if url_ok("https://watchseries.bypassed.org/"):
+            useurl = "https://watchseries.bypassed.org/"
+        elif url_ok("https://watchseries.unblocked.ms/"):
+            useurl = "https://watchseries.unblocked.ms/"
+        elif url_ok("http://watchseries.unblocked.wtf/"):
+            useurl = "http://watchseries.unblocked.wtf/"
+        elif url_ok("http://watchseries.unblocked.lol/"):
+            useurl = "http://watchseries.unblocked.lol/"
+        else: exit()
     def __init__(self):
         self.priority = 0
         self.language = ['en']
         self.domains = ['xwatchseries.to','onwatchseries.to','itswatchseries.to']
-        self.base_link = 'https://watchseries.bypassed.org'
-        self.search_link = 'https://watchseries.bypassed.org/show/search-shows-json'
-        self.search_link_2 = 'hhttps://watchseries.bypassed.org/search/%s'
+        self.base_link = useurl
+        self.search_link = useurl+'show/search-shows-json'
+        self.search_link_2 = useurl+'search/%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:

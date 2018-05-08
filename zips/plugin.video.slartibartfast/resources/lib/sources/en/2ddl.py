@@ -21,11 +21,22 @@ from resources.lib.modules import source_utils
 from resources.lib.modules import log_utils
 
 class source:
+
+    def url_ok(url):
+        r = requests.head(url)
+        return r.status_code == 200
+    def HostChcker():
+        if url_ok("http://2ddl.io/"):
+            useurl = "http://2ddl.io/"
+        elif url_ok("https://2ddl.unblocked.mx/"):
+            useurl = "https://2ddl.unblocked.mx/"
+        else: exit()
+        
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['2ddl.io']
-        self.base_link = 'http://2ddl.io/'
+        self.base_link = useurl
         self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

@@ -28,11 +28,20 @@ from resources.lib.modules import log_utils
 from resources.lib.modules import cfscrape
 
 class source:
+    def url_ok(url):
+        r = requests.head(url)
+        return r.status_code == 200
+    def HostChcker():
+        if url_ok("https://www.vidics.to/"):
+            useurl = "https://www.vidics.to/"
+        elif url_ok("https://vidics.unblocked.mx"):
+            useurl = "https://vidics.unblocked.mx/"
+        else: exit()
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['vidics.to','vidics.unblocked.pl']
-        self.base_link = 'https://www.vidics.to/'
+        self.base_link = useurl
         self.search_link = urlparse.urljoin(self.base_link, 'searchSuggest/FilmsAndTV/%s')
                        
     def movie(self, imdb, title, localtitle, aliases, year):
