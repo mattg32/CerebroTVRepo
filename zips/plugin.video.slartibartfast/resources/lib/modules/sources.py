@@ -44,6 +44,7 @@ import xbmcgui
 dp = xbmcgui.DialogProgress()
 dp.create("VistaTV","Starting Scrapers!!!",'This may take a few seconds......', 'Please Wait.....')
 xbmc.sleep(2000)
+dp.close()
 
 class sources:
     def __init__(self):
