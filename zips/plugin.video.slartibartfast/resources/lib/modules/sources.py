@@ -40,6 +40,10 @@ except: pass
 
 try: import xbmc
 except: pass
+import xbmcgui
+dp = xbmcgui.DialogProgress()
+dp.create("VistaTV","Starting Scrapers!!!",'This may take a few seconds......', 'Please Wait.....')
+xbmc.sleep(2000)
 
 class sources:
     def __init__(self):
@@ -343,7 +347,7 @@ class sources:
             pass
 
     def getSources(self, title, year, imdb, tvdb, season, episode, tvshowtitle, premiered, quality='HD', timeout=30):
-        
+
         progressDialog = control.progressDialog if control.setting('progress.dialog') == '0' else control.progressDialogBG
         progressDialog.create(control.addonInfo('name'), '')
         progressDialog.update(0)
@@ -959,6 +963,7 @@ class sources:
 
 
     def sourcesResolve(self, item, info=False):
+
         try:
             self.url = None
 
