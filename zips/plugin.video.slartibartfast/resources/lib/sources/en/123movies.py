@@ -25,13 +25,31 @@ from resources.lib.modules import client
 from resources.lib.modules import cache
 from resources.lib.modules import dom_parser2
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("http://123moviesex.com"):
+        useurl = 'http://123moviesex.com/'
+
+    elif url_ok("http://123moviesonline.stream"):
+        useurl = 'http://123moviesonline.stream/'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['123moviesex']
-        self.base_link = 'http://123moviesex.com/'
+        self.base_link = HostChcker()
         self.search_link = '/search-movies/%s.html'
 
 

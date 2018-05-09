@@ -23,14 +23,37 @@ from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import dom_parser2
 from resources.lib.modules import source_utils
+import requests
+
+
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+    
+    
+def HostChcker():
+    if url_ok("http://watchepisodeseries.unblocked.mx"):
+        useurl = 'https://watchepisodeseries.unblocked.mx/'
+        
+    elif url_ok("https://watchepisodeseries.bypassed.org"):
+        useurl = 'https://watchepisodeseries.bypassed.org/'
+        
+    elif url_ok("http://watchepisodeseries.unblocker.cc"):
+        useurl = 'http://watchepisodeseries.unblocker.cc/'
+        
+    else: useurl = 'http://localhost/'
+    return useurl
 
 class source:
     def __init__(self):
+    
         self.priority = 1
         self.language = ['en']
         self.domains = ['watchepisodeseries.unblocked.vc']
-        self.base_link = 'https://watchepisodeseries.unblocked.mx'
-        self.search_link = 'home/search?q=%s'
+        self.base_link = HostChcker()
+        self.search_link = '/home/search?q=%s'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:

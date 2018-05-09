@@ -26,14 +26,32 @@ from resources.lib.modules import client
 from resources.lib.modules import dom_parser2
 from resources.lib.modules import source_utils
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("https://my-project-free.tv"):
+        useurl = 'https://my-project-free.tv/'
+
+    elif url_ok("https://projectfree.unblocked.lol"):
+        useurl = 'https://projectfree.unblocked.lol/'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['project-free-tv.ch','project-free-tv.ag', 'myprojectfreetv.net']
-        self.base_link = 'https://my-project-free.tv/'
-        self.search_link = 'search-tvshows/?free=%s'
+        self.base_link = HostChcker()
+        self.search_link = '/search-tvshows/?free=%s'
 
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):

@@ -24,6 +24,25 @@ import base64
 
 from resources.lib.modules import client, cleantitle, directstream, dom_parser2
 
+
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("http://123hulu.unblockall.org"):
+        useurl = 'http://123hulu.unblockall.org/'
+
+    elif url_ok("http://www0.123hulu.com"):
+        useurl = 'http://www0.123hulu.com/'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 class source:
     def __init__(self):
         '''
@@ -33,7 +52,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['123hulu.com','123hulu.unblockall.org']
-        self.base_link = 'http://123hulu.unblockall.org/'
+        self.base_link = HostChcker()
         self.movies_search_path = ('/search-movies/%s.html')
 
     def movie(self, imdb, title, localtitle, aliases, year):

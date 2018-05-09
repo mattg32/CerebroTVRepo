@@ -18,12 +18,30 @@ from resources.lib.modules import cleantitle
 from resources.lib.modules import client
 from resources.lib.modules import log_utils
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("http://www.hdpopcorns.com"):
+        useurl = 'http://www.hdpopcorns.com/'
+		
+    elif url_ok("http://hdpopcorns.in"):
+        useurl = 'http://hdpopcorns.in/'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['hdpopcorns.com']
-        self.base_link = 'http://www.hdpopcorns.com'
+        self.base_link = HostChcker()
         self.search_link = '/search/%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

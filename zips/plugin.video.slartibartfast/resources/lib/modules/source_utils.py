@@ -28,6 +28,12 @@ from resources.lib.modules import directstream
 from resources.lib.modules import trakt
 from resources.lib.modules import pyaes
 
+#import xbmcgui
+#dp = xbmcgui.DialogProgress()
+#dp.create("VistaTV","Scrapers Starting Up",'Please Wait.....', '')
+#xbmc.sleep(2000)
+#dp.close()
+
 def is_anime(content, type, type_id):
     try:
         r = trakt.getGenre(content, type, type_id)

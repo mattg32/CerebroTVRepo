@@ -26,14 +26,29 @@ from resources.lib.modules import client
 from resources.lib.modules import proxy
 
 
+def url_ok(url):
+	r = requests.head(url)
+	return r.status_code == 200
+def HostChcker():
+	if url_ok("https://watchseries.bypassed.org/"):
+		useurl = "https://watchseries.bypassed.org/"
+	elif url_ok("https://watchseries.unblocked.ms/"):
+		useurl = "https://watchseries.unblocked.ms/"
+	elif url_ok("http://watchseries.unblocked.wtf/"):
+		useurl = "http://watchseries.unblocked.wtf/"
+	elif url_ok("http://watchseries.unblocked.lol/"):
+		useurl = "http://watchseries.unblocked.lol/"
+	else: exit()
+	return useurl
+
 class source:
     def __init__(self):
         self.priority = 0
         self.language = ['en']
         self.domains = ['dwatchseries.to','onwatchseries.to','mywatchseries.to','itswatchseries.to', 'ewatchseries.to']
-        self.base_link = 'http://watchseries.bypassed.bz/'
-        self.search_link = 'http://watchseries.bypassed.bz/search/%s' #'http://dwatchseries.to/show/search-shows-json'
-        self.search_link_2 = 'http://watchseries.bypassed.bz/search/%s'
+        self.base_link = HostChcker()
+        self.search_link = self.base_link'/search/%s' #'http://dwatchseries.to/show/search-shows-json'
+        self.search_link_2 = self.base_link+'/search/%s'
 
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):

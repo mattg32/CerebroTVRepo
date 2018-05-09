@@ -20,23 +20,33 @@ from resources.lib.modules import debrid
 from resources.lib.modules import source_utils
 from resources.lib.modules import log_utils
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("http://2ddl.io"):
+        useurl = 'http://2ddl.io/'
+
+    if url_ok("http://2ddl.unblocked.mx"):
+        useurl = 'https://2ddl.unblocked.mx/'
+
+    else: useurl = 'http://localhost' #'http://2ddl.io/'
+    
+    return useurl
+
 class source:
 
-    def url_ok(url):
-        r = requests.head(url)
-        return r.status_code == 200
-    def HostChcker():
-        if url_ok("http://2ddl.io/"):
-            useurl = "http://2ddl.io/"
-        elif url_ok("https://2ddl.unblocked.mx/"):
-            useurl = "https://2ddl.unblocked.mx/"
-        else: exit()
+
         
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['2ddl.io']
-        self.base_link = useurl
+        self.base_link = HostChcker()
         self.search_link = '/?s=%s'
 
     def movie(self, imdb, title, localtitle, aliases, year):

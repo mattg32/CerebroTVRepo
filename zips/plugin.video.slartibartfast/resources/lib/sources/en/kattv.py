@@ -25,13 +25,30 @@ from resources.lib.modules import client
 from resources.lib.modules import cache
 from resources.lib.modules import dom_parser2
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("http://kat.tv"):
+        useurl = 'http://kat.tv'
+
+    elif url_ok("http://kat.bypassed.bz"):
+        useurl = 'http://kat.bypassed.bz'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
 
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
         self.domains = ['kat.tv']
-        self.base_link = 'http://kat.tv'
+        self.base_link = HostChcker()
         self.search_link = '/search-movies/%s.html'
 
 

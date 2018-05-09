@@ -31,6 +31,24 @@ from resources.lib.modules import jsunfuck
 from resources.lib.modules import source_utils
 from resources.lib.modules import cfscrape
 
+import requests
+def url_ok(url):
+    r = requests.head(url)
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
+
+def HostChcker():
+    if url_ok("https://solarmoviez.ru"):
+        useurl = 'https://solarmoviez.ru'
+
+    elif url_ok("https://solarmovie.unblocked.mx"):
+        useurl = 'https://solarmovie.unblocked.mx/'
+
+    else: useurl = 'http://localhost/'
+    
+    return useurl
+
 CODE = '''def retA():
     class Infix:
         def __init__(self, function):
@@ -57,7 +75,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['solarmoviez.ru']
-        self.base_link = 'https://solarmoviez.ru'
+        self.base_link = HostChcker()
         self.search_link = '/movie/search/%s.html'
         self.info_link = '/ajax/movie_get_info/%s.html'
         self.server_link = '/ajax/v4_movie_episodes/%s'
