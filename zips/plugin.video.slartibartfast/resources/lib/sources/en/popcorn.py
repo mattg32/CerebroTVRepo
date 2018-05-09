@@ -1,16 +1,22 @@
 # -*- coding: UTF-8 -*-
-#######################################################################
- # ----------------------------------------------------------------------------
- # "THE BEER-WARE LICENSE" (Revision 42):
- # @tantrumdev wrote this file.  As long as you retain this notice you
- # can do whatever you want with this stuff. If we meet some day, and you think
- # this stuff is worth it, you can buy me a beer in return. - Muad'Dib
- # ----------------------------------------------------------------------------
-#######################################################################
+'''
+    VistaTV Scraper
 
-# Addon Name: Placenta
-# Addon id: plugin.video.placenta
-# Addon Provider: MuadDib
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+    thanks to MuadDib, FilmNet, Sirius & the others iv missed
+'''
 
 import re,requests,traceback,base64,urllib,urlparse
 
@@ -28,7 +34,7 @@ def url_ok(url):
 def HostChcker():
     if url_ok("http://www.hdpopcorns.com"):
         useurl = 'http://www.hdpopcorns.com/'
-		
+        
     elif url_ok("http://hdpopcorns.in"):
         useurl = 'http://hdpopcorns.in/'
 

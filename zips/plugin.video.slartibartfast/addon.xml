@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="2.9.91" provider-name="VistaTV">
+<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="2.9.92" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.pyxbmct" />
