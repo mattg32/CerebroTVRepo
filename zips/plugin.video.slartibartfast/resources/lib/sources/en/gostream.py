@@ -25,6 +25,7 @@ import re,urllib,urlparse,time,json
 from resources.lib.modules import control
 from resources.lib.modules import cleantitle
 from resources.lib.modules import client
+from resources.lib.modules import jsunpack
 from resources.lib.modules import source_utils
 
 
@@ -33,10 +34,11 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['gowatchseries.io','gowatchseries.co']
-        self.base_link = 'https://ww2.gowatchseries.co'
-        self.search_link = '/ajax-search.html?keyword=%s&id=-1'
-        self.search_link2 = '/search.html?keyword=%s'
+        self.domains = ['gostream.is','gostream.sc']
+        self.base_link = 'https://gostream.sc'
+        self.search_link = '/movie/search/%s'
+        self.user = control.setting('gostream.user')
+        self.password = control.setting('gostream.pass')
 
     def movie(self, imdb, title, localtitle, aliases, year):
         try:
@@ -75,6 +77,21 @@ class source:
 
             if url == None: return sources
 
+            if (self.user != '' and self.password != ''): #raise Exception()
+
+               login = urlparse.urljoin(self.base_link, '/login.html')
+
+               post = urllib.urlencode({'username': self.user, 'password': self.password, 'submit': 'Login'})
+
+               cookie = client.request(login, post=post, output='cookie', close=False)
+
+               r = client.request(login, post=post, cookie=cookie, output='extended')
+
+               headers = {'User-Agent': r[3]['User-Agent'], 'Cookie': r[4]}
+            else:
+               headers = {}
+
+
             if not str(url).startswith('http'):
 
                 data = urlparse.parse_qs(url)
@@ -85,54 +102,48 @@ class source:
                 if 'episode' in data: episode = data['episode']
                 year = data['year']
 
-                r = client.request(self.base_link, output='extended', timeout='10')
-                cookie = r[4] ; headers = r[3] ; result = r[0]
-                headers['Cookie'] = cookie
-
                 query = urlparse.urljoin(self.base_link, self.search_link % urllib.quote_plus(cleantitle.getsearch(title)))
-                #query2 = urlparse.urljoin(self.base_link, self.search_link % re.sub('\s','+',title))
-                r = client.request(query, headers=headers, XHR=True)
-                r = json.loads(r)['content']
-                r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a'))
+                query2 = urlparse.urljoin(self.base_link, self.search_link % re.sub('\s','+',title))
+                r = client.request(query)
+                r = client.parseDOM(r, 'div', attrs = {'class': 'ml-item'})
+                if len(r)==0:
+                    r = client.request(query2)
+                    r = client.parseDOM(r, 'div', attrs = {'class': 'ml-item'})
+                r = zip(client.parseDOM(r, 'a', ret='href'), client.parseDOM(r, 'a', ret='title'), client.parseDOM(r, 'a', ret='data-url'))
                 
-                
+                cltitle2 = None
                 if 'tvshowtitle' in data:                   
                     cltitle = cleantitle.get(title+'season'+season)
                     cltitle2 = cleantitle.get(title+'season%02d'%int(season))
-                    r = [i for i in r if cltitle == cleantitle.get(i[1]) or cltitle2 == cleantitle.get(i[1])]
-                    vurl = '%s%s-episode-%s'%(self.base_link, str(r[0][0]).replace('/info',''), episode)
-                    vurl2 = None
                 else:
-                    cltitle = cleantitle.getsearch(title)
-                    cltitle2 = cleantitle.getsearch('%s (%s)'%(title,year))
-                    r = [i for i in r if cltitle2 == cleantitle.getsearch(i[1]) or cltitle == cleantitle.getsearch(i[1])]
-                    vurl = '%s%s-episode-0'%(self.base_link, str(r[0][0]).replace('/info',''))
-                    vurl2 = '%s%s-episode-1'%(self.base_link, str(r[0][0]).replace('/info',''))                
+                    cltitle = cleantitle.get(title)
 
-                r = client.request(vurl, headers=headers)
-                headers['Referer'] = vurl
-                
-                slinks = client.parseDOM(r, 'div', attrs = {'class': 'anime_muti_link'})
-                slinks = client.parseDOM(slinks, 'li', ret='data-video')
-                if len(slinks) == 0 and not vurl2 == None:
-                    r = client.request(vurl2, headers=headers)
-                    headers['Referer'] = vurl2
-                    slinks = client.parseDOM(r, 'div', attrs = {'class': 'anime_muti_link'})                
-                    slinks = client.parseDOM(slinks, 'li', ret='data-video')
+                r = [i for i in r if cltitle == cleantitle.get(i[1]) or cltitle2 == cleantitle.get(i[1])]
+                id = [re.findall('/(\d+)$',i[2])[0] for i in r][0]
 
-                for slink in slinks:
+                ajx = urlparse.urljoin(self.base_link, '/ajax/movie_episodes/'+id)
+
+                r = client.request(ajx)
+                if 'episode' in data:
+                    eids = re.findall(r'title=\\"Episode\s+%02d.*?data-id=\\"(\d+)'%int(episode),r)
+                else:
+                    eids = re.findall(r'title=.*?data-id=\\"(\d+)',r)
+
+                for eid in eids:
                     try:
-                        if 'vidnode.net/streaming.php' in slink:
-                            r = client.request('https:%s'%slink, headers=headers)
-                            clinks = re.findall(r'sources:\[(.*?)\]',r)[0]
-                            clinks = re.findall(r'file:\s*\'(http[^\']+)\',label:\s*\'(\d+)', clinks)
-                            for clink in clinks:
-                                q = source_utils.label_to_quality(clink[1])
-                                sources.append({'source': 'cdn', 'quality': q, 'language': 'en', 'url': clink[0], 'direct': True, 'debridonly': False})
-                        else:
-                            valid, hoster = source_utils.is_host_valid(slink, hostDict)
-                            if valid:
-                                sources.append({'source': hoster, 'quality': 'SD', 'language': 'en', 'url': slink, 'direct': False, 'debridonly': False})
+                        ajx = 'ajax/movie_token?eid=%s&mid=%s&_=%d' % (eid, id, int(time.time() * 1000))
+                        ajx = urlparse.urljoin(self.base_link, ajx)
+                        r = client.request(ajx)
+                        [x,y] = re.findall(r"_x='([^']+)',\s*_y='([^']+)'",r)[0]
+                        ajx = 'ajax/movie_sources/%s?x=%s&y=%s'%(eid,x,y)
+                        ajx = urlparse.urljoin(self.base_link, ajx)
+                        r = client.request(ajx)
+                        r = json.loads(r)
+                        r = r['playlist'][0]['sources']
+                        for i in r:
+                            try: label = source_utils.label_to_quality(i['label']) 
+                            except: label = 'SD'
+                            sources.append({'source': 'cdn', 'quality': label, 'language': 'en', 'url': i['file'], 'direct': True, 'debridonly': False})
                     except:
                         pass
 
@@ -143,6 +154,5 @@ class source:
 
     def resolve(self, url):
         return url
-
 
 

@@ -36,6 +36,9 @@ def url_ok(url):
 def HostChcker():
     if url_ok("http://www0.123rarbg.com"):
         useurl = 'http://www0.123rarbg.com/'
+		
+    if url_ok("https://rarbg.cc"):
+        useurl = 'https://rarbg.cc/'
 
     else: useurl = 'http://localhost/'
     
