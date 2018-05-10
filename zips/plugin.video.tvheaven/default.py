@@ -29,7 +29,9 @@ def pickserver():
 
 def url_ok(url):
     r = requests.head(url)
-    return r.status_code == 200
+    if r.status_code == 200 or r.status_code == 301:
+        return True
+    else: return False
 
 if url_ok("https://watchepisodeseries.unblocked.mx"):
     CurrentServer ="http://watchepisodeseries.unblocked.mx/"
