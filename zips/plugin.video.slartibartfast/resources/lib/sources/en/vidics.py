@@ -81,11 +81,11 @@ class source:
     def _search(self, title):
         try:
             url = self.search_link % title
-            headers =  {'Host': 'vidics.unblocked.pl',
-                        'Origin': 'https://vidics.unblocked.pl',
+            headers =  {'Host': 'vidics.unblocked.mx',
+                        'Origin': 'https://vidics.unblocked.mx',
                         'X-Requested-With': 'XMLHttpRequest',
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36',
-                        'Referer': 'https://vidics.unblocked.pl/Film/%s' % title.replace('%20','_')}
+                        'Referer': 'https://vidics.unblocked.mx/Film/%s' % title.replace('%20','_')}
             r = client.request(url, post='ajax=1', headers=headers)
             count = 0
             while len(r) == 0 and count <= 10:

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-    VistaTV Scraper
+    Cerebro ShowBox Scraper
+    Credits to Exodus and Covenant; our thanks go to their creators
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,8 +16,6 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    thanks to MuadDib, FilmNet, Sirius & the others iv missed
 '''
 
 import re,urlparse
@@ -29,8 +28,8 @@ class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['putlockerseries.to']
-        self.base_link = 'http://putlockerseries.to'
+        self.domains = ['putlockerseries.unblocked.vc']
+        self.base_link = 'https://putlockerseries.unblocked.mx'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
