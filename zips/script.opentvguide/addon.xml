@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.opentvguide" name="Open TV Guide" version="1.0.1" provider-name="VistaTV">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.simplejson" version="3.3.0"/>
+        <import addon="script.module.requests" />
+		<import addon="plugin.video.opentvguide.ini.creator" />
+	</requires>
+	<extension point="xbmc.python.script" library="addon.py">
+            <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="login"/>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Open TV Guide allows you to combine some of your favourite live TV plugins for use with a fully working EPG</summary>
+		<description lang="en">Open TV Guide allows you to combine some of your favourite live TV plugins for use with a fully working EPG</description>
+		<disclaimer lang="en">Open TV Guide is based on the original TV Guide addon by twinther.</disclaimer>
+		<language></language>
+		<platform>all</platform>
+		<license>GPLv2</license>
+		<forum>http://vistatv.me</forum>
+		<source>http://vistatv.me</source>
+        <website></website>
+		<email></email>
+		<news></news>
+		<assets>
+          <icon>resources/icon.png</icon>
+          <fanart>resources/fanart.jpg</fanart>
+          <screenshot>resources/screenshot001.png</screenshot>
+          <screenshot>resources/screenshot002.png</screenshot>
+          <screenshot>resources/screenshot003.png</screenshot>
+        </assets>
+	</extension>
+</addon>
