@@ -52,7 +52,7 @@ if update:
     try: os.remove(xbmc.translatePath("special://userdata/addon_data/script.opentvguide/vistatv.xml"))
     except: pass
     utils.DeleteFile(xbmc.translatePath("special://userdata/addon_data/script.opentvguide/vistatv.xml"))
-    #xbmc.executebuiltin('PlayMedia("plugin://plugin.video.streamhub")')
+    xbmc.executebuiltin('PlayMedia("plugin://plugin.video.opentvguide.ini.creator")')
 else:
     try:
         w = gui.TVGuide()
