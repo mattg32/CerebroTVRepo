@@ -5,7 +5,7 @@ import xbmcgui
 import sfile
 dp = xbmcgui.DialogProgress()
 dialog = xbmcgui.Dialog()
-dp.create("[COLOR gold]VistaTV House Keeper[/COLOR]","Removing temp /old files","Please Wait...")
+dp.create("[COLOR gold]VistaTV Kodi Cleaner[/COLOR]","Removing temp /old files","Please Wait...")
 xbmc.sleep(2000)
 dp.update(10)
 

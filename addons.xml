@@ -1245,7 +1245,7 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
 
 <addon id="script.program.kodicleaner"
   name="VistaTV Kodi Cleaner"
-  version="10.1"
+  version="10.3"
   provider-name="VistaTV">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
