@@ -18,9 +18,9 @@
     thanks to MuadDib, FilmNet, Sirius & the others iv missed
 '''
 
-import urlparse,traceback,urllib,json,base64,xbmc
+import urlparse, urllib, json, base64, xbmc
 
-from resources.lib.modules import client, cleantitle, log_utils, source_utils, directstream
+from resources.lib.modules import client, cleantitle, source_utils, directstream
 from resources.lib.modules import pyaes
 
 class source:
@@ -30,7 +30,7 @@ class source:
         self.domains = ['movietimeapp.com']
         self.base_link = 'http://sbfunapi.cc'
         self.server = 'http://%s/video/%s/manifest_mp4.json?sign=%s&expires_at=%s'
-        self.key = b'\x38\x36\x63\x66\x37\x66\x66\x63\x62\x33\x34\x64\x37\x64\x33\x30\x64\x33\x62\x63\x31\x35\x61\x38\x35\x31\x36\x33\x34\x33\x32\x38'
+        self.key = '\x38\x36\x63\x66\x37\x66\x66\x63\x62\x33\x34\x64\x37\x64\x33\x30\x64\x33\x62\x63\x31\x35\x61\x38\x35\x31\x36\x33\x34\x33\x32\x38'
         self.show_search = '/api/serials/tv_list/?query=%s'
         self.movie_search = '/api/serials/movies_list/?query=%s'
         self.episode_details = '/api/serials/episode_details/?h=%s&u=%s&y=%s'
@@ -44,18 +44,16 @@ class source:
         try:
             url = {'title': title, 'year': year, 'imdb': imdb}
             return urllib.urlencode(url)
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:
             data = {'tvshowtitle': tvshowtitle, 'year': year, 'imdb': imdb}
             return urllib.urlencode(data)
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def episode(self, url, imdb, tvdb, title, premiered, season, episode):
@@ -65,9 +63,8 @@ class source:
             data.update({'season': season, 'episode': episode, 'title': title, 'premiered': premiered})
 
             return urllib.urlencode(data)
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def sources(self, url, hostDict, hostprDict):
@@ -110,17 +107,15 @@ class source:
                     pass
 
             return sources
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
-            return sources
+
+        except Exception:
+            return
 
     def resolve(self, url):
         try:
             return url
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def __get_episode_url(self, data):
@@ -146,9 +141,8 @@ class source:
             url = urlparse.urljoin(self.base_link, path)
 
             return url
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def __get_movie_url(self, data):
@@ -173,9 +167,8 @@ class source:
             url = urlparse.urljoin(self.base_link, path)
 
             return url
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return
 
     def __decrypt(self, ciphertext):
@@ -187,7 +180,6 @@ class source:
             plaintext += decrypter.feed()
 
             return plaintext
-        except:
-            failure = traceback.format_exc()
-            log_utils.log('ShowBox - Exception: \n' + str(failure))
+
+        except Exception:
             return

@@ -95,6 +95,8 @@ class source:
         try:
             sources = []
             if url == None: return sources
+			
+            if debrid.status() == False: raise Exception()
 
             data = urlparse.parse_qs(url)
             data = dict([(i, data[i][0]) if data[i] else (i, '') for i in data])

@@ -40,6 +40,9 @@ def HostChcker():
     if url_ok("https://icefilms.unblocked.mx"):
         useurl = 'https://icefilms.unblocked.mx/'
 
+    elif url_ok("http://www.icefilms.info"):
+        useurl = 'http://www.icefilms.info/'
+
     elif url_ok("https://ice.unblocked.lol"):
         useurl = 'https://ice.unblocked.lol/'
 
