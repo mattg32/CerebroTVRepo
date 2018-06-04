@@ -81,9 +81,9 @@ ARTE Francais:mpd://296c263cb739ddf316c97962e85f0d50.m3u8
 AXN (version in Spanish):mpd://6f6aebf94a17416f5ca9751648ab7b16.m3u8
 AXN White Espana:mpd://675c30cb9a8994f09f93f4535b9e39c9.m3u8
 BBC Four:mpd://242b381a075fd20a0a73060c277e54a2.m3u8
-BBC One:mpd://a8f14a834d2d09054715803924e798b2.m3u8
+BBC1:mpd://a8f14a834d2d09054715803924e798b2.m3u8
 BBC Three:mpd://b0cb790c33fec1d8babed26ff68ee629.m3u8
-BBC Two:mpd://d6b64a19b548bf941f57cdd4c5d71904.m3u8
+BBC2:mpd://d6b64a19b548bf941f57cdd4c5d71904.m3u8
 Boomerang (German):mpd://facdc047f757d4426e1a0c6795e6e8f9.m3u8
 Bravo TV:mpd://582b19f3ef5459a2f139ec69ee2053d0.m3u8
 Bravo TV:mpd://afa880d42b94c19e5f644bdf24e76651.m3u8
@@ -153,7 +153,7 @@ History Channel UK:mpd://ccb7de5c42461be2cac10f5baf7d62cf.m3u8
 History Channel USA:mpd://b66373f0ab09000b1acd06576bc91eeb.m3u8
 House & Garden Television:mpd://7d9000c0967cc4919f07ecbe2736c95a.m3u8
 Investigation Discovery UK:mpd://cf723f822ded11e60e6bb78f16c327c8.m3u8
-ITV1:mpd://cc0b763f7c5ce91a396c0ef4fa529df9.m3u8
+ITV:mpd://cc0b763f7c5ce91a396c0ef4fa529df9.m3u8
 ITV2:mpd://28d16f04d9b55d2ea2f826735ddffb85.m3u8
 ITV3:mpd://ef4aa10e04cfa8191ff3253dc8184bc2.m3u8
 ITV4:mpd://2a2714a7d955d8810a21bb3f195cc0d9.m3u8
@@ -200,7 +200,7 @@ Sat 1:mpd://a7af4c42c5a684ca822c2a79af0e5a90.m3u8
 SIXX TV:mpd://298b488cf4205e03edc17afc8de9527b.m3u8
 Sky Action:mpd://e5c20351b28ad001056a35ab8879e3ef.m3u8
 Sky Arts 2:mpd://19720b905499b5bc8ff1c34eeb6c6e91.m3u8
-Sky Atlantic Ireland:mpd://eabd32acc39d4bd72a4ad687090aef8f.m3u8
+Sky Atlantic:mpd://eabd32acc39d4bd72a4ad687090aef8f.m3u8
 Sky Cinema (Deutschland):mpd://921a17733860f7f08fc434085cc18421.m3u8
 Sky Emotion:mpd://c12dd56f3aff023c9d60697b45c8867c.m3u8
 Sky Living:mpd://26cb04f6748172109489d18b64feca2e.m3u8
@@ -215,8 +215,8 @@ Sky Movies Premiere:mpd://3265682a41f442e5a4164e9b26393634.m3u8
 Sky Movies Sci-fi Horror:mpd://20abccafd4a26b6fce57df892e5040be.m3u8
 Sky Movies Select:mpd://760670eeaaa3e62adc1989fee2e8b259.m3u8
 Sky Movies Showcase:mpd://b6f08ad1b0976d993e116cbb72aef8bd.m3u8
-Sky One:mpd://ebcd8ef93fa99c4834d0cc3275f3dcd7.m3u8
-Sky Two:mpd://838d5a3429b075f8b9ab00c083d93989.m3u8
+Sky1:mpd://ebcd8ef93fa99c4834d0cc3275f3dcd7.m3u8
+Sky2:mpd://838d5a3429b075f8b9ab00c083d93989.m3u8
 Sony Film Channel:mpd://cd5e2f21c8b8f7b42c054dcf4edc0b69.m3u8
 Spike TV:mpd://a01d4a2d79052d6b1c2c63bf2d284202.m3u8
 Spike TV:mpd://744a2e6d638ef5996394717e9e871717.m3u8
