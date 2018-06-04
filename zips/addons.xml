@@ -258,6 +258,26 @@ provider-name="VistaTV">
   </extension>
 </addon>
 
+<addon id="plugin.video.vistatvshowbox" version="100.0.25" name="VistaTV ShowBox" provider-name="VistaTV">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.module.vistatvshowbox" />
+		<import addon="script.vistatvshowbox.artwork" version="1.0.0" />
+		<import addon="script.vistatvshowbox.metadata" version="1.0.0" />
+		<import addon="script.module.resolveurl" />
+		<import addon="script.module.urlresolver" />
+		<import addon="script.module.metahandler" version="1.0.0" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="vistatv.py">
+		<provides>video</provides>
+	</extension>
+	<summary>VistaTV ShowBox Addon</summary>
+	<description>Based of showboxarize.</description>
+	<extension point="xbmc.addon.metadata">
+	<platform>all</platform>
+	</extension>
+</addon>
+
 <addon
   id="plugin.video.vistavidics"
   version="2.0.4"
@@ -1235,6 +1255,18 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
    </extension>
 </addon>
 
+<addon id="script.module.vistatvshowbox" name="VistaTV ShowBox Scraper" version="3.0.9" provider-name="VistaTV">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Scrapers For VistaTV ShowBox Addon</summary>
+		<description>...</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
 <addon id="script.opentvguide" name="Open TV Guide" version="1.0.4" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
@@ -1302,5 +1334,29 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
     <forum>VitsaTV 2018</forum>
     <source></source>
   </extension>
+</addon>
+
+<addon id="script.vistatvshowbox.artwork" version="1.0.12" name="VistaTV ShowBox Artwork" provider-name="VistaTV">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the VistaTV ShowBox Addon</summary>
+		<description>Themes for VistaTV ShowBox are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.vistatvshowbox.metadata" version="1.0.1" name="VistaTV ShowBox Metadata" provider-name="VistaTV">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Metadata for the VistaTV ShowBox Addon</summary>
+		<description>Metadata for VistaTV ShowBox are maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+	</extension>
 </addon>
 </addons>
