@@ -1,6 +1,5 @@
-# -*- coding: UTF-8 -*-
-'''
-    VistaTV Scraper
+"""
+    https://vidics.unblocked.vc
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,9 +13,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    thanks to MuadDib, FilmNet, Sirius & the others iv missed
-'''
+"""
 
 import urlparse, urllib, json, base64, xbmc
 
@@ -30,7 +27,7 @@ class source:
         self.domains = ['movietimeapp.com']
         self.base_link = 'http://sbfunapi.cc'
         self.server = 'http://%s/video/%s/manifest_mp4.json?sign=%s&expires_at=%s'
-        self.key = '\x38\x36\x63\x66\x37\x66\x66\x63\x62\x33\x34\x64\x37\x64\x33\x30\x64\x33\x62\x63\x31\x35\x61\x38\x35\x31\x36\x33\x34\x33\x32\x38'
+        self.key = b'\x38\x36\x63\x66\x37\x66\x66\x63\x62\x33\x34\x64\x37\x64\x33\x30\x64\x33\x62\x63\x31\x35\x61\x38\x35\x31\x36\x33\x34\x33\x32\x38'
         self.show_search = '/api/serials/tv_list/?query=%s'
         self.movie_search = '/api/serials/movies_list/?query=%s'
         self.episode_details = '/api/serials/episode_details/?h=%s&u=%s&y=%s'

@@ -33,9 +33,9 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['tvbox.ag','tvbox.unblocked.pl']
-        self.base_link = 'https://tvbox.unblocked.pl'
-        self.search_link_tv = 'https://tvbox.unblocked.pl/tvshows'
-        self.search_link_movie = 'https://tvbox.unblocked.pl/movies'
+        self.base_link = 'https://tvbox.unblocked.lat/'
+        self.search_link_tv = 'https://tvbox.unblocked.lat/tvshows'
+        self.search_link_movie = 'https://tvbox.unblocked.lat/movies'
 
     
     def movie(self, imdb, title, localtitle, aliases, year):

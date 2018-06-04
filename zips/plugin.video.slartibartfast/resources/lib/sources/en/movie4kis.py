@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
+    Covenant Add-on
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,36 +28,18 @@ from resources.lib.modules import source_utils
 from resources.lib.modules import dom_parser
 
 
-import requests
-def url_ok(url):
-    r = requests.head(url)
-    if r.status_code == 200 or r.status_code == 301:
-        return True
-    else: return False
-
-def HostChcker():
-    if url_ok("https://www.movie4k.me"):
-        useurl = 'https://www.movie4k.me/'
-
-    elif url_ok("https://movie4k.io"):
-        useurl = 'https://movie4k.io/'
-
-    else: useurl = 'http://localhost/'
-    
-    return useurl
-
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['movie4k.unblocked.mx']
-        self._base_link = None
+        self.domains = ['movie4k.is','movie4k.ws']
+        self._base_link = 'http://www.movie4k.ws/'
         self.search_link = '/movies.php?list=search&search=%s'
 
     @property
     def base_link(self):
         if not self._base_link:
-            self._base_link = cache.get(self.__get_base_url, 120, 'https://%s' % self.domains[0])
+            self._base_link = cache.get(self.__get_base_url, 120, 'http://%s' % self.domains[0])
         return self._base_link
 
     def movie(self, imdb, title, localtitle, aliases, year):

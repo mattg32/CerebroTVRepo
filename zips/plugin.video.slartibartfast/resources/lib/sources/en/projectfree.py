@@ -35,8 +35,8 @@ def url_ok(url):
     else: return False
 
 def HostChcker():
-    if url_ok("https://my-project-free.tv"):
-        useurl = 'https://my-project-free.tv/'
+    if url_ok("http://www1.project-free-tv.ag"):
+        useurl = 'http://www1.project-free-tv.ag/'
 
     elif url_ok("https://projectfree.unblocked.lol"):
         useurl = 'https://projectfree.unblocked.lol/'

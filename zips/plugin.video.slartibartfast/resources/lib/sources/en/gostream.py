@@ -35,7 +35,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['gostream.is','gostream.sc']
-        self.base_link = 'https://gostream.sc'
+        self.base_link = 'http://www1.gostream.sc/'
         self.search_link = '/movie/search/%s'
         self.user = control.setting('gostream.user')
         self.password = control.setting('gostream.pass')
