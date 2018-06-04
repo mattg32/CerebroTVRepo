@@ -1267,7 +1267,7 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
 	</extension>
 </addon>
 
-<addon id="script.opentvguide" name="Open TV Guide" version="1.0.6" provider-name="VistaTV">
+<addon id="script.opentvguide" name="Open TV Guide" version="1.0.7" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 		<import addon="script.module.simplejson" version="3.3.0"/>
