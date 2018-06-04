@@ -26,7 +26,7 @@ import urllib2
 import datetime
 import zlib
 
-MAIN_URL = 'https://raw.githubusercontent.com/biglad/PersonalDataVistaTV/master/images/'
+MAIN_URL = 'http://vistatv.me'
 
 
 class FileFetcher(object):
