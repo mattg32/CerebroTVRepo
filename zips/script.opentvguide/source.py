@@ -867,7 +867,7 @@ class XMLTVSource(Source):
             os.makedirs(XMLTVSource.PLUGIN_DATA)
 
         if self.logoSource == XMLTVSource.LOGO_SOURCE_FTV:
-            self.logoFolder = MAIN_URL + 'logos/'
+            self.logoFolder = MAIN_URL + '/logos/'
         else:
             self.logoFolder = str(addon.getSetting('logos.folder'))
 
