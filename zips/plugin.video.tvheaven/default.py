@@ -32,17 +32,15 @@ def url_ok(url):
     if r.status_code == 200 or r.status_code == 301:
         return True
     else: return False
-
-if url_ok("https://watchepisodeseries.unblocked.mx"):
-    CurrentServer ="http://watchepisodeseries.unblocked.mx/"
+	
+if url_ok("http://watchepisodeseries.unblockall.org"):
+    CurrentServer ="http://watchepisodeseries.unblockall.org/"   
+elif url_ok("https://watchepisodeseries.unblocked.lat"):
+    CurrentServer ="https://watchepisodeseries.unblocked.lat/"
+elif url_ok("http://watchepisodeseries.bypassed.org"):
+    CurrentServer ="http://watchepisodeseries.bypassed.org/"   
 elif url_ok("http://www.watchepisodeseries.com"):
     CurrentServer ="http://www.watchepisodeseries.com/" 
-elif url_ok("http://watchepisodeseries.bypassed.org"):
-    CurrentServer ="http://watchepisodeseries.bypassed.org/"
-elif url_ok("http://watchepisodeseries.unblocker.cc"):
-    CurrentServer ="http://watchepisodeseries.unblocker.cc/"
-elif url_ok("http://watchepisodeseries.unblockall.org"):
-    CurrentServer ="http://watchepisodeseries.unblockall.org/"      
 else:
     CurrentServer ="https://watchepisodeseries.bypassed.org/"
     
