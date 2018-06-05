@@ -37,8 +37,8 @@ def url_ok(url):
     else: return False
 
 def HostChcker():
-    if url_ok("https://www.movie4k.me"):
-        useurl = 'https://www.movie4k.me/'
+    if url_ok("https://movie4k.unblocked.lat"):
+        useurl = 'https://movie4k.unblocked.lat/'
 
     elif url_ok("https://movie4k.io"):
         useurl = 'https://movie4k.io/'

@@ -37,14 +37,15 @@ def url_ok(url):
     else: return False
 
 def HostChcker():
-    if url_ok("https://icefilms.unblocked.mx"):
-        useurl = 'https://icefilms.unblocked.mx/'
+    if url_ok("https://ice.unblocked.lol"):
+        useurl = 'https://ice.unblocked.lol/'
+		
+    elif url_ok("https://icefilms.unblocked.lat"):
+        useurl = 'https://icefilms.unblocked.lat/'
 
     elif url_ok("http://www.icefilms.info"):
         useurl = 'http://www.icefilms.info/'
 
-    elif url_ok("https://ice.unblocked.lol"):
-        useurl = 'https://ice.unblocked.lol/'
 
     else: useurl = 'http://localhost/'
     

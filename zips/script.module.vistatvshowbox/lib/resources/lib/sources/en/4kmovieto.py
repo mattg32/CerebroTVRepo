@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 
-"""
+'''
     Cerebro ShowBox Scraper
-    Credits to Exodus and Covenant; our thanks go to their creators
+
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
+'''
 
 import re
 import urllib
@@ -29,30 +29,12 @@ from resources.lib.modules import source_utils
 from resources.lib.modules import dom_parser
 
 
-import requests
-def url_ok(url):
-    r = requests.head(url)
-    if r.status_code == 200 or r.status_code == 301:
-        return True
-    else: return False
-
-def HostChcker():
-    if url_ok("https://movie4k.unblocked.lat"):
-        useurl = 'https://movie4k.unblocked.lat/'
-
-    elif url_ok("https://movie4k.io"):
-        useurl = 'https://movie4k.io/'
-
-    else: useurl = 'http://localhost/'
-    
-    return useurl
-
 class source:
     def __init__(self):
         self.priority = 1
         self.language = ['en']
-        self.domains = ['movie4k.unblocked.mx']
-        self._base_link = None
+        self.domains = ['movie4k.is']
+        self._base_link = 'https://movie4kto.st/'
         self.search_link = '/movies.php?list=search&search=%s'
 
     @property

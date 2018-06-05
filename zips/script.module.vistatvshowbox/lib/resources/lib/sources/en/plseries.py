@@ -29,7 +29,7 @@ class source:
         self.priority = 1
         self.language = ['en']
         self.domains = ['putlocker.unblckd.ist']
-        self.base_link = 'http://putlocker.unblckd.istx'
+        self.base_link = 'http://putlocker.unblckd.ist'
 
     def tvshow(self, imdb, tvdb, tvshowtitle, localtvshowtitle, aliases, year):
         try:

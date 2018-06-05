@@ -164,7 +164,7 @@ provider-name="VistaTV">
   </extension>
 </addon>
 
-<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="3.0.6" provider-name="VistaTV">
+<addon id="plugin.video.slartibartfast" name="Slartibartfast" version="3.0.7" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="script.module.pyxbmct" />
@@ -1255,7 +1255,7 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
    </extension>
 </addon>
 
-<addon id="script.module.vistatvshowbox" name="VistaTV ShowBox Scraper" version="3.0.9" provider-name="VistaTV">
+<addon id="script.module.vistatvshowbox" name="VistaTV ShowBox Scraper" version="3.0.10" provider-name="VistaTV">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
