@@ -196,7 +196,7 @@ provider-name="VistaTV">
 
 <addon
   id="plugin.video.SportsDevil"
-  version="2018.04.11"
+  version="20180411"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
@@ -205,7 +205,7 @@ provider-name="VistaTV">
    <import addon="script.module.simplejson" />
    <import addon="script.module.six" />
    <import addon="script.module.requests" />
-   <import addon="script.module.streamlink.base" />
+   <import addon="script.module.streamlink.base" version="2018.02.24" />
    <import addon="plugin.video.f4mTester" />
   </requires>
   <extension
@@ -215,9 +215,9 @@ provider-name="VistaTV">
   </extension>
   <extension point="xbmc.service" library="service/streamlink_proxy.py" start="startup" />
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">SportsDevil addon</summary>
-    <description lang="en">Play videos of different ad-financed sports streaming sites.</description>
-	<disclaimer lang="en">SportsDevil does not provide any streams of its own; stream quality, content and copyright are responsibility of the ad-financed source web site. For updates - check the readme.</disclaimer>
+    <summary lang="en">SportsDevil</summary>
+    <description lang="en">[I]There can only be one.[/I][CR][CR]Unofficial Kodi Addon.</description>
+    <disclaimer lang="en">There can only be one.</disclaimer>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <platform>all</platform>
   </extension>
@@ -1233,6 +1233,59 @@ CHERRY TV nie dostarcza bezpośrednio telewizji, filmów, seriali, muzyki ani ż
     <description lang="en">[COLOR ffff0000][B]Vitsa Live TV[/B][/COLOR]</description>
 	<disclaimer lang="en">The author does not host or own any content found within this Addon. The Author is not connected to or in any other way affiliated with Kodi, Team Kodi, or the XBMC Foundation.</disclaimer>
     <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="script.module.streamlink.base" name="Streamlink Library" version="2018.06.04" provider-name="Streamlink Devs, Twilight0">
+  <requires>
+    <import addon="xbmc.python" version="2.24.0"/>
+    <import addon="script.module.requests" version="2.12.4"/>
+    <import addon="script.module.futures" version="2.2.0"/>
+    <import addon="script.module.streamlink.crypto" version="1.4.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="resources/lib/"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>Streamlink Library</summary>
+    <description>Streamlink Library for Kodi</description>
+    <platform>all</platform>
+    <license>Simplified BSD</license>
+    <source>https://github.com/Twilight0/script.module.streamlink.base/</source>
+    <language>en</language>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+    <news>+ 2018.06.04
+- Updated facebook plugin to support VOD</news>
+  </extension>
+</addon>
+
+<addon id="script.module.streamlink.crypto" name="streamlink.crypto" version="1.4.0" provider-name="Streamlink.crypto">
+  <requires>
+    <import addon="xbmc.python" version="2.14.0"/>
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>Pure Python implementation of the cryptographic libraries required by Streamlink</summary>
+    <source>https://github.com/Twilight0/script.module.streamlink.crypto</source>
+    <platform>all</platform>
+    <license>MIT</license>
+  </extension>
+</addon>
+
+<addon id="script.module.streamlink.plugins" name="Streamlink Plugins" version="1.0.3" provider-name="Twilight0">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.requests" version="2.12.4"/>
+  </requires>
+  <extension point="xbmc.service"/>
+  <extension point="xbmc.addon.metadata">
+    <summary>Streamlink Plugins</summary>
+    <description>Copy your custom streamlink plugins in this Kodi plugin.</description>
+    <platform>all</platform>
+    <license>GNU GPL, version 2</license>
+    <source>https://github.com/Twilight0/script.module.streamlink.plugins</source>
+    <!--<website></website>-->
+    <!--<language></language>-->
   </extension>
 </addon>
 
